@@ -5,7 +5,8 @@ export const validateMultiple =
   (...validators: ValidatorFunction[]) =>
   (value: string) =>
     validators.reduce(
-      (error, validator) => error || validator(value),
+      (error: unknown, validator: ValidatorFunction) =>
+        error || validator(value),
       undefined
     );
 
