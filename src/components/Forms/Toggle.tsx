@@ -18,6 +18,7 @@ export const Toggle = ({ name, label, ...props }: IToggle) => {
       <Switch.Group>
         <Switch
           checked={!!value}
+          // @ts-expect-error unknown
           onChange={onChange}
           name={name}
           {...props}
