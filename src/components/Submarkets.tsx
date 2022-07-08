@@ -1,12 +1,16 @@
 import { GetSubmarkets } from "apiResponseTypes";
 import { useQuery } from "react-query";
+import { headers } from "utils/network";
 
 export const Submarkets = () => {
   const { isLoading, error, data } = useQuery(
     "submarkets",
     (): GetSubmarkets =>
       fetch(
-        "https://consumer.qa.tidelaundry.com/v2/submarket?submarketType=0"
+        "https://consumer.qa.tidelaundry.com/v2/submarket?submarketType=0",
+        {
+          headers,
+        }
       ).then((res) => res.json())
   );
 
