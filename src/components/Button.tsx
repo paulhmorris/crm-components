@@ -2,13 +2,12 @@ import { ComponentPropsWithoutRef } from "react";
 
 interface IButton extends ComponentPropsWithoutRef<"button"> {
   variant?: "primary" | "secondary" | "tertiary";
-  text: string;
 }
 
 export const Button = ({
   variant = "primary",
   type = "button",
-  text,
+  children,
   ...props
 }: IButton) => {
   return (
@@ -23,7 +22,7 @@ export const Button = ({
       type={type}
       {...props}
     >
-      {text}
+      {children}
     </button>
   );
 };

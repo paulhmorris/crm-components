@@ -1,37 +1,65 @@
+import { useState } from "react";
 import { Form } from "react-final-form";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Button } from "./Button";
+import { DropdownMenu } from "./DropdownMenu";
+import { Datalist } from "./Forms/Datalist";
 import { Select } from "./Forms/Select";
 import { TextArea } from "./Forms/TextArea";
 import { TextInput } from "./Forms/TextInput";
+import { Toggle } from "./Forms/Toggle";
+import { EmptyModal } from "./Modals/EmptyModal";
 
 export const ComponentDisplay = () => {
+  const [emptyModalOpen, setEmptyModalOpen] = useState(false);
+
   return (
-    <>
-      {/* <Datalist /> */}
-      {/* <DropdownMenu /> */}
+    <div className="space-y-8">
+      <Datalist />
+      <DropdownMenu />
       <Select />
       <div className="flex space-x-4">
-        <Button variant="primary" text="primary" />
-        <Button variant="primary" text="Disabled" disabled />
+        <Button variant="primary">Primary</Button>
+        <Button variant="primary" disabled>
+          Primary
+        </Button>
       </div>
       <div className="flex space-x-4">
-        <Button variant="secondary" text="secondary" />
-        <Button variant="secondary" text="Disabled" disabled />
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="secondary" disabled>
+          Secondary
+        </Button>
       </div>
       <div className="flex space-x-4">
-        <Button variant="tertiary" text="tertiary" />
-        <Button variant="tertiary" text="Disabled" disabled />
+        <Button variant="tertiary">Tertiary</Button>
+        <Button variant="tertiary" disabled>
+          Tertiary
+        </Button>
       </div>
       <Form
         onSubmit={() => console.log("hello")}
-        render={() => (
-          <>
+        initialValues={{
+          firstName: "Hello",
+          errors: "()!@#4",
+          textarea: "My old friend",
+          myBoolean: true,
+          myDisabledBoolean: true,
+          myBoolean2: false,
+          myDisabledBoolean2: false,
+        }}
+        render={({ values }) => (
+          <div className="space-y-8">
             <TextInput
               label="Basic field"
               name="firstName"
               type="text"
               required
+              validate={mustBeAlphanumeric}
+            />
+            <TextInput
+              label="Errored field"
+              name="errors"
+              type="text"
               validate={mustBeAlphanumeric}
             />
             <TextInput
@@ -42,9 +70,30 @@ export const ComponentDisplay = () => {
             />
             <TextArea name="textarea" label="regular" />
             <TextArea name="disabled" label="disabled" disabled />
-          </>
+            <Toggle name="myBoolean" label="Toggle me!" />
+            <Toggle name="myBoolean2" label="Toggle me!" />
+            <Toggle name="myDisabledBoolean" label="I'm disabled 🥺" disabled />
+            <Toggle
+              name="myDisabledBoolean2"
+              label="I'm disabled 🥺"
+              disabled
+            />
+            <div>
+              <Button onClick={() => console.log(values)}>
+                Log Form values
+              </Button>
+            </div>
+          </div>
         )}
       />
-    </>
+      <Button variant="primary" onClick={() => setEmptyModalOpen(true)}>
+        Open Modal
+      </Button>
+      <EmptyModal isOpen={emptyModalOpen} setIsOpen={setEmptyModalOpen}>
+        <div className="grid h-48 w-full place-items-center">
+          <p>Hello, I am your children.</p>
+        </div>
+      </EmptyModal>
+    </div>
   );
 };

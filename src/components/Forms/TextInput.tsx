@@ -48,7 +48,6 @@ export const TextInput = ({
       <input
         {...input}
         {...props}
-        value={input.value ?? ""}
         type={type}
         placeholder="doNotRemove"
         minLength={type === "tel" ? 14 : 0}
@@ -59,7 +58,7 @@ export const TextInput = ({
           touched &&
             invalid &&
             "shadow-error hover:shadow-error focus:shadow-error",
-          "peer form-input"
+          "duration peer form-input"
         )}
       />
       <label

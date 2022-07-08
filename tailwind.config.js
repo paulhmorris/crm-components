@@ -41,7 +41,7 @@ module.exports = {
       DEFAULT: "4px",
       md: "6px",
       lg: "8px",
-      large: "12px",
+      xl: "12px",
       full: "9999px",
     },
     fontSize: {
