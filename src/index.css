@@ -60,11 +60,11 @@
   }
 
   .form-select {
-    @apply relative inline-block w-full cursor-pointer border-0 py-0 pl-0.5 text-base transition-colors placeholder:text-transparent focus:outline-none focus:ring-0 disabled:text-gray-300;
+    @apply relative inline-block w-full cursor-pointer border-0 bg-white py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue focus:shadow-border-b-2 focus:shadow-blue focus:outline-none focus:ring-0 focus-visible:border-blue focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue disabled:text-gray-300 sm:text-sm;
   }
 
   .form-textarea {
-    @apply inline-block w-full rounded border border-gray-400 bg-white text-sm ring-0 transition-colors placeholder:text-sm placeholder:text-gray-300 focus:border-blue focus:shadow-none focus:outline-none focus:ring-0 disabled:border-gray-300;
+    @apply inline-block w-full rounded bg-white text-sm shadow-border shadow-gray-400 transition-shadow placeholder:text-sm placeholder:text-gray-300 focus:shadow-border-2 focus:shadow-blue focus:outline-none focus:ring-0 disabled:border-gray-300;
   }
 
   .btn-primary {

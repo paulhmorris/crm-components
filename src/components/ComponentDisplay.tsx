@@ -10,6 +10,15 @@ import { TextInput } from "./Forms/TextInput";
 import { Toggle } from "./Forms/Toggle";
 import { EmptyModal } from "./Modals/EmptyModal";
 
+const people = [
+  { name: "Wade Cooper" },
+  { name: "Arlene Mccoy" },
+  { name: "Devon Webb" },
+  { name: "Tom Cook" },
+  { name: "Tanya Fox" },
+  { name: "Hellen Schmidt" },
+];
+
 export const ComponentDisplay = () => {
   const [emptyModalOpen, setEmptyModalOpen] = useState(false);
 
@@ -17,7 +26,6 @@ export const ComponentDisplay = () => {
     <div className="space-y-8">
       <Datalist />
       <DropdownMenu />
-      <Select />
       <div className="flex space-x-4">
         <Button variant="primary">Primary</Button>
         <Button variant="primary" disabled>
@@ -43,12 +51,14 @@ export const ComponentDisplay = () => {
           errors: "()!@#4",
           textarea: "My old friend",
           myBoolean: true,
-          myDisabledBoolean: true,
           myBoolean2: false,
+          myDisabledBoolean: true,
           myDisabledBoolean2: false,
+          mySelect: null,
         }}
         render={({ values }) => (
           <div className="space-y-8">
+            <Select name="mySelect" label="My peeps" options={people} />
             <TextInput
               label="Basic field"
               name="firstName"
