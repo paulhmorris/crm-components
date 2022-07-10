@@ -9,6 +9,16 @@ import { TextArea } from "./Forms/TextArea";
 import { TextInput } from "./Forms/TextInput";
 import { Toggle } from "./Forms/Toggle";
 import { EmptyModal } from "./Modals/EmptyModal";
+import {
+  CouponTag,
+  DefaultTag,
+  DryCleanTag,
+  GroupNameTag,
+  NewLeadTag,
+  SpecialServicesTag,
+  TaxExemptTag,
+  WashFoldTag,
+} from "./Tags";
 
 const people = [
   { name: "Wade Cooper" },
@@ -48,7 +58,7 @@ export const ComponentDisplay = () => {
         onSubmit={() => console.log("hello")}
         initialValues={{
           firstName: "Hello",
-          errors: "()!@#4",
+          errors: "Darknes$",
           textarea: "My old friend",
           myBoolean: true,
           myBoolean2: false,
@@ -82,10 +92,14 @@ export const ComponentDisplay = () => {
             <TextArea name="disabled" label="disabled" disabled />
             <Toggle name="myBoolean" label="Toggle me!" />
             <Toggle name="myBoolean2" label="Toggle me!" />
-            <Toggle name="myDisabledBoolean" label="I'm disabled 🥺" disabled />
+            <Toggle
+              name="myDisabledBoolean"
+              label="I'm disabled and on 👋🏼"
+              disabled
+            />
             <Toggle
               name="myDisabledBoolean2"
-              label="I'm disabled 🥺"
+              label="Disabled and off 🥺"
               disabled
             />
             <div>
@@ -104,6 +118,19 @@ export const ComponentDisplay = () => {
           <p>Hello, I am your children.</p>
         </div>
       </EmptyModal>
+      <div className="flex flex-col space-y-4">
+        <h2>Tags</h2>
+        <CouponTag text="Coupon" />
+        <SpecialServicesTag text="alteration - hem" />
+        <DefaultTag />
+        <div className="flex space-x-2">
+          <TaxExemptTag />
+          <WashFoldTag />
+          <DryCleanTag />
+        </div>
+        <GroupNameTag text="group name" />
+        <NewLeadTag />
+      </div>
     </div>
   );
 };

@@ -23,7 +23,8 @@ module.exports = {
       },
       tag: {
         purple: "#bd10e0",
-        green: "#006a6e",
+        green: "#0d9f3f",
+        yellow: "#fffaaf",
       },
       body: "#303030",
       secondary: "#616161",
@@ -42,9 +43,11 @@ module.exports = {
       md: "6px",
       lg: "8px",
       xl: "12px",
+      pill: "100px",
       full: "9999px",
     },
     fontSize: {
+      tiny: ".5rem",
       xs: ".75rem",
       sm: ".875rem",
       base: "1rem",

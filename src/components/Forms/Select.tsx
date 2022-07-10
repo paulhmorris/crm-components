@@ -15,8 +15,6 @@ export const Select = ({ name, label, options }: ISelect) => {
     input: { value, onChange },
   } = useField(name);
 
-  console.log(value);
-
   return (
     <Listbox value={value} onChange={onChange} name={name}>
       {({ open }) => (

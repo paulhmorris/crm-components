@@ -23,7 +23,7 @@ export const mustBeAlphanumeric: ValidatorFunction = (value) => {
   const isTextOnly = new RegExp("^[a-zA-Z0-9_ ]*$");
   return isTextOnly.test(value)
     ? undefined
-    : "Only letters and numbers allowed.";
+    : "Only letters and numbers allowed";
 };
 
 export const mustBePhoneNumber: ValidatorFunction = (value) => {
