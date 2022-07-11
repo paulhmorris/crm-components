@@ -98,4 +98,8 @@
   .btn-tertiary {
     @apply inline-flex items-center justify-center p-2 text-xs font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-[5px] transition-colors duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
   }
+
+  .btn-card {
+    @apply p-5 border-[1px] border-gray-border hover:bg-gray-100 rounded-md min-w-[200px] cursor-pointer
+  }
 }
