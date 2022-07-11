@@ -1,0 +1,20 @@
+name: Feature Workflow
+# feature.yml is going to run with each push regardless of branch
+on: [push]
+jobs:
+  build:
+    # GitHub is going to setup an ubuntu server to run out test with.
+    runs-on: ubuntu-latest # Most enterprise software is running linux, more specifically ubuntu.
+    strategy:
+      matrix:
+        node-version: [16.15] # We are checking for the versions of node.js
+    # steps of the Github workflow
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm run lint # We are forcing eslint to run in the pipeline in our feature branch.
+      - run: npm test
