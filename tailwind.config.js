@@ -11,7 +11,6 @@ module.exports = {
         200: "#ececec",
         300: "#cfcfcf",
         400: "#616161",
-        border: "rgba(217, 217, 217, .5)"
       },
       blue: {
         100: "#d7e6fa",

@@ -1,14 +1,14 @@
 
-interface IButtonText  {
+interface ICardText {
     title: string;
     subTitle: string;
   }
 
-export const ButtonText = ({
+export const CardText = ({
     title,
     subTitle,
     ...props
-  }: IButtonText) => {
+  }: ICardText) => {
     return (
       <div {...props}>
         <p className="text-left text-sm">{title}</p>

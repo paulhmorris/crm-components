@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form } from "react-final-form";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Button } from "./Button";
-import { ButtonText } from "./ButtonText";
+import { CardText } from "./CardText";
 import { Checkbox } from "./Forms/Checkbox";
 import { Select } from "./Forms/Select";
 import { SelectOption } from "./Forms/SelectOption";
@@ -50,10 +50,10 @@ export const ComponentDisplay = () => {
       </div>
       <div className="flex space-x-4">
         <Button variant="card">
-          <ButtonText title="Campus" subTitle="Tufts University"/>
+          <CardText title="Campus" subTitle="Tufts University"/>
         </Button>
         <Button variant="card">
-          <ButtonText title="Tide Cleaners" subTitle="Tide Cleaners Boston"/>
+          <CardText title="Tide Cleaners" subTitle="Tide Cleaners Boston"/>
         </Button>
       </div>
       <div className="flex space-x-4">
