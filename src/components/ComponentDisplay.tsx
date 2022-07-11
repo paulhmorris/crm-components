@@ -107,6 +107,7 @@ export const ComponentDisplay = () => {
               label="Errored field"
               name="errors"
               type="text"
+              description="This is my field description"
               fieldProps={{
                 validate: (v) => mustBeAlphanumeric(v),
               }}
@@ -158,7 +159,8 @@ export const ComponentDisplay = () => {
         <div className="grid h-48 w-full place-items-center">
           <p>Hello, I am your children.</p>
           <p>
-            Press <code>Esc</code> or click outside the modal to close me.
+            Press <code>Esc</code>, click the X, or click outside the modal to
+            close me.
           </p>
         </div>
       </EmptyModal>

@@ -10,6 +10,8 @@ interface ITextInput extends ComponentPropsWithoutRef<"input"> {
   label: string;
   /** Field type. Defaults to "text" */
   type?: "text" | "password" | "email" | "number" | "tel";
+  /** Optional description will show below the input. Will not be shown if the field has an error */
+  description?: string;
   fieldProps?: UseFieldConfig<string>;
 }
 
@@ -17,12 +19,13 @@ export const TextInput = ({
   name,
   label,
   type = "text",
+  description,
   fieldProps,
   ...props
 }: ITextInput) => {
   const {
     input,
-    meta: { touched, submitting, invalid },
+    meta: { touched, submitting, invalid, valid },
   } = useField(name, { ...fieldProps });
 
   return (
@@ -52,8 +55,13 @@ export const TextInput = ({
       >
         {label}
       </label>
-      <div className="mt-1 ml-[1px] text-xs text-error">
-        <FieldError name={name} />
+      <div className="mt-1.5 ml-[1px] text-xs">
+        {valid && description && (
+          <p className="text-xs font-normal text-secondary">{description}</p>
+        )}
+        <span className="text-error">
+          <FieldError name={name} />
+        </span>
       </div>
     </div>
   );
