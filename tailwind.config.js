@@ -13,13 +13,15 @@ module.exports = {
         400: "#616161",
       },
       blue: {
-        DEFAULT: "#0d4b9f",
-        pressed: "#203177",
-        disabled: "#d7e6fa",
+        100: "#d7e6fa",
+        200: "#0d4b9f",
+        300: "#2c44a6",
+        400: "#203177",
       },
-      yellow: {
-        tide: "#fff200",
-        alert: "#ffdf00",
+      tide: {
+        blue: "#0d4b9f",
+        yellow: "#fff200",
+        orange: "#ff4d00",
       },
       tag: {
         purple: "#bd10e0",
@@ -28,7 +30,7 @@ module.exports = {
       },
       body: "#303030",
       secondary: "#616161",
-      orange: "#ff4d00",
+      alert: "#ffdf00",
       error: "#eb001c",
       success: "#0d9f3f",
       transparent: "transparent",

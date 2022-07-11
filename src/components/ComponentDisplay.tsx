@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Form } from "react-final-form";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Button } from "./Button";
-import { DropdownMenu } from "./DropdownMenu";
-import { Datalist } from "./Forms/Datalist";
+import { Checkbox } from "./Forms/Checkbox";
 import { Select } from "./Forms/Select";
+import { SelectOption } from "./Forms/SelectOption";
 import { TextArea } from "./Forms/TextArea";
 import { TextInput } from "./Forms/TextInput";
 import { Toggle } from "./Forms/Toggle";
 import { EmptyModal } from "./Modals/EmptyModal";
+import { SearchBox } from "./SearchBox";
 import {
   CouponTag,
   DefaultTag,
@@ -21,12 +22,12 @@ import {
 } from "./Tags";
 
 const people = [
-  { name: "Wade Cooper" },
-  { name: "Arlene Mccoy" },
-  { name: "Devon Webb" },
-  { name: "Tom Cook" },
-  { name: "Tanya Fox" },
-  { name: "Hellen Schmidt" },
+  { id: 1, name: "Wade Cooper" },
+  { id: 2, name: "Arlene Mccoy" },
+  { id: 3, name: "Devon Webb" },
+  { id: 4, name: "Tom Cook" },
+  { id: 5, name: "Tanya Fox" },
+  { id: 6, name: "Hellen Schmidt" },
 ];
 
 export const ComponentDisplay = () => {
@@ -34,8 +35,6 @@ export const ComponentDisplay = () => {
 
   return (
     <div className="space-y-8">
-      <Datalist />
-      <DropdownMenu />
       <div className="flex space-x-4">
         <Button variant="primary">Primary</Button>
         <Button variant="primary" disabled>
@@ -54,33 +53,63 @@ export const ComponentDisplay = () => {
           Tertiary
         </Button>
       </div>
+      <div>
+        <p>
+          Here is some{" "}
+          <a className="inline-block" href="#">
+            link text
+          </a>{" "}
+          in a sentence
+        </p>
+
+        <p className="text-error">Error text</p>
+        <p className="font-bold text-success">Success text</p>
+      </div>
       <Form
         onSubmit={() => console.log("hello")}
         initialValues={{
           firstName: "Hello",
+          lastNameDisabled: "Can't touch this",
           errors: "Darknes$",
+          mySelect: null,
           textarea: "My old friend",
           myBoolean: true,
           myBoolean2: false,
           myDisabledBoolean: true,
           myDisabledBoolean2: false,
-          mySelect: null,
+          checkbox: true,
+          checkbox2: false,
+          checkbox3: true,
+          checkbox4: false,
+          disabledWithValue: "I've got some notes here you can't change...",
         }}
         render={({ values }) => (
           <div className="space-y-8">
-            <Select name="mySelect" label="My peeps" options={people} />
+            <Select name="mySelect" label="My peeps">
+              {people.map((person) => (
+                <SelectOption
+                  key={person.id}
+                  value={person.name}
+                  displayText={person.name}
+                />
+              ))}
+            </Select>
             <TextInput
               label="Basic field"
               name="firstName"
               type="text"
+              fieldProps={{
+                validate: (v) => mustBeAlphanumeric(v),
+              }}
               required
-              validate={mustBeAlphanumeric}
             />
             <TextInput
               label="Errored field"
               name="errors"
               type="text"
-              validate={mustBeAlphanumeric}
+              fieldProps={{
+                validate: (v) => mustBeAlphanumeric(v),
+              }}
             />
             <TextInput
               label="Disabled field"
@@ -88,10 +117,18 @@ export const ComponentDisplay = () => {
               type="text"
               disabled
             />
+            <TextInput
+              label="Disabled field with text"
+              name="lastNameDisabled"
+              type="text"
+              disabled
+            />
             <TextArea name="textarea" label="regular" />
             <TextArea name="disabled" label="disabled" disabled />
+            <TextArea name="disabledWithValue" label="disabled" disabled />
+            <SearchBox name="mySearch" placeholder="Search..." />
             <Toggle name="myBoolean" label="Toggle me!" />
-            <Toggle name="myBoolean2" label="Toggle me!" />
+            <Toggle name="myBoolean2" label="And me!" />
             <Toggle
               name="myDisabledBoolean"
               label="I'm disabled and on 👋🏼"
@@ -102,6 +139,10 @@ export const ComponentDisplay = () => {
               label="Disabled and off 🥺"
               disabled
             />
+            <Checkbox name="checkbox" label="Check me off" type="checkbox" />
+            <Checkbox name="checkbox2" label="Check me off" />
+            <Checkbox name="checkbox3" label="Check me off" disabled />
+            <Checkbox name="checkbox4" label="Check me off" disabled />
             <div>
               <Button onClick={() => console.log(values)}>
                 Log Form values
@@ -116,6 +157,9 @@ export const ComponentDisplay = () => {
       <EmptyModal isOpen={emptyModalOpen} setIsOpen={setEmptyModalOpen}>
         <div className="grid h-48 w-full place-items-center">
           <p>Hello, I am your children.</p>
+          <p>
+            Press <code>Esc</code> or click outside the modal to close me.
+          </p>
         </div>
       </EmptyModal>
       <div className="flex flex-col space-y-4">

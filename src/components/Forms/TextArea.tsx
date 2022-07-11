@@ -36,6 +36,7 @@ export const TextArea = ({ name, label, validate, ...props }: ITextArea) => {
       <textarea
         {...input}
         {...props}
+        id={name}
         value={input.value ?? ""}
         placeholder="Go ahead, type something..."
         required={props.required}

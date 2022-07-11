@@ -98,7 +98,7 @@ export const DropdownMenu = () => {
               {({ active }) => (
                 <button
                   className={`${
-                    active && "bg-blue text-white"
+                    active && "bg-blue-200 text-white"
                   } group flex w-full items-center rounded-md p-2 text-sm`}
                 >
                   {active ? (
@@ -122,7 +122,7 @@ export const DropdownMenu = () => {
               {({ active }) => (
                 <button
                   className={`${
-                    active && "bg-blue text-white"
+                    active && "bg-blue-200 text-white"
                   } group flex w-full items-center rounded-md p-2 text-sm`}
                 >
                   {active ? (

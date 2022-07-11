@@ -25,16 +25,16 @@ export const Toggle = ({ name, label, ...props }: IToggle) => {
           className={classNames(
             // on and disabled
             value && props.disabled
-              ? "border-blue-disabled bg-blue-disabled"
+              ? "border-blue-100 bg-blue-100"
               : // on
               value
-              ? "border-blue bg-blue"
+              ? "border-blue-200 bg-blue-200"
               : // off and disabled
               !value && props.disabled
               ? "border-gray-200 bg-gray-100"
               : // off
                 "border-gray-200 bg-gray-200",
-            "relative inline-flex h-6 w-9 shrink-0 cursor-pointer rounded-full border transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-opacity-75 disabled:cursor-auto"
+            "form-toggle"
           )}
         >
           <span className="sr-only">Toggle {label}</span>
@@ -42,14 +42,14 @@ export const Toggle = ({ name, label, ...props }: IToggle) => {
             aria-hidden="true"
             className={classNames(
               value ? "translate-x-3" : "translate-x-0",
-              "pointer-events-none inline-block h-[22px] w-[22px] transform rounded-full bg-white shadow-toggle transition duration-200 ease-in-out"
+              "pointer-events-none inline-block h-[22px] w-[22px] transform rounded-full bg-white shadow-toggle transition duration-300 ease-in-out"
             )}
           />
         </Switch>
         {label && (
           <Switch.Label
             className={classNames(
-              props.disabled && "cursor-auto opacity-50",
+              props.disabled && "cursor-default opacity-30",
               "cursor-pointer"
             )}
           >
