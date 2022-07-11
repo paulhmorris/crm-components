@@ -69,8 +69,6 @@ module.exports = {
         avenir: ["Avenir", ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
-        border: "0 0 0 0.5px",
-        "border-2": "0 0 0 2px",
         "border-b": "0 1px 0 0",
         "border-b-2": "0 2px 0 0",
         toggle:

@@ -1,7 +1,10 @@
+import { Menu } from "@headlessui/react";
 import { useState } from "react";
 import { Form } from "react-final-form";
+import { classNames } from "utils/helpers";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Button } from "./Button";
+import { DropdownMenu } from "./DropdownMenu";
 import { Checkbox } from "./Forms/Checkbox";
 import { Select } from "./Forms/Select";
 import { SelectOption } from "./Forms/SelectOption";
@@ -61,10 +64,53 @@ export const ComponentDisplay = () => {
           </a>{" "}
           in a sentence
         </p>
-
         <p className="text-error">Error text</p>
         <p className="font-bold text-success">Success text</p>
       </div>
+      <DropdownMenu
+        variant="button"
+        buttonText="Add New"
+        className="btn-primary"
+        direction="right"
+        menuWidth="w-36"
+      >
+        <Menu.Item>
+          {({ active }) => (
+            <button
+              className={classNames(
+                active && "bg-gray-200",
+                "group flex w-full items-center py-2 pl-4"
+              )}
+            >
+              Route
+            </button>
+          )}
+        </Menu.Item>
+        <Menu.Item>
+          {({ active }) => (
+            <button
+              className={classNames(
+                active && "bg-gray-200",
+                "group flex w-full items-center py-2 pl-4"
+              )}
+            >
+              Route Stop
+            </button>
+          )}
+        </Menu.Item>
+        <Menu.Item>
+          {({ active }) => (
+            <button
+              className={classNames(
+                active && "bg-gray-200",
+                "group flex w-full items-center py-2 pl-4"
+              )}
+            >
+              Submarket
+            </button>
+          )}
+        </Menu.Item>
+      </DropdownMenu>
       <Form
         onSubmit={() => console.log("hello")}
         initialValues={{
@@ -145,7 +191,7 @@ export const ComponentDisplay = () => {
             <Checkbox name="checkbox3" label="Check me off" disabled />
             <Checkbox name="checkbox4" label="Check me off" disabled />
             <div>
-              <Button onClick={() => console.log(values)}>
+              <Button variant="secondary" onClick={() => console.log(values)}>
                 Log Form values
               </Button>
             </div>
