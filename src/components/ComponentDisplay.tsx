@@ -4,6 +4,7 @@ import { Form } from "react-final-form";
 import { classNames } from "utils/helpers";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Button } from "./Button";
+import { CardText } from "./CardText";
 import { DropdownMenu } from "./DropdownMenu";
 import { Checkbox } from "./Forms/Checkbox";
 import { Select } from "./Forms/Select";
@@ -48,6 +49,14 @@ export const ComponentDisplay = () => {
         <Button variant="secondary">Secondary</Button>
         <Button variant="secondary" disabled>
           Secondary
+        </Button>
+      </div>
+      <div className="flex space-x-4">
+        <Button variant="card">
+          <CardText title="Campus" subTitle="Tufts University" />
+        </Button>
+        <Button variant="card">
+          <CardText title="Tide Cleaners" subTitle="Tide Cleaners Boston" />
         </Button>
       </div>
       <div className="flex space-x-4">

@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from "react";
 
 interface IButton extends ComponentPropsWithoutRef<"button"> {
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary" | "card";
 }
 
 export const Button = ({
@@ -16,7 +16,8 @@ export const Button = ({
         variant === "primary"
           ? "btn-primary"
           : variant === "secondary"
-          ? "btn-secondary"
+          ? "btn-secondary" 
+          : variant === "card" ? "btn-card"
           : "btn-tertiary"
       }
       type={type}
