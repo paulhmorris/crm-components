@@ -5,6 +5,7 @@ import {
   AccountHeader,
   AccountHeaderProps,
 } from "../components/Account/AccountHeader";
+import { StatementsTab } from "components/Group/StatementsTab";
 
 const mockAccount: AccountHeaderProps = {
   fullName: "Johnny Rocket",
@@ -34,6 +35,9 @@ export default function GuestProfile() {
       </div>
       <div className="mt-10">
         <AccountTabs />
+      </div>
+      <div className='mt-10'>
+        <StatementsTab />
       </div>
     </div>
   );
