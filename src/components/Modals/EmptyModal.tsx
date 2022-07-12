@@ -1,16 +1,27 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { Fragment } from "react";
-import { ModalProps } from "types";
+import { Dispatch, Fragment, SetStateAction } from "react";
 
-export const EmptyModal = ({ isOpen, setIsOpen, children }: ModalProps) => {
+export type EmptyModalProps = {
+  /** Controls rendering of the modal */
+  isOpen: boolean;
+  /** Callback for the Modal to close itself */
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  children: React.ReactNode;
+};
+
+export const EmptyModal = ({
+  isOpen,
+  setIsOpen,
+  children,
+}: EmptyModalProps) => {
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => setIsOpen(false)}
-      >
+      <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-200"
@@ -35,11 +46,11 @@ export const EmptyModal = ({ isOpen, setIsOpen, children }: ModalProps) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all">
-                <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+                <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"
                     className="bg-transparent text-gray-300 transition-colors hover:text-blue-200 focus:outline-none"
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeModal}
                   >
                     <span className="sr-only">Close</span>
                     <XIcon className="h-5 w-5" aria-hidden="true" />

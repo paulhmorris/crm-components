@@ -139,73 +139,75 @@ export default function ComponentDisplay() {
           checkbox4: false,
           disabledWithValue: "I've got some notes here you can't change...",
         }}
-        render={({ values }) => (
-          <div className="space-y-8">
-            <Select name="mySelect" label="My peeps">
-              {people.map((person) => (
-                <SelectOption
-                  key={person.id}
-                  value={person.name}
-                  displayText={person.name}
-                />
-              ))}
-            </Select>
-            <TextInput
-              label="Basic field"
-              name="firstName"
-              type="text"
-              fieldProps={{
-                validate: (v) => mustBeAlphanumeric(v),
-              }}
-              required
-            />
-            <TextInput
-              label="Errored field"
-              name="errors"
-              type="text"
-              description="This is my field description"
-              fieldProps={{
-                validate: (v) => mustBeAlphanumeric(v),
-              }}
-            />
-            <TextInput
-              label="Disabled field"
-              name="lastName"
-              type="text"
-              disabled
-            />
-            <TextInput
-              label="Disabled field with text"
-              name="lastNameDisabled"
-              type="text"
-              disabled
-            />
-            <TextArea name="textarea" label="regular" />
-            <TextArea name="disabled" label="disabled" disabled />
-            <TextArea name="disabledWithValue" label="disabled" disabled />
-            <SearchBox name="mySearch" placeholder="Search..." />
-            <Toggle name="myBoolean" label="Toggle me!" />
-            <Toggle name="myBoolean2" label="And me!" />
-            <Toggle
-              name="myDisabledBoolean"
-              label="I'm disabled and on 👋🏼"
-              disabled
-            />
-            <Toggle
-              name="myDisabledBoolean2"
-              label="Disabled and off 🥺"
-              disabled
-            />
-            <Checkbox name="checkbox" label="Check me off" type="checkbox" />
-            <Checkbox name="checkbox2" label="Check me off" />
-            <Checkbox name="checkbox3" label="Check me off" disabled />
-            <Checkbox name="checkbox4" label="Check me off" disabled />
-            <div>
-              <Button variant="secondary" onClick={() => console.log(values)}>
-                Log Form values
-              </Button>
+        render={({ values, handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-8">
+              <Select name="mySelect" label="My peeps">
+                {people.map((person) => (
+                  <SelectOption
+                    key={person.id}
+                    value={person.name}
+                    displayText={person.name}
+                  />
+                ))}
+              </Select>
+              <TextInput
+                label="Basic field"
+                name="firstName"
+                type="text"
+                fieldProps={{
+                  validate: (v) => mustBeAlphanumeric(v),
+                }}
+                required
+              />
+              <TextInput
+                label="Errored field"
+                name="errors"
+                type="text"
+                description="This is my field description"
+                fieldProps={{
+                  validate: (v) => mustBeAlphanumeric(v),
+                }}
+              />
+              <TextInput
+                label="Disabled field"
+                name="lastName"
+                type="text"
+                disabled
+              />
+              <TextInput
+                label="Disabled field with text"
+                name="lastNameDisabled"
+                type="text"
+                disabled
+              />
+              <TextArea name="textarea" label="regular" />
+              <TextArea name="disabled" label="disabled" disabled />
+              <TextArea name="disabledWithValue" label="disabled" disabled />
+              <SearchBox name="mySearch" placeholder="Search..." />
+              <Toggle name="myBoolean" label="Toggle me!" />
+              <Toggle name="myBoolean2" label="And me!" />
+              <Toggle
+                name="myDisabledBoolean"
+                label="I'm disabled and on 👋🏼"
+                disabled
+              />
+              <Toggle
+                name="myDisabledBoolean2"
+                label="Disabled and off 🥺"
+                disabled
+              />
+              <Checkbox name="checkbox" label="Check me off" type="checkbox" />
+              <Checkbox name="checkbox2" label="Check me off" />
+              <Checkbox name="checkbox3" label="Check me off" disabled />
+              <Checkbox name="checkbox4" label="Check me off" disabled />
+              <div>
+                <Button variant="secondary" onClick={() => console.log(values)}>
+                  Log Form values
+                </Button>
+              </div>
             </div>
-          </div>
+          </form>
         )}
       />
       <Button variant="primary" onClick={() => setEmptyModalOpen(true)}>
