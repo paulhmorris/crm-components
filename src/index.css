@@ -96,10 +96,22 @@
   }
 
   .btn-tertiary {
-    @apply inline-flex items-center justify-center whitespace-nowrap p-2 text-xs font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-[5px] transition-colors duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:cursor-not-allowed disabled:text-blue-100;
+    @apply inline-flex items-center justify-center whitespace-nowrap p-2 text-sm font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-4 transition-colors duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:cursor-not-allowed disabled:text-blue-100;
   }
 
   .btn-card {
-    @apply p-5 border-[1px] border-gray-200 hover:bg-gray-100 rounded-md min-w-[200px] cursor-pointer
+    @apply min-w-[200px] cursor-pointer rounded-md border border-gray-200 p-5 transition-colors duration-75 hover:bg-gray-100 active:bg-gray-200/50;
+  }
+
+  .tab-list {
+    @apply space-x-6 border-b border-gray-200 pl-6 pb-0.5;
+  }
+
+  .tab {
+    @apply text-sm capitalize transition duration-75 hover:text-blue-200 focus:outline-none;
+  }
+
+  .tab-active {
+    @apply text-blue-200 shadow-border-b-3 shadow-blue-200;
   }
 }

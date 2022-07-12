@@ -58,7 +58,7 @@ export const DryCleanTag = () => {
 
 export const NewLeadTag = () => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 py-[3px] align-middle text-sm font-bold text-tag-green">
+    <div className="inline-flex h-7 max-w-min items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 align-middle text-sm font-bold text-tag-green">
       <span>I&apos;m New!</span>
     </div>
   );

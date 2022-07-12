@@ -11,3 +11,12 @@ export type ModalProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   children: React.ReactNode;
 };
+
+export type DetergentType = "normal" | "free and gentle";
+
+export type StarchType =
+  | "no starch"
+  | "light starch"
+  | "medium starch"
+  | "heavy starch"
+  | "cowboy";

@@ -21,3 +21,6 @@ export const formatCurrency = (value: number, decimals?: 0 | 2): string => {
 
   return formattedValue;
 };
+
+export const getAutopayStatus = (status: boolean): string =>
+  status ? "On" : "Off";
