@@ -115,3 +115,9 @@
     @apply text-blue-200 shadow-border-b-3 shadow-blue-200;
   }
 }
+
+@layer utilities {
+  .striped div:nth-child(odd) {
+    @apply bg-gray-100
+  }
+}
