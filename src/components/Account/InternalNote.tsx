@@ -13,6 +13,7 @@ export const InternalNote = () => {
   async function saveNote(value: string) {
     await sleep(5000);
     console.log(value);
+    setOpen(false);
   }
 
   return (
