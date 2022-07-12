@@ -3,17 +3,18 @@ import { useState } from "react";
 import { Form } from "react-final-form";
 import { classNames } from "utils/helpers";
 import { mustBeAlphanumeric } from "utils/inputValidations";
-import { Button } from "./Button";
-import { CardText } from "./CardText";
-import { DropdownMenu } from "./DropdownMenu";
-import { Checkbox } from "./Forms/Checkbox";
-import { Select } from "./Forms/Select";
-import { SelectOption } from "./Forms/SelectOption";
-import { TextArea } from "./Forms/TextArea";
-import { TextInput } from "./Forms/TextInput";
-import { Toggle } from "./Forms/Toggle";
-import { EmptyModal } from "./Modals/EmptyModal";
-import { SearchBox } from "./SearchBox";
+import { Banner } from "../components/Banner";
+import { Button } from "../components/Button";
+import { CardText } from "../components/CardText";
+import { DropdownMenu } from "../components/DropdownMenu";
+import { Checkbox } from "../components/Forms/Checkbox";
+import { Select } from "../components/Forms/Select";
+import { SelectOption } from "../components/Forms/SelectOption";
+import { TextArea } from "../components/Forms/TextArea";
+import { TextInput } from "../components/Forms/TextInput";
+import { Toggle } from "../components/Forms/Toggle";
+import { EmptyModal } from "../components/Modals/EmptyModal";
+import { SearchBox } from "../components/SearchBox";
 import {
   CouponTag,
   DefaultTag,
@@ -23,7 +24,7 @@ import {
   SpecialServicesTag,
   TaxExemptTag,
   WashFoldTag,
-} from "./Tags";
+} from "../components/Tags";
 
 const people = [
   { id: 1, name: "Wade Cooper" },
@@ -34,7 +35,7 @@ const people = [
   { id: 6, name: "Hellen Schmidt" },
 ];
 
-export const ComponentDisplay = () => {
+export default function ComponentDisplay() {
   const [emptyModalOpen, setEmptyModalOpen] = useState(false);
 
   return (
@@ -88,7 +89,7 @@ export const ComponentDisplay = () => {
             <button
               className={classNames(
                 active && "bg-gray-200",
-                "group flex w-full items-center py-2 pl-4"
+                "group flex w-full items-center py-1.5 pl-4"
               )}
             >
               Route
@@ -100,7 +101,7 @@ export const ComponentDisplay = () => {
             <button
               className={classNames(
                 active && "bg-gray-200",
-                "group flex w-full items-center py-2 pl-4"
+                "group flex w-full items-center py-1.5 pl-4"
               )}
             >
               Route Stop
@@ -112,7 +113,7 @@ export const ComponentDisplay = () => {
             <button
               className={classNames(
                 active && "bg-gray-200",
-                "group flex w-full items-center py-2 pl-4"
+                "group flex w-full items-center py-1.5 pl-4"
               )}
             >
               Submarket
@@ -231,7 +232,20 @@ export const ComponentDisplay = () => {
         </div>
         <GroupNameTag text="group name" />
         <NewLeadTag />
+        <Banner
+          variant="info"
+          message="🤨 This person has not accepted our terms yet. Hmm..."
+        />
+        <Banner
+          variant="success"
+          message="🎉 Woohoo! Something good happend."
+        />
+        <Banner
+          variant="warning"
+          message="👀️ Watch out, something is happening."
+        />
+        <Banner variant="error" message="✋ Bummer—something bad happened." />
       </div>
     </div>
   );
-};
+}
