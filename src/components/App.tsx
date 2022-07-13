@@ -11,6 +11,7 @@ function App() {
           <Link to="/components">Components</Link>
           <Link to="/guest-profile">Guest Profile</Link>
           <Link to="/nav">Navigation</Link>
+          <Link to="/group-profile">Group Profile</Link>
         </nav>
         <Outlet />
       </div>

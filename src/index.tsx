@@ -3,6 +3,7 @@ import { PepperNav } from "components/Navigation/PepperNav";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ComponentDisplay from "routes/components";
+import GroupProfile from "routes/group-profile";
 import GuestProfile from "routes/guest-profile";
 import "./index.css";
 
@@ -16,6 +17,7 @@ root.render(
         <Route path="components" element={<ComponentDisplay />} />
         <Route path="guest-profile" element={<GuestProfile />} />
         <Route path="nav" element={<PepperNav />} />
+        <Route path="group-profile" element={<GroupProfile />} />
       </Route>
     </Routes>
   </BrowserRouter>
