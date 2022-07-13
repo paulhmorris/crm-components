@@ -1,4 +1,4 @@
-import { StatementsTab } from "../components/Group/StatementsTab";
+import { StatementsTab } from "../components/Groups/StatementsTab";
 
 const GroupProfile = () => {
   return (

@@ -1,11 +1,11 @@
 import { Menu } from "@headlessui/react";
+import { MarketCard } from "components/Markets/MarketCard";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { classNames } from "utils/helpers";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
-import { CardText } from "../components/CardText";
 import { DropdownMenu } from "../components/DropdownMenu";
 import { Checkbox } from "../components/Forms/Checkbox";
 import { Select } from "../components/Forms/Select";
@@ -39,7 +39,7 @@ export default function ComponentDisplay() {
   const [emptyModalOpen, setEmptyModalOpen] = useState(false);
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-3xl space-y-8 p-24">
       <div className="flex space-x-4">
         <Button variant="primary">Primary</Button>
         <Button variant="primary" disabled>
@@ -53,18 +53,18 @@ export default function ComponentDisplay() {
         </Button>
       </div>
       <div className="flex space-x-4">
-        <Button variant="card">
-          <CardText title="Campus" subTitle="Tufts University" />
-        </Button>
-        <Button variant="card">
-          <CardText title="Tide Cleaners" subTitle="Tide Cleaners Boston" />
-        </Button>
-      </div>
-      <div className="flex space-x-4">
         <Button variant="tertiary">Tertiary</Button>
         <Button variant="tertiary" disabled>
           Tertiary
         </Button>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <MarketCard businessType="Tide Dry Cleaners" title="Tufts University" />
+        <MarketCard businessType="Tide Cleaners" title="The Dude University" />
+        <MarketCard
+          businessType="Procter & Gamble"
+          title="University of Laundry"
+        />
       </div>
       <div>
         <p>

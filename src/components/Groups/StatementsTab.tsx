@@ -3,7 +3,7 @@ import { Button } from "components/Button";
 import dayjs from "dayjs";
 import { classNames, formatCurrency } from "utils/helpers";
 import { RightArrow } from "../../icons/index";
-import { statements, transactions } from "../Groups/statements";
+import { statements, transactions } from "./statements";
 
 export const StatementsTab = () => {
   return (

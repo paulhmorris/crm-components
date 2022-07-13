@@ -12,7 +12,7 @@ export const SelectOption = ({ value, displayText }: SelectOptionProps) => {
     <Listbox.Option
       className={({ active }) =>
         classNames(
-          "relative cursor-default select-none py-2 pl-10 pr-4",
+          "relative cursor-default select-none py-2 pl-10 pr-4 text-xs ",
           active && "bg-blue-200 text-white"
         )
       }
@@ -22,12 +22,12 @@ export const SelectOption = ({ value, displayText }: SelectOptionProps) => {
         <>
           <span
             className={classNames(
-              "block truncate text-base",
+              "block truncate",
               active && selected
-                ? "font-medium text-white"
+                ? "font-medium"
                 : selected
                 ? "font-medium text-blue-200"
-                : "font-normal text-current"
+                : "font-normal"
             )}
           >
             {displayText}

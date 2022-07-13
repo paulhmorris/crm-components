@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef } from "react";
 import { classNames } from "utils/helpers";
 
-interface IButton extends ComponentPropsWithoutRef<"button"> {
-  variant?: "primary" | "secondary" | "tertiary" | "card";
+export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+  variant?: "primary" | "secondary" | "tertiary";
 }
 
 export const Button = ({
@@ -11,7 +11,7 @@ export const Button = ({
   children,
   className,
   ...props
-}: IButton) => {
+}: ButtonProps) => {
   return (
     <button
       {...props}
@@ -20,9 +20,7 @@ export const Button = ({
           ? "btn-primary"
           : variant === "secondary"
           ? "btn-secondary"
-          : variant === "card"
-          ? "btn-card"
-          : "btn-tertiary",
+          : variant === "tertiary" && "btn-tertiary",
         className
       )}
       type={type}

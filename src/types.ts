@@ -9,3 +9,11 @@ export type StarchType =
   | "medium starch"
   | "heavy starch"
   | "cowboy";
+
+export type BusinessUnit =
+  | "Procter & Gamble"
+  | "Tide Dry Cleaners"
+  | "Tide University Laundry"
+  | "Tide Cleaners";
+
+export type SubmarketType = "Campus" | "Business Park";
