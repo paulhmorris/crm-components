@@ -1,24 +1,67 @@
-import { Button } from 'components/Button';
+import { Button } from "components/Button";
+import { Disclosure } from "@headlessui/react";
+import { RightArrow } from "../../icons/index";
+import GridRow from "./GridRow";
+import { statements, transactions } from "./statements";
+import dayjs from 'dayjs';
 
 export const StatementsTab = () => {
-    return (
-        <div className='striped'>
-            <p>Statements</p>
-            <div className='flex flex-row items-center p-6 border-[1px] border-gray-200 border-t-0'>
-                <p className='text-blue-200 underline font-bold cursor-pointer'>View 7/1/2022 Invoice</p>
-                <Button variant="secondary" className='ml-3'>Record Payment</Button>
-                <p className=''>Balance Due $14,420.65</p>
-            </div>
-            <div className='flex flex-row items-center p-6 border-[1px] border-gray-200 border-t-0'>
-                <p className='text-blue-200 underline font-bold cursor-pointer'>View 7/1/2022 Invoice</p>
-                <Button variant="secondary" className='ml-3'>Record Payment</Button>
-                <p className=''>Balance Due $14,420.65</p>
-            </div>
-            <div className='flex flex-row items-center p-6 border-[1px] border-gray-200 border-t-0'>
-                <p className='text-blue-200 underline font-bold cursor-pointer'>View 7/1/2022 Invoice</p>
-                <Button variant="secondary" className='ml-3'>Record Payment</Button>
-                <p className=''>Balance Due $14,420.65</p>
-            </div>
-        </div>
-    )
-}
+  return (
+    <section className="striped">
+      <div className="border-[1px] border-gray-200 py-4">
+        <p className="pl-6">Statements</p>
+      </div>
+      {statements.map((statement, key) => {
+        return (
+          <Disclosure key={key}>
+            {({ open }) => (
+              <>
+                <GridRow>
+                  <>
+                    <div className="flex flex-row items-center">
+                      <Disclosure.Button className="mr-1">
+                        <RightArrow
+                          className={`${open ? "rotate-90 transform" : ""}`}
+                        />
+                      </Disclosure.Button>
+                      <p className="cursor-pointer font-bold text-blue-200 underline">
+                        View {dayjs(statement.date).format('MM/DD/YYYY')} Invoice
+                      </p>
+                      <Button variant="secondary" className="ml-3">
+                        Record Payment
+                      </Button>
+                    </div>
+                    <p className="">Balance Due ${statement.balance}</p>
+                  </>
+                </GridRow>
+                <Disclosure.Panel className="striped">
+                  {transactions
+                    .filter(
+                      (transaction) => transaction.statementId === statement.id
+                    )
+                    .map((transaction, key) => {
+                      return (
+                        <GridRow key={key}>
+                          <>
+                            <div className="flex flex-col">
+                              <p className="font-bold text-blue-200">
+                                {transaction.name}
+                              </p>
+                              <p>{dayjs(transaction.date).format('MM/DD/YYYY')} • No payment activity</p>
+                            </div>
+                            <p className="text-error">
+                              Unpaid ${transaction.balance}
+                            </p>
+                          </>
+                        </GridRow>
+                      );
+                    })}
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+        );
+      })}
+    </section>
+  );
+};
