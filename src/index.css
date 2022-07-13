@@ -117,12 +117,6 @@
   }
 
   .grid-row {
-    @apply flex flex-row items-center justify-between border-[1px] border-t-0 border-gray-200 p-6 hover:bg-gray-100;
-  }
-}
-
-@layer utilities {
-  .striped .striped-child:nth-child(odd) {
-    @apply bg-gray-100;
+    @apply flex w-full items-center justify-between border border-t-0 border-gray-200;
   }
 }

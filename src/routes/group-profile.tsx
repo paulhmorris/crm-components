@@ -1,4 +1,3 @@
-import React from "react";
 import { StatementsTab } from "../components/Group/StatementsTab";
 
 const GroupProfile = () => {

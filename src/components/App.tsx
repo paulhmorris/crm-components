@@ -6,7 +6,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="mt-10">
+      <div className="mt-10 p-4">
         <nav className="mb-10 flex w-full space-x-4 border-b-2 border-blue-100 pb-2">
           <Link to="/components">Components</Link>
           <Link to="/guest-profile">Guest Profile</Link>

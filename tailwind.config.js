@@ -17,6 +17,7 @@ module.exports = {
         200: "#0d4b9f",
         300: "#2c44a6",
         400: "#203177",
+        ice: "rgba(23, 219, 228, 0.1)",
       },
       tide: {
         blue: "#0d4b9f",
@@ -73,6 +74,7 @@ module.exports = {
         "border-b": "0 1px 0 0",
         "border-b-2": "0 2px 0 0",
         "border-b-3": "0 3px 0 0",
+        "border-t": "0 -1px 0 0",
         toggle:
           "0px 2.5px 6.5px rgba(0, 0, 0, 0.15), 0px 2.5px 0.8px rgba(0, 0, 0, 0.06);",
       },

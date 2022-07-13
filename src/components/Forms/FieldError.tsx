@@ -1,4 +1,4 @@
-import { Field } from 'react-final-form'
+import { Field } from "react-final-form";
 
 export const FieldError = ({ name }: { name: string }) => (
   <Field
@@ -7,7 +7,7 @@ export const FieldError = ({ name }: { name: string }) => (
       touched: true,
       error: true,
       submitError: true,
-      dirtySinceLastSubmit: true
+      dirtySinceLastSubmit: true,
     }}
     render={({ meta: { touched, error, submitError, dirtySinceLastSubmit } }) =>
       touched &&
@@ -18,4 +18,4 @@ export const FieldError = ({ name }: { name: string }) => (
       )
     }
   />
-)
+);
