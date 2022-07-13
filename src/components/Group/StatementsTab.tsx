@@ -24,7 +24,7 @@ export const StatementsTab = () => {
                     "grid-row cursor-pointer px-5 py-3"
                   )}
                 >
-                  <div className="flex flex-row items-center space-x-3">
+                  <div className="flex flex-row items-center space-x-2">
                     <RightArrow
                       className={classNames(
                         open && "rotate-90 transform",
