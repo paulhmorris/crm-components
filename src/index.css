@@ -4,11 +4,12 @@
 
 @layer base {
   html {
-    @apply text-[16px];
+    @apply h-full text-[16px];
   }
   body {
-    @apply bg-white font-avenir text-sm font-normal leading-5 text-body;
+    @apply h-full bg-white font-avenir text-sm font-normal leading-5 text-body;
   }
+
   .body-small {
     @apply text-xs leading-[18px];
   }
@@ -99,8 +100,8 @@
     @apply relative inline-flex items-center justify-center whitespace-nowrap p-2 text-sm font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-4 transition-colors duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
   }
 
-  .btn-card {
-    @apply min-w-[200px] cursor-pointer rounded-md border border-gray-200 p-5 transition-colors duration-75 hover:bg-gray-100 active:bg-gray-200/50;
+  .pepper-nav-item {
+    @apply flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors hover:text-blue-200;
   }
 
   .tab-list {
@@ -108,7 +109,7 @@
   }
 
   .tab {
-    @apply text-sm capitalize transition duration-75 hover:text-blue-200 focus:outline-none;
+    @apply text-sm capitalize transition duration-[25ms] hover:text-blue-200 focus:outline-none;
   }
 
   .tab-active {

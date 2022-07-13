@@ -17,7 +17,7 @@ const mockData = {
 
 export const AccountOverview = () => {
   return (
-    <section className="grid grid-cols-3 grid-rows-3 gap-x-12 gap-y-4 p-6">
+    <section className="grid grid-cols-3 grid-rows-3 gap-x-20 gap-y-4 p-6">
       <div>
         <p className="font-bold">Phone</p>
         <p className="text-secondary">
@@ -49,9 +49,7 @@ export const AccountOverview = () => {
       </div>
       <div>
         <p className="font-bold">Cleaning Credits</p>
-        <a href="#" className="font-bold text-success hover:text-success">
-          {formatCurrency(mockData.creditBalance, 2)}
-        </a>
+        <a href="#">{formatCurrency(mockData.creditBalance, 2)}</a>
       </div>
       <div>
         <p className="font-bold">Plan</p>
