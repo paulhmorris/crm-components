@@ -9,14 +9,14 @@ export const StatementsTab = () => {
   return (
     <section className="striped">
       <div className="border-[1px] border-gray-200 py-4">
-        <p className="pl-6">Statements</p>
+        <p className="pl-6 text-base">Statements</p>
       </div>
       {statements.map((statement, key) => {
         return (
           <Disclosure key={key}>
             {({ open }) => (
               <>
-                <GridRow>
+                <GridRow className='grid-row striped-child'>
                   <>
                     <div className="flex flex-row items-center">
                       <Disclosure.Button className="mr-1">
@@ -41,7 +41,7 @@ export const StatementsTab = () => {
                     )
                     .map((transaction, key) => {
                       return (
-                        <GridRow key={key}>
+                        <GridRow className='grid-row cursor-pointer' key={key}>
                           <>
                             <div className="flex flex-col">
                               <p className="font-bold text-blue-200">

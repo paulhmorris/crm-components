@@ -10,6 +10,7 @@ function App() {
         <nav className="mb-10 flex w-full space-x-4 border-b-2 border-gray-300 pb-2">
           <Link to="/components">Components</Link>
           <Link to="/guest-profile">Guest Profile</Link>
+          <Link to="/group-profile">Group Profile</Link>
         </nav>
         <Outlet />
       </div>

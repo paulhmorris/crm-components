@@ -1,12 +1,12 @@
-import React from 'react'
 
 interface IGridRow {
     children: JSX.Element,
+    className: string
 }
 
-const GridRow = ({ children }: IGridRow) => {
+const GridRow = ({ children, className, ...props}: IGridRow) => {
     return (
-        <div className="striped-child flex flex-row items-center justify-between border-[1px] border-t-0 border-gray-200 p-6">
+        <div {...props}  className={className}>
             {children}
         </div>
     )
