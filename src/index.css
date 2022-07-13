@@ -117,7 +117,7 @@
 }
 
 @layer utilities {
-  .striped div:nth-child(odd) {
+  .striped .striped-child:nth-child(odd) {
     @apply bg-gray-100
   }
 }
