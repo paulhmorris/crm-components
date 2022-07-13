@@ -114,4 +114,14 @@
   .tab-active {
     @apply text-blue-200 shadow-border-b-3 shadow-blue-200;
   }
+
+  .grid-row {
+    @apply hover:bg-gray-100 flex flex-row items-center justify-between border-[1px] border-t-0 border-gray-200 p-6;
+  }
+}
+
+@layer utilities {
+  .striped .striped-child:nth-child(odd) {
+    @apply bg-gray-100
+  }
 }

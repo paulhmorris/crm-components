@@ -17,7 +17,8 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest",
-    "lint": "eslint src --max-warnings=0"
+    "lint": "eslint src --max-warnings=0",
+    "tailwind-config-viewer": "tailwind-config-viewer -o"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.5",
@@ -27,7 +28,8 @@
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
     "react-query": "^3.39.1",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "tailwind-config-viewer": "^1.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

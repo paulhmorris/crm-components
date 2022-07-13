@@ -61,6 +61,12 @@ npm run build
 npm run test
 ```
 
+### Tailwind Configuration Viewer
+
+```bash
+npm run tailwind-config-viewer
+```
+
 ## License
 
 This project is licensed under the MIT License.
