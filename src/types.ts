@@ -35,7 +35,45 @@ export interface PersonalDetailsProps {
   onHold: boolean;
 }
 
-// C O M P O N E N T S //
+// ----------- C O M P O N E N T S ----------- //
+
+export interface TextInputProps extends ComponentPropsWithoutRef<"input"> {
+  /** Field name. This name will be used in the payload. */
+  name: string;
+  /** Field label. This acts as the placeholder until in focus */
+  label: string;
+  /** Field type. Defaults to "text" */
+  type?: "text" | "password" | "email" | "number" | "tel";
+  /** Optional description will show below the input. Will not be shown if the field has an error */
+  description?: string;
+  fieldProps?: UseFieldConfig<string>;
+}
+
+export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
+  /** Field name. This name will be used in the payload. */
+  name: string;
+  /** Field label. This acts as the placeholder until active */
+  label: string;
+  /** Field type. */
+  fieldProps?: UseFieldConfig<string>;
+  validate?: ValidatorFunction | ((value: string) => ValidatorFunction);
+}
+
+export interface SelectProps {
+  /** Field name. This name will be used in the payload. */
+  name: string;
+  /** Field label. This acts as the placeholder until in focus */
+  label: string;
+  /** The options to populate the select */
+  fieldProps?: UseFieldConfig<string>;
+  children: React.ReactNode;
+}
+
+export interface SelectOptionProps extends ComponentPropsWithoutRef<"option"> {
+  value: string | number;
+  displayText: string | number;
+}
+
 export interface RadioProps extends ComponentPropsWithoutRef<"input"> {
   name: string;
   value: string | number;

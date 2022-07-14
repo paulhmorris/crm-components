@@ -1,19 +1,7 @@
-import { ComponentPropsWithoutRef } from "react";
-import { useField, UseFieldConfig } from "react-final-form";
+import { useField } from "react-final-form";
+import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
 import { FieldError } from "./FieldError";
-
-interface ITextInput extends ComponentPropsWithoutRef<"input"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
-  /** Field label. This acts as the placeholder until in focus */
-  label: string;
-  /** Field type. Defaults to "text" */
-  type?: "text" | "password" | "email" | "number" | "tel";
-  /** Optional description will show below the input. Will not be shown if the field has an error */
-  description?: string;
-  fieldProps?: UseFieldConfig<string>;
-}
 
 export const TextInput = ({
   name,
@@ -22,7 +10,7 @@ export const TextInput = ({
   description,
   fieldProps,
   ...props
-}: ITextInput) => {
+}: TextInputProps) => {
   const {
     input,
     meta: { touched, submitting, invalid, valid },

@@ -2,9 +2,9 @@ import { Field } from "react-final-form";
 import { RadioProps } from "types";
 
 export const Radio = ({
+  label,
   name,
   value,
-  label,
   fieldProps,
   ...props
 }: RadioProps) => {
@@ -13,10 +13,10 @@ export const Radio = ({
       {({ input }) => (
         <div className="flex items-center space-x-2">
           <input
-            {...props}
             {...input}
+            {...props}
             id={value.toString()}
-            className="cursor-pointer text-tide-blue transition-colors duration-75 focus:ring-transparent"
+            className="form-radio"
           />
           <label htmlFor={value.toString()} className="cursor-pointer text-xs">
             {label}

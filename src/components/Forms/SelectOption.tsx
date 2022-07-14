@@ -1,11 +1,7 @@
 import { Listbox } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/solid";
+import { SelectOptionProps } from "types";
 import { classNames } from "utils/helpers";
-
-type SelectOptionProps = {
-  value: string | number;
-  displayText: string | number;
-};
 
 export const SelectOption = ({ value, displayText }: SelectOptionProps) => {
   return (

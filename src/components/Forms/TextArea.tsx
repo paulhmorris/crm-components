@@ -1,24 +1,18 @@
-import { ComponentPropsWithoutRef } from "react";
-import { useField, UseFieldConfig } from "react-final-form";
-import { ValidatorFunction } from "types";
+import { useField } from "react-final-form";
+import { TextAreaProps } from "types";
 import { classNames } from "utils/helpers";
 import { FieldError } from "./FieldError";
 
-interface ITextArea extends ComponentPropsWithoutRef<"textarea"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
-  /** Field label. This acts as the placeholder until active */
-  label: string;
-  /** Field type. */
-  fieldProps?: UseFieldConfig<string>;
-  validate?: ValidatorFunction | ((value: string) => ValidatorFunction);
-}
-
-export const TextArea = ({ name, label, validate, ...props }: ITextArea) => {
+export const TextArea = ({
+  name,
+  label,
+  fieldProps,
+  ...props
+}: TextAreaProps) => {
   const {
     input,
     meta: { touched, submitting, invalid },
-  } = useField(name, { validate });
+  } = useField(name, { ...fieldProps });
 
   return (
     <div className="form-group">
@@ -37,9 +31,7 @@ export const TextArea = ({ name, label, validate, ...props }: ITextArea) => {
         {...input}
         {...props}
         id={name}
-        value={input.value ?? ""}
         placeholder="Go ahead, type something..."
-        required={props.required}
         disabled={submitting || props.disabled}
         aria-describedby={`${name}-error`}
         className={classNames(

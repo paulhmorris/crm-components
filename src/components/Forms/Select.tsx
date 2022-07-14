@@ -1,19 +1,10 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { useField, UseFieldConfig } from "react-final-form";
+import { useField } from "react-final-form";
+import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
 
-interface ISelect {
-  /** Field name. This name will be used in the payload. */
-  name: string;
-  /** Field label. This acts as the placeholder until in focus */
-  label: string;
-  /** The options to populate the select */
-  fieldProps?: UseFieldConfig<string>;
-  children: React.ReactNode;
-}
-
-export const Select = ({ name, label, fieldProps, children }: ISelect) => {
+export const Select = ({ name, label, fieldProps, children }: SelectProps) => {
   const {
     input: { value, onChange },
   } = useField(name, { ...fieldProps });
@@ -40,7 +31,7 @@ export const Select = ({ name, label, fieldProps, children }: ISelect) => {
           </Listbox.Label>
           <Transition
             as={Fragment}
-            leave="transition ease-in duration-100"
+            leave="transition ease-in duration-75"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
