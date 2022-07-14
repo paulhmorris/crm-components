@@ -119,8 +119,4 @@
   .tab-active {
     @apply text-blue-200 shadow-border-b-3 shadow-blue-200;
   }
-
-  .grid-row {
-    @apply flex w-full items-center justify-between border border-t-0 border-gray-200;
-  }
 }

@@ -15,7 +15,7 @@ export const PersonalDetails = ({
 }: PersonalDetailsProps) => {
   return (
     <section className="flex w-full flex-col">
-      <div className="p flex items-end justify-between px-6 py-3">
+      <div className="flex items-end justify-between px-6 py-3">
         <h4>Personal Details</h4>
         <Button variant="tertiary" className="-mb-2">
           Edit

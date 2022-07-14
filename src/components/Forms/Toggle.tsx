@@ -3,12 +3,12 @@ import { ComponentPropsWithRef } from "react";
 import { useField } from "react-final-form";
 import { classNames } from "utils/helpers";
 
-interface IToggle extends ComponentPropsWithRef<"button"> {
+interface ToggleProps extends ComponentPropsWithRef<"button"> {
   name: string;
   label?: string;
 }
 
-export const Toggle = ({ name, label, ...props }: IToggle) => {
+export const Toggle = ({ name, label, ...props }: ToggleProps) => {
   const {
     input: { value, onChange },
   } = useField(name);

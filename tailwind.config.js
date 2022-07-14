@@ -76,6 +76,8 @@ module.exports = {
         "border-b-2": "0 2px 0 0",
         "border-b-3": "0 3px 0 0",
         "border-t": "0 -1px 0 0",
+        "border-t-2": "0 -2px 0 0",
+        "border-y-2": "0 -2px 0 0, 0 2px 0 0",
         toggle:
           "0px 2.5px 6.5px rgba(0, 0, 0, 0.15), 0px 2.5px 0.8px rgba(0, 0, 0, 0.06);",
       },

@@ -8,9 +8,9 @@ import { statements, transactions } from "./statements";
 export const StatementsTab = () => {
   return (
     <section>
-      <div className="border-[1px] border-gray-200 py-4">
-        <p className="pl-6 text-base">Statements</p>
-      </div>
+      <h4 className="border-b border-gray-200 px-6 py-3 text-base">
+        Statements
+      </h4>
       {statements.map((statement, key) => {
         return (
           <Disclosure key={key}>
@@ -20,8 +20,8 @@ export const StatementsTab = () => {
                   as="div"
                   className={classNames(
                     key % 2 !== 0 && "bg-gray-100",
-                    open && "bg-blue-ice",
-                    "grid-row cursor-pointer px-5 py-3"
+                    open && "bg-blue-ice shadow-border-t-2 shadow-gray-400",
+                    "flex w-full cursor-pointer items-center justify-between border-b border-gray-200 px-6 py-3 transition-shadow"
                   )}
                 >
                   <div className="flex flex-row items-center space-x-2">
@@ -63,7 +63,7 @@ export const StatementsTab = () => {
                     .map((transaction, key) => {
                       return (
                         <div
-                          className="grid-row cursor-pointer px-5 py-3 text-xs"
+                          className="flex w-full cursor-pointer items-center justify-between border-b border-gray-200 px-6 py-5 text-xs"
                           key={key}
                         >
                           <div className="flex flex-col">

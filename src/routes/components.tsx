@@ -130,6 +130,7 @@ export default function ComponentDisplay() {
       <Form
         onSubmit={() => console.log("hello")}
         initialValues={{
+          bestTeam: "scarlet",
           firstName: "Hello",
           lastNameDisabled: "Can't touch this",
           errors: "Darknes$",
