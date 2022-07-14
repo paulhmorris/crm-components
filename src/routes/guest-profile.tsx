@@ -17,7 +17,7 @@ const mockAccount: AccountHeaderProps = {
 
 export default function GuestProfile() {
   return (
-    <div className="w-full">
+    <div className="mx-auto w-full max-w-5xl">
       <AccountHeader
         fullName={mockAccount.fullName}
         createDate={mockAccount.createDate}
@@ -26,13 +26,13 @@ export default function GuestProfile() {
         isLead={mockAccount.isLead}
         acceptTerms={mockAccount.acceptTerms}
       />
-      <div className="mt-10">
+      <div className="mt-8">
         <AccountOverviewTabs />
       </div>
-      <div className="mt-10">
+      <div className="mt-8">
         <AccountNotesTabs />
       </div>
-      <div className="mt-10">
+      <div className="mt-8">
         <AccountTabs />
       </div>
     </div>
