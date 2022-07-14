@@ -11,7 +11,7 @@
   }
 
   .body-small {
-    @apply text-xs leading-[18px];
+    @apply text-xs leading-[1.125rem];
   }
 
   h1 {
@@ -23,7 +23,7 @@
   }
 
   h3 {
-    @apply text-lg font-normal leading-[18px];
+    @apply text-lg font-normal leading-[1.125rem];
   }
 
   h4 {
@@ -81,11 +81,11 @@
   }
 
   .form-toggle {
-    @apply relative inline-flex h-6 w-9 shrink-0 cursor-pointer rounded-full border outline-transparent transition duration-300 ease-in-out focus:outline-none focus-visible:outline-2 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 disabled:cursor-auto;
+    @apply relative inline-flex h-5 w-8 shrink-0 cursor-pointer rounded-full border outline-transparent transition duration-300 ease-in-out focus:outline-none focus-visible:outline-2 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 disabled:cursor-auto;
   }
 
   .form-checkbox {
-    @apply h-4 w-4 cursor-pointer rounded-[3px] border border-blue-200 text-blue-200 transition duration-100 focus:ring-transparent disabled:pointer-events-none disabled:cursor-auto disabled:border-blue-100 disabled:text-blue-100;
+    @apply h-4 w-4 cursor-pointer rounded-[3px] border border-blue-200 text-blue-200 transition duration-100 focus:shadow-none focus:outline-none focus:ring-0 focus:ring-transparent disabled:pointer-events-none disabled:cursor-auto disabled:border-blue-100 disabled:text-blue-100;
   }
 
   .btn-primary {

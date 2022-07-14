@@ -1,5 +1,7 @@
 import { Menu } from "@headlessui/react";
+import { Radio } from "components/Forms/Radio";
 import { MarketCard } from "components/Markets/MarketCard";
+import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { classNames } from "utils/helpers";
@@ -16,11 +18,15 @@ import { Toggle } from "../components/Forms/Toggle";
 import { EmptyModal } from "../components/Modals/EmptyModal";
 import { SearchBox } from "../components/SearchBox";
 import {
+  CouponDot,
   CouponTag,
   DefaultTag,
   DryCleanTag,
+  GroupDot,
   GroupNameTag,
+  LostTag,
   NewLeadTag,
+  SpecialServiceDot,
   SpecialServicesTag,
   TaxExemptTag,
   WashFoldTag,
@@ -185,22 +191,39 @@ export default function ComponentDisplay() {
               <TextArea name="disabled" label="disabled" disabled />
               <TextArea name="disabledWithValue" label="disabled" disabled />
               <SearchBox name="mySearch" placeholder="Search..." />
-              <Toggle name="myBoolean" label="Toggle me!" />
-              <Toggle name="myBoolean2" label="And me!" />
-              <Toggle
-                name="myDisabledBoolean"
-                label="I'm disabled and on 👋🏼"
-                disabled
-              />
-              <Toggle
-                name="myDisabledBoolean2"
-                label="Disabled and off 🥺"
-                disabled
-              />
-              <Checkbox name="checkbox" label="Check me off" type="checkbox" />
-              <Checkbox name="checkbox2" label="Check me off" />
-              <Checkbox name="checkbox3" label="Check me off" disabled />
-              <Checkbox name="checkbox4" label="Check me off" disabled />
+              <div className="space-y-4">
+                <Toggle name="myBoolean" label="Toggle me!" />
+                <Toggle name="myBoolean2" label="And me!" />
+                <Toggle
+                  name="myDisabledBoolean"
+                  label="I'm disabled and on 👋🏼"
+                  disabled
+                />
+                <Toggle
+                  name="myDisabledBoolean2"
+                  label="Disabled and off 🥺"
+                  disabled
+                />
+              </div>
+              <fieldset>
+                <legend>Best dev team</legend>
+                {/* Radios here */}
+                <div className="mt-1 space-y-1">
+                  <Radio name="bestTeam" label="Scarlet" value="scarlet" />
+                  <Radio name="bestTeam" label="Atlas" value="atlas" />
+                  <Radio name="bestTeam" label="Steam" value="steam" />
+                </div>
+              </fieldset>
+              <div className="space-y-2">
+                <Checkbox
+                  name="checkbox"
+                  label="Check me off"
+                  type="checkbox"
+                />
+                <Checkbox name="checkbox2" label="Check me off" />
+                <Checkbox name="checkbox3" label="Check me off" disabled />
+                <Checkbox name="checkbox4" label="Check me off" disabled />
+              </div>
               <div>
                 <Button variant="secondary" onClick={() => console.log(values)}>
                   Log Form values
@@ -227,10 +250,26 @@ export default function ComponentDisplay() {
         <CouponTag text="Coupon" />
         <SpecialServicesTag text="alteration - hem" />
         <DefaultTag />
-        <div className="flex space-x-2">
+        <div className="flex items-center space-x-2">
           <TaxExemptTag />
           <WashFoldTag />
           <DryCleanTag />
+          <LostTag />
+        </div>
+        <div className="flex space-x-2">
+          <GroupDot />
+          <SpecialServiceDot />
+          <CouponDot />
+        </div>
+        <div className="grid max-w-[220px] grid-cols-2 gap-4">
+          <OrderPill status="request" pillType="dryClean" />
+          <OrderPill status="request" pillType="washFold" />
+          <OrderPill status="active" pillType="dryClean" text="O-54693" />
+          <OrderPill status="active" pillType="washFold" text="O-54693" />
+          <OrderPill status="finished" pillType="dryClean" text="O-21213" />
+          <OrderPill status="canceled" pillType="washFold" />
+          <OrderPill status="canceled" pillType="dryClean" />
+          <OrderPill pillType="ticket" text="DT67683" />
         </div>
         <GroupNameTag text="group name" />
         <NewLeadTag />
