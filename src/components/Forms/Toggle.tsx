@@ -42,7 +42,7 @@ export const Toggle = ({ name, label, ...props }: ToggleProps) => {
             aria-hidden="true"
             className={classNames(
               value ? "translate-x-3" : "translate-x-0",
-              "pointer-events-none inline-block h-[18px] w-[18px] transform rounded-full bg-white shadow-toggle transition duration-300 ease-in-out"
+              "pointer-events-none inline-block h-[18px] w-[18px] transform rounded-full bg-white shadow-toggle transition duration-200 ease-in-out"
             )}
           />
         </Switch>

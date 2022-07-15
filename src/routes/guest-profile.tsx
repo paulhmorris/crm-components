@@ -1,4 +1,5 @@
 import { AccountNotesTabs } from "components/Account/AccountNotesTabs";
+import { AccountOrderTracking } from "components/Account/AccountOrderTracking";
 import { AccountOverviewTabs } from "components/Account/AccountOverviewTabs";
 import { AccountTabs } from "components/Account/AccountTabs";
 import {
@@ -31,6 +32,9 @@ export default function GuestProfile() {
       </div>
       <div className="mt-8">
         <AccountNotesTabs />
+      </div>
+      <div className="mt-8">
+        <AccountOrderTracking />
       </div>
       <div className="mt-8">
         <AccountTabs />

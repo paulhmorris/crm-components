@@ -11,7 +11,7 @@ interface DropdownMenuProps extends ComponentPropsWithRef<"button"> {
   buttonText?: string;
   /** The direction in which the menu will pop out from the button. Defaults to left */
   direction?: "right" | "left";
-  /** Width of the menu - must be a Tailwind width class. Defaults to w-48 */
+  /** Width of the menu - must be a Tailwind width class. Defaults to min-w-min */
   menuWidth?: string;
   children: React.ReactNode;
 }
@@ -20,16 +20,17 @@ export const DropdownMenu = ({
   variant,
   buttonText,
   direction = "left",
-  menuWidth = "w-48",
+  menuWidth = "min-w-min",
   children,
+  className,
   ...props
 }: DropdownMenuProps) => {
   return (
-    <Menu as="div" className="relative inline-block">
-      <Menu.Button {...props}>
+    <Menu as="div" className={classNames("relative", className)}>
+      <Menu.Button className="align-middle" {...props}>
         {variant === "icon" && (
           <DotsVerticalIcon
-            className="h-5 w-5 text-blue-200 hover:text-blue-400"
+            className="z-10 h-5 w-5 text-blue-200 hover:text-blue-400"
             aria-hidden="true"
           />
         )}
@@ -45,7 +46,7 @@ export const DropdownMenu = ({
       </Menu.Button>
       <Transition
         as={Fragment}
-        enter="transition ease-out duration-100"
+        enter="transition ease-out duration-[50ms]"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"
         leave="transition ease-in duration-75"
@@ -58,10 +59,10 @@ export const DropdownMenu = ({
             direction === "right"
               ? "left-0 origin-top-left"
               : "right-0 origin-top-right",
-            "absolute z-10 mt-2 rounded-md bg-white text-xs shadow-md ring-1 ring-gray-200 focus:outline-none"
+            "absolute z-10 mt-1 rounded bg-white text-xs shadow-md ring-1 ring-gray-200 focus:outline-none"
           )}
         >
-          <div className="py-1">{children}</div>
+          <div className="whitespace-nowrap py-2">{children}</div>
         </Menu.Items>
       </Transition>
     </Menu>
