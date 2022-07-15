@@ -19,9 +19,9 @@ export const StatementsTab = () => {
                 <Disclosure.Button
                   as="div"
                   className={classNames(
+                    "flex w-full cursor-pointer items-center justify-between border-b border-gray-200 px-6 py-3 transition",
                     key % 2 !== 0 && "bg-gray-100",
-                    open && "bg-blue-ice shadow-border-t-2 shadow-gray-400",
-                    "flex w-full cursor-pointer items-center justify-between border-b border-gray-200 px-6 py-3 transition-shadow"
+                    open && "bg-blue-ice shadow-border-t-2 shadow-gray-400"
                   )}
                 >
                   <div className="flex flex-row items-center space-x-2">
