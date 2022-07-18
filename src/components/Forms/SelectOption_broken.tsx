@@ -3,7 +3,7 @@ import { CheckIcon } from "@heroicons/react/solid";
 import { SelectOptionProps } from "types";
 import { classNames } from "utils/helpers";
 
-export const SelectOption = ({ value, displayText }: SelectOptionProps) => {
+const SelectOption = ({ value, displayText }: SelectOptionProps) => {
   return (
     <Listbox.Option
       className={({ active }) =>

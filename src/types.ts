@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, Dispatch, SetStateAction } from "react";
 import { UseFieldConfig } from "react-final-form";
 
 /** A function that's passed into the validate property on a react-final-form input */
@@ -56,7 +56,6 @@ export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
   label: string;
   /** Field type. */
   fieldProps?: UseFieldConfig<string>;
-  validate?: ValidatorFunction | ((value: string) => ValidatorFunction);
 }
 
 export interface SelectProps {
@@ -65,13 +64,13 @@ export interface SelectProps {
   /** Field label. This acts as the placeholder until in focus */
   label: string;
   /** The options to populate the select */
-  fieldProps?: UseFieldConfig<string>;
   children: React.ReactNode;
+  fieldProps?: UseFieldConfig<string>;
 }
 
-export interface SelectOptionProps extends ComponentPropsWithoutRef<"option"> {
+export interface SelectOptionProps {
   value: string | number;
-  displayText: string | number;
+  displayText: string;
 }
 
 export interface RadioProps extends ComponentPropsWithoutRef<"input"> {
@@ -99,4 +98,12 @@ export interface OrderPillProps extends ComponentPropsWithoutRef<"div"> {
   pillType: OrderPillType;
   /** Order status that controls styles. Ticket pills have no status */
   status?: OrderPillStatus;
+}
+
+export interface EmptyModalProps {
+  /** Controls rendering of the modal */
+  isOpen: boolean;
+  /** Callback for the Modal to close itself */
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  children: React.ReactNode;
 }

@@ -1,14 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { Dispatch, Fragment, SetStateAction } from "react";
-
-export type EmptyModalProps = {
-  /** Controls rendering of the modal */
-  isOpen: boolean;
-  /** Callback for the Modal to close itself */
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  children: React.ReactNode;
-};
+import { Fragment } from "react";
+import { EmptyModalProps } from "types";
 
 export const EmptyModal = ({
   isOpen,

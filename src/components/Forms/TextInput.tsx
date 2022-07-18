@@ -35,9 +35,11 @@ export const TextInput = ({
       />
       <label
         className={classNames(
-          "absolute top-0 left-0.5 select-none text-sm font-bold text-gray-400 transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
+          "absolute top-0 left-0.5 select-none text-sm font-bold transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
           touched && invalid && "text-error",
-          props.disabled && "pointer-events-none text-gray-300"
+          submitting || props.disabled
+            ? "pointer-events-none text-gray-300"
+            : "text-gray-400"
         )}
         htmlFor={name}
       >

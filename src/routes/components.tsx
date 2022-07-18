@@ -1,17 +1,15 @@
-import { Menu } from "@headlessui/react";
+import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { Radio } from "components/Forms/Radio";
+import { Select } from "components/Forms/Select";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
 import { Form } from "react-final-form";
-import { classNames } from "utils/helpers";
 import { mustBeAlphanumeric } from "utils/inputValidations";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
 import { DropdownMenu } from "../components/DropdownMenu";
 import { Checkbox } from "../components/Forms/Checkbox";
-import { Select } from "../components/Forms/Select";
-import { SelectOption } from "../components/Forms/SelectOption";
 import { TextArea } from "../components/Forms/TextArea";
 import { TextInput } from "../components/Forms/TextInput";
 import { Toggle } from "../components/Forms/Toggle";
@@ -88,44 +86,10 @@ export default function ComponentDisplay() {
         buttonText="Add New"
         className="btn-primary"
         direction="right"
-        menuWidth="w-36"
       >
-        <Menu.Item>
-          {({ active }) => (
-            <button
-              className={classNames(
-                active && "bg-gray-200",
-                "group flex w-full items-center py-1.5 pl-4"
-              )}
-            >
-              Route
-            </button>
-          )}
-        </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <button
-              className={classNames(
-                active && "bg-gray-200",
-                "group flex w-full items-center py-1.5 pl-4"
-              )}
-            >
-              Route Stop
-            </button>
-          )}
-        </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <button
-              className={classNames(
-                active && "bg-gray-200",
-                "group flex w-full items-center py-1.5 pl-4"
-              )}
-            >
-              Submarket
-            </button>
-          )}
-        </Menu.Item>
+        <DropdownMenuItem>Route</DropdownMenuItem>
+        <DropdownMenuItem>Route Stop</DropdownMenuItem>
+        <DropdownMenuItem>Submarket</DropdownMenuItem>
       </DropdownMenu>
       <Form
         onSubmit={() => console.log("hello")}
@@ -149,13 +113,12 @@ export default function ComponentDisplay() {
         render={({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className="space-y-8">
-              <Select name="mySelect" label="My peeps">
+              <Select label="My peeps" name="mySelect">
+                <option value="" disabled></option>
                 {people.map((person) => (
-                  <SelectOption
-                    key={person.id}
-                    value={person.name}
-                    displayText={person.name}
-                  />
+                  <option key={person.id} value={person.id}>
+                    {person.name}
+                  </option>
                 ))}
               </Select>
               <TextInput
@@ -208,7 +171,6 @@ export default function ComponentDisplay() {
               </div>
               <fieldset>
                 <legend>Best dev team</legend>
-                {/* Radios here */}
                 <div className="mt-1 space-y-1">
                   <Radio name="bestTeam" label="Scarlet" value="scarlet" />
                   <Radio name="bestTeam" label="Atlas" value="atlas" />

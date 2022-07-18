@@ -24,15 +24,11 @@ export const PersonalDetails = ({
   const [openEditDetails, setOpenEditDetails] = useState(false);
 
   async function saveDetails() {
-    await sleep(3000);
+    await sleep(2000);
     console.log("Saved details");
+    setOpenEditDetails(false);
+    await sleep(75);
     return;
-  }
-
-  async function validateEmail(email: string) {
-    if (!email) return "This field is required";
-    await sleep(1000);
-    return "This email is already in use";
   }
 
   return (

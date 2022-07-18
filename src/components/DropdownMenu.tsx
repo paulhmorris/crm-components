@@ -1,17 +1,17 @@
 import { Menu, Transition } from "@headlessui/react";
 import { DotsVerticalIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import { ComponentPropsWithRef, Fragment } from "react";
+import { ComponentPropsWithoutRef, Fragment, MouseEvent } from "react";
 import { classNames } from "utils/helpers";
 
-interface DropdownMenuProps extends ComponentPropsWithRef<"button"> {
+interface DropdownMenuProps extends ComponentPropsWithoutRef<"button"> {
   /** The element that will generate the dropdown. Defaults to a kebab */
   variant: "icon" | "button";
   /** If using a button, this will be the text on the button */
   buttonText?: string;
   /** The direction in which the menu will pop out from the button. Defaults to left */
   direction?: "right" | "left";
-  /** Width of the menu - must be a Tailwind width class. Defaults to min-w-min */
+  /** Width of the menu - must be a Tailwind width class. Defaults to w-48 */
   menuWidth?: string;
   children: React.ReactNode;
 }
@@ -26,11 +26,19 @@ export const DropdownMenu = ({
   ...props
 }: DropdownMenuProps) => {
   return (
-    <Menu as="div" className={classNames("relative", className)}>
-      <Menu.Button className="align-middle" {...props}>
+    <Menu
+      as="div"
+      className="relative inline-block"
+      // Keeps click event from bubbling up to nearby components
+      onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+    >
+      <Menu.Button
+        {...props}
+        className={classNames(className, variant === "icon" ? "-mx-2 p-2" : "")}
+      >
         {variant === "icon" && (
           <DotsVerticalIcon
-            className="z-10 h-5 w-5 text-blue-200 hover:text-blue-400"
+            className="h-5 w-5 text-blue-200 hover:text-blue-400"
             aria-hidden="true"
           />
         )}
@@ -46,7 +54,7 @@ export const DropdownMenu = ({
       </Menu.Button>
       <Transition
         as={Fragment}
-        enter="transition ease-out duration-[50ms]"
+        enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"
         leave="transition ease-in duration-75"
@@ -59,10 +67,10 @@ export const DropdownMenu = ({
             direction === "right"
               ? "left-0 origin-top-left"
               : "right-0 origin-top-right",
-            "absolute z-10 mt-1 rounded bg-white text-xs shadow-md ring-1 ring-gray-200 focus:outline-none"
+            "absolute z-20 mt-1 whitespace-nowrap rounded-md bg-white text-xs shadow-md ring-1 ring-gray-200 focus:outline-none"
           )}
         >
-          <div className="whitespace-nowrap py-2">{children}</div>
+          <div className="min-w-[140px] py-2">{children}</div>
         </Menu.Items>
       </Transition>
     </Menu>
