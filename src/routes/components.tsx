@@ -5,7 +5,12 @@ import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
 import { Form } from "react-final-form";
-import { mustBeAlphanumeric } from "utils/inputValidations";
+import { SelectOptionProps } from "types";
+import {
+  mustBeAlphanumeric,
+  required,
+  validateMultiple,
+} from "utils/inputValidations";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
 import { DropdownMenu } from "../components/DropdownMenu";
@@ -30,13 +35,13 @@ import {
   WashFoldTag,
 } from "../components/Tags";
 
-const people = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
+const people: SelectOptionProps[] = [
+  { value: 1, label: "Wade Cooper" },
+  { value: 2, label: "Arlene Mccoy" },
+  { value: 3, label: "Devon Webb" },
+  { value: 4, label: "Tom Cook" },
+  { value: 5, label: "Tanya Fox" },
+  { value: 6, label: "Hellen Schmidt" },
 ];
 
 export default function ComponentDisplay() {
@@ -98,7 +103,7 @@ export default function ComponentDisplay() {
           firstName: "Hello",
           lastNameDisabled: "Can't touch this",
           errors: "Darknes$",
-          mySelect: null,
+          myListbox: 3,
           textarea: "My old friend",
           myBoolean: true,
           myBoolean2: false,
@@ -113,44 +118,44 @@ export default function ComponentDisplay() {
         render={({ values, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className="space-y-8">
-              <Select label="My peeps" name="mySelect">
-                <option value="" disabled></option>
-                {people.map((person) => (
-                  <option key={person.id} value={person.id}>
-                    {person.name}
-                  </option>
-                ))}
-              </Select>
-              <TextInput
-                label="Basic field"
-                name="firstName"
-                type="text"
-                fieldProps={{
-                  validate: (v) => mustBeAlphanumeric(v),
-                }}
-                required
-              />
-              <TextInput
-                label="Errored field"
-                name="errors"
-                type="text"
-                description="This is my field description"
-                fieldProps={{
-                  validate: (v) => mustBeAlphanumeric(v),
-                }}
-              />
-              <TextInput
-                label="Disabled field"
-                name="lastName"
-                type="text"
-                disabled
-              />
-              <TextInput
-                label="Disabled field with text"
-                name="lastNameDisabled"
-                type="text"
-                disabled
-              />
+              <div className="max-w-xs space-y-4">
+                <Select
+                  label="Listbox"
+                  name="myListbox"
+                  options={people}
+                  description="I'm a custom select component!"
+                />
+                <TextInput
+                  label="Basic field"
+                  name="firstName"
+                  type="text"
+                  fieldProps={{
+                    validate: validateMultiple(mustBeAlphanumeric, required),
+                  }}
+                  required
+                />
+                <TextInput
+                  label="Errored field"
+                  name="errors"
+                  type="text"
+                  description="This is my field description"
+                  fieldProps={{
+                    validate: (v) => mustBeAlphanumeric(v),
+                  }}
+                />
+                <TextInput
+                  label="Disabled field"
+                  name="lastName"
+                  type="text"
+                  disabled
+                />
+                <TextInput
+                  label="Disabled field with text"
+                  name="lastNameDisabled"
+                  type="text"
+                  disabled
+                />
+              </div>
               <TextArea name="textarea" label="regular" />
               <TextArea name="disabled" label="disabled" disabled />
               <TextArea name="disabledWithValue" label="disabled" disabled />

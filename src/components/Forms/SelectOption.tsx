@@ -3,16 +3,16 @@ import { CheckIcon } from "@heroicons/react/solid";
 import { SelectOptionProps } from "types";
 import { classNames } from "utils/helpers";
 
-const SelectOption = ({ value, displayText }: SelectOptionProps) => {
+export const SelectOption = ({ value, label }: SelectOptionProps) => {
   return (
     <Listbox.Option
+      value={value}
       className={({ active }) =>
         classNames(
-          "relative cursor-default select-none py-2 pl-10 pr-4 text-xs ",
-          active && "bg-blue-200 text-white"
+          active ? "bg-gray-200" : "bg-white",
+          "relative cursor-default select-none py-1.5 pl-9 pr-4 text-sm"
         )
       }
-      value={value}
     >
       {({ selected, active }) => (
         <>
@@ -20,22 +20,17 @@ const SelectOption = ({ value, displayText }: SelectOptionProps) => {
             className={classNames(
               "block truncate",
               active && selected
-                ? "font-medium"
+                ? "font-medium text-blue-200"
                 : selected
                 ? "font-medium text-blue-200"
                 : "font-normal"
             )}
           >
-            {displayText}
+            {label}
           </span>
           {selected && (
-            <span
-              className={classNames(
-                active ? "text-white" : "text-blue-200",
-                "absolute inset-y-0 left-0 flex items-center pl-3"
-              )}
-            >
-              <CheckIcon className="h-5 w-5" aria-hidden="true" />
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-200">
+              <CheckIcon className="h-4 w-4" aria-hidden="true" />
             </span>
           )}
         </>

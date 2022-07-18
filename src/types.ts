@@ -54,7 +54,8 @@ export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
   name: string;
   /** Field label. This acts as the placeholder until active */
   label: string;
-  /** Field type. */
+  /** Optional description will show below the input. Will not be shown if the field has an error */
+  description?: string;
   fieldProps?: UseFieldConfig<string>;
 }
 
@@ -63,14 +64,16 @@ export interface SelectProps {
   name: string;
   /** Field label. This acts as the placeholder until in focus */
   label: string;
+  /** Optional description will show below the input. Will not be shown if the field has an error */
+  description?: string;
   /** The options to populate the select */
-  children: React.ReactNode;
+  options: SelectOptionProps[];
   fieldProps?: UseFieldConfig<string>;
 }
 
 export interface SelectOptionProps {
   value: string | number;
-  displayText: string;
+  label: string;
 }
 
 export interface RadioProps extends ComponentPropsWithoutRef<"input"> {

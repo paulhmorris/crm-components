@@ -67,7 +67,7 @@ export const DropdownMenu = ({
             direction === "right"
               ? "left-0 origin-top-left"
               : "right-0 origin-top-right",
-            "absolute z-20 mt-1 whitespace-nowrap rounded-md bg-white text-xs shadow-md ring-1 ring-gray-200 focus:outline-none"
+            "absolute z-20 mt-1 whitespace-nowrap rounded bg-white text-xs shadow-md ring-1 ring-gray-200 focus:outline-none"
           )}
         >
           <div className="min-w-[140px] py-2">{children}</div>
