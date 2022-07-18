@@ -6,6 +6,7 @@ import { Modal } from "components/Modals/Modal";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
+import { required } from "utils/inputValidations";
 
 export const InternalNote = () => {
   const [open, setOpen] = useState(false);
@@ -37,11 +38,15 @@ export const InternalNote = () => {
           <Form
             onSubmit={saveNote}
             initialValues={{ internalNote: "abc123" }}
-            render={({ handleSubmit, submitting, pristine }) => (
+            render={({ handleSubmit, submitting, pristine, invalid }) => (
               <form onSubmit={handleSubmit} className="pt-6">
                 <p className="mb-1">✅ Only employees can read this note.</p>
-                <div className="mb-6">
-                  <TextArea name="internalNote" label="Internal Note" />
+                <div className="mb-2">
+                  <TextArea
+                    name="internalNote"
+                    label="Internal Note"
+                    fieldProps={{ validate: required }}
+                  />
                 </div>
                 <div className="flex items-center justify-end space-x-3 text-right">
                   <Button
@@ -52,7 +57,7 @@ export const InternalNote = () => {
                     Cancel
                   </Button>
                   <Button
-                    disabled={submitting || pristine}
+                    disabled={submitting || pristine || invalid}
                     type="submit"
                     variant="primary"
                   >

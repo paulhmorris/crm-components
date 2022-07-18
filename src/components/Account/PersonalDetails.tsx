@@ -4,13 +4,11 @@ import { TextInput } from "components/Forms/TextInput";
 import { Toggle } from "components/Forms/Toggle";
 import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
-import formatStringByPattern from "format-string-by-pattern";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { PersonalDetailsProps } from "types";
-import { sleep } from "utils/helpers";
+import { formatPhone, sleep } from "utils/helpers";
 import { required } from "utils/inputValidations";
-import { phoneMask } from "utils/masks";
 
 export const PersonalDetails = ({
   fullName,
@@ -54,9 +52,7 @@ export const PersonalDetails = ({
         </div>
         <div className="flex items-center justify-between border-b border-gray-200 p-6">
           <p className="text-left text-secondary">Phone</p>
-          <p className="text-right font-bold">
-            {formatStringByPattern("(000) 000-0000", phone)}
-          </p>
+          <p className="text-right font-bold">{formatPhone(phone)}</p>
         </div>
         <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
           <p className="text-left text-secondary">Home Address</p>
@@ -139,7 +135,7 @@ export const PersonalDetails = ({
                     type="tel"
                     fieldProps={{
                       validate: required,
-                      format: (v) => formatStringByPattern(phoneMask, v),
+                      format: formatPhone,
                     }}
                     required
                   />

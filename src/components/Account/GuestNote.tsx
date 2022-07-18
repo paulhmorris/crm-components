@@ -6,6 +6,7 @@ import { Modal } from "components/Modals/Modal";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
+import { required } from "utils/inputValidations";
 
 export const GuestNote = () => {
   const [open, setOpen] = useState(false);
@@ -41,8 +42,12 @@ export const GuestNote = () => {
                 <p className="mb-1">
                   ⛔️ You are editing a note the guest can see.
                 </p>
-                <div className="mb-6">
-                  <TextArea name="guestNote" label="Guest Note" />
+                <div className="mb-2">
+                  <TextArea
+                    name="guestNote"
+                    label="Guest Note"
+                    fieldProps={{ validate: required }}
+                  />
                 </div>
                 <div className="flex items-center justify-end space-x-3 text-right">
                   <Button
