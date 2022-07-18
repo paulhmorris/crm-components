@@ -17,7 +17,7 @@ export const TextInput = ({
   } = useField(name, { ...fieldProps });
 
   return (
-    <div className="form-group pt-5">
+    <div className="relative pt-5">
       <input
         {...input}
         {...props}
@@ -27,15 +27,15 @@ export const TextInput = ({
         disabled={submitting || props.disabled}
         aria-describedby={`${name}-error`}
         className={classNames(
+          "peer inline-block w-full border-0 py-0 pl-0.5 text-base shadow-border-b shadow-gray-300 transition-shadow placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0 disabled:pointer-events-none disabled:text-gray-300",
           touched &&
             invalid &&
-            "shadow-error hover:shadow-error focus:shadow-error",
-          "peer form-input"
+            "shadow-error hover:shadow-error focus:shadow-error"
         )}
       />
       <label
         className={classNames(
-          "form-label peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
+          "absolute top-0 left-0.5 select-none text-sm font-bold text-gray-400 transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
           touched && invalid && "text-error",
           props.disabled && "pointer-events-none text-gray-300"
         )}
@@ -43,7 +43,7 @@ export const TextInput = ({
       >
         {label}
       </label>
-      <div className="mt-1.5 ml-[1px] text-xs">
+      <div className="mt-1.5 ml-[1px] min-h-[1.25rem] text-xs">
         {valid && description && (
           <p className="text-xs font-normal text-secondary">{description}</p>
         )}

@@ -55,45 +55,13 @@
   }
 
   ::-webkit-search-cancel-button {
-    @apply h-5 w-5 cursor-pointer appearance-none bg-[url('/src/public/cancel-search.svg')] text-gray-300 transition-opacity hover:text-blue-200;
+    @apply h-5 w-5 cursor-pointer appearance-none bg-[url('/src/public/cancel-search.svg')];
   }
 }
 
 @layer components {
-  .form-group {
-    @apply relative;
-  }
-
-  .form-input {
-    @apply inline-block w-full border-0 py-0 pl-0.5 text-base shadow-border-b shadow-gray-300 transition-shadow placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0 disabled:pointer-events-none disabled:text-gray-300;
-  }
-
-  .form-label {
-    @apply absolute top-0 left-0.5 select-none text-sm font-bold text-gray-400 transition-all ease-out;
-  }
-
-  .form-select {
-    @apply relative inline-block w-full cursor-pointer border-0 bg-white py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0 focus-visible:border-blue-200 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200 disabled:text-gray-300;
-  }
-
-  .form-textarea {
-    @apply inline-block w-full rounded border-0 bg-white text-sm ring-1 ring-gray-400 transition-shadow placeholder:text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent;
-  }
-
-  .form-toggle {
-    @apply relative inline-flex h-5 w-8 shrink-0 cursor-pointer rounded-full border outline-transparent transition duration-300 ease-in-out focus:outline-none focus-visible:outline-2 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 disabled:cursor-auto;
-  }
-
-  .form-radio {
-    @apply cursor-pointer border-tide-blue text-tide-blue focus:ring-transparent;
-  }
-
-  .form-checkbox {
-    @apply h-4 w-4 cursor-pointer rounded-[3px] border border-blue-200 text-blue-200 transition duration-75 focus:shadow-none focus:outline-none focus:ring-0 focus:ring-transparent disabled:pointer-events-none disabled:cursor-auto disabled:border-blue-100 disabled:text-blue-100;
-  }
-
   .btn-primary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-lg border border-blue-200 bg-blue-200 py-2 px-6 text-xs font-bold capitalize leading-6 text-white transition-colors duration-75 ease-out hover:bg-blue-300 active:bg-blue-400 disabled:border-blue-100 disabled:bg-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] items-center justify-center space-x-2 whitespace-nowrap rounded-lg border border-blue-200 bg-blue-200 py-2 px-6 text-xs font-bold capitalize leading-6 text-white transition-colors duration-75 ease-out hover:bg-blue-300 active:bg-blue-400 disabled:border-blue-100 disabled:bg-blue-100;
   }
 
   .btn-secondary {
@@ -102,10 +70,6 @@
 
   .btn-tertiary {
     @apply relative inline-flex select-none items-center justify-center whitespace-nowrap p-2 text-sm font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-4 transition-colors duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
-  }
-
-  .pepper-nav-item {
-    @apply flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors hover:text-blue-200;
   }
 
   .tab-list {

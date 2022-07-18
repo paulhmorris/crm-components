@@ -30,7 +30,7 @@ export const OrderPill = ({ text, pillType, status }: OrderPillProps) => {
           "border-tide-orange bg-tide-orange text-white",
         // Canceled, finished, tickets
         status === "request"
-          ? "bg-transparent"
+          ? "bg-white"
           : status === "canceled"
           ? "border-gray-200 bg-gray-200 text-gray-300"
           : status === "finished"

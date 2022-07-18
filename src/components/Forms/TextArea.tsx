@@ -15,7 +15,7 @@ export const TextArea = ({
   } = useField(name, { ...fieldProps });
 
   return (
-    <div className="form-group">
+    <div className="relative">
       <label
         className={classNames(
           "text-[.625rem] font-bold uppercase",
@@ -35,7 +35,7 @@ export const TextArea = ({
         disabled={submitting || props.disabled}
         aria-describedby={`${name}-error`}
         className={classNames(
-          "form-textarea",
+          "inline-block w-full rounded border-0 bg-white text-sm ring-1 ring-gray-400 transition-shadow placeholder:text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent",
           touched && invalid && "border-error text-error focus:border-error"
         )}
       ></textarea>

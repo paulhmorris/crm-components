@@ -27,16 +27,16 @@ export default function GuestProfile() {
         isLead={mockAccount.isLead}
         acceptTerms={mockAccount.acceptTerms}
       />
-      <div className="mt-8">
+      <div className="mt-10">
         <AccountOverviewTabs />
       </div>
-      <div className="mt-8">
+      <div className="mt-10">
         <AccountNotesTabs />
       </div>
-      <div className="mt-8">
+      <div className="mt-10">
         <AccountOrderTracking />
       </div>
-      <div className="mt-8">
+      <div className="mt-10">
         <AccountTabs />
       </div>
     </div>

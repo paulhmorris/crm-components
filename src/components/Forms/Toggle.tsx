@@ -34,7 +34,7 @@ export const Toggle = ({ name, label, ...props }: ToggleProps) => {
               ? "border-gray-200 bg-gray-100"
               : // off
                 "border-gray-200 bg-gray-200",
-            "form-toggle"
+            "relative inline-flex h-5 w-8 shrink-0 cursor-pointer rounded-full border outline-transparent transition duration-300 ease-in-out focus:outline-none focus-visible:outline-2 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 disabled:cursor-auto"
           )}
         >
           <span className="sr-only">Toggle {label}</span>

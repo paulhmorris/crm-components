@@ -14,19 +14,19 @@ export const PepperNav = () => {
         <TideLogo className="h-14 w-14" aria-hidden="true" />
       </div>
       <ul className="mb-auto mt-8 flex flex-col text-base text-secondary">
-        <li className="pepper-nav-item">
+        <li className="flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors hover:text-blue-200">
           <HomeIcon className="h-4 w-4" />
           <span>Support</span>
         </li>
-        <li className="pepper-nav-item">
+        <li className="flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors hover:text-blue-200">
           <SearchIcon className="h-4 w-4" />
           <span>Search</span>
         </li>
-        <li className="pepper-nav-item">
+        <li className="flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors hover:text-blue-200">
           <AddCircleIcon className="h-4 w-4" />
           <span>Driver Task</span>
         </li>
-        <li className="pepper-nav-item">
+        <li className="flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors hover:text-blue-200">
           <AddCircleIcon className="h-4 w-4" />
           <span>Guest Account</span>
         </li>

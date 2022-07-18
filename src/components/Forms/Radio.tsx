@@ -16,7 +16,7 @@ export const Radio = ({
             {...input}
             {...props}
             id={value.toString()}
-            className="form-radio"
+            className="cursor-pointer border-tide-blue text-tide-blue focus:ring-transparent"
           />
           <label htmlFor={value.toString()} className="cursor-pointer text-xs">
             {label}
