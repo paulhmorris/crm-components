@@ -11,7 +11,7 @@ export const InternalNote = () => {
   const [open, setOpen] = useState(false);
 
   async function saveNote(value: string) {
-    await sleep(5000);
+    await sleep(2000);
     console.log(value);
     setOpen(false);
   }

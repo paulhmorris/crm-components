@@ -34,7 +34,7 @@ export const EmptyModal = ({
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-x-0 top-0 bottom-1/3 overflow-y-visible">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
@@ -45,7 +45,7 @@ export const EmptyModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-xl bg-white text-left align-middle shadow-xl transition-all">
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"
