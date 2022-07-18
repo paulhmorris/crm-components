@@ -134,7 +134,7 @@ export const PersonalDetails = ({
                   <TextInput
                     name="email"
                     label="Email"
-                    fieldProps={{ validate: validateEmail }}
+                    fieldProps={{ validate: required }}
                     required
                   />
                   <TextInput
