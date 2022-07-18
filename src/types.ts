@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, Dispatch, SetStateAction } from "react";
 import { UseFieldConfig } from "react-final-form";
 
+export type OrderTypes = "dryClean" | "washFold";
 /** A function that's passed into the validate property on a react-final-form input */
 export type ValidatorFunction = (value: string) => boolean | string | undefined;
 
@@ -103,7 +104,7 @@ export interface OrderPillProps extends ComponentPropsWithoutRef<"div"> {
   status?: OrderPillStatus;
 }
 
-export interface EmptyModalProps {
+export interface ModalProps {
   /** Controls rendering of the modal */
   isOpen: boolean;
   /** Callback for the Modal to close itself */

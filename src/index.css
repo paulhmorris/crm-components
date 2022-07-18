@@ -7,7 +7,7 @@
     @apply h-full text-[16px];
   }
   body {
-    @apply h-full bg-white font-avenir text-sm font-normal leading-5 text-body;
+    @apply h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal text-body;
   }
 
   .body-small {

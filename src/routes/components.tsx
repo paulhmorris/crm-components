@@ -18,7 +18,7 @@ import { Checkbox } from "../components/Forms/Checkbox";
 import { TextArea } from "../components/Forms/TextArea";
 import { TextInput } from "../components/Forms/TextInput";
 import { Toggle } from "../components/Forms/Toggle";
-import { EmptyModal } from "../components/Modals/EmptyModal";
+import { Modal } from "../components/Modals/Modal";
 import { SearchBox } from "../components/SearchBox";
 import {
   CouponDot,
@@ -45,7 +45,7 @@ const people: SelectOptionProps[] = [
 ];
 
 export default function ComponentDisplay() {
-  const [emptyModalOpen, setEmptyModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="max-w-3xl space-y-8 p-24">
@@ -120,8 +120,8 @@ export default function ComponentDisplay() {
             <div className="space-y-8">
               <div className="max-w-xs space-y-4">
                 <Select
-                  label="Listbox"
-                  name="myListbox"
+                  label="Select"
+                  name="mySelect"
                   options={people}
                   description="I'm a custom select component!"
                 />
@@ -201,10 +201,10 @@ export default function ComponentDisplay() {
           </form>
         )}
       />
-      <Button variant="primary" onClick={() => setEmptyModalOpen(true)}>
+      <Button variant="primary" onClick={() => setModalOpen(true)}>
         Open Modal
       </Button>
-      <EmptyModal isOpen={emptyModalOpen} setIsOpen={setEmptyModalOpen}>
+      <Modal isOpen={modalOpen} setIsOpen={setModalOpen}>
         <div className="grid h-48 w-full place-items-center">
           <p>Hello, I am your children.</p>
           <p>
@@ -212,7 +212,7 @@ export default function ComponentDisplay() {
             close me.
           </p>
         </div>
-      </EmptyModal>
+      </Modal>
       <div className="flex flex-col space-y-4">
         <h2>Tags</h2>
         <CouponTag text="Coupon" />

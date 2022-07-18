@@ -1,13 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
-import { EmptyModalProps } from "types";
+import { ModalProps } from "types";
 
-export const EmptyModal = ({
-  isOpen,
-  setIsOpen,
-  children,
-}: EmptyModalProps) => {
+export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
   function closeModal() {
     setIsOpen(false);
   }
@@ -38,7 +34,7 @@ export const EmptyModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-xl bg-white text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"

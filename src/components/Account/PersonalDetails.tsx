@@ -3,7 +3,7 @@ import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
 import { Toggle } from "components/Forms/Toggle";
 import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
-import { EmptyModal } from "components/Modals/EmptyModal";
+import { Modal } from "components/Modals/Modal";
 import formatStringByPattern from "format-string-by-pattern";
 import { useState } from "react";
 import { Form } from "react-final-form";
@@ -93,9 +93,9 @@ export const PersonalDetails = ({
           />
         </div>
       </section>
-      <EmptyModal isOpen={openEditDetails} setIsOpen={setOpenEditDetails}>
+      <Modal isOpen={openEditDetails} setIsOpen={setOpenEditDetails}>
         <div>
-          <header className="border-b border-gray-200 p-6">
+          <header className="border-b border-gray-200 pb-6">
             <Dialog.Title as="h2">Change Personal Details</Dialog.Title>
           </header>
           <Form
@@ -113,7 +113,7 @@ export const PersonalDetails = ({
               validating,
               invalid,
             }) => (
-              <form onSubmit={handleSubmit} className="p-6">
+              <form onSubmit={handleSubmit} className="pt-6">
                 <div className="mb-6 space-y-1">
                   <TextInput
                     name="firstName"
@@ -169,7 +169,7 @@ export const PersonalDetails = ({
             )}
           />
         </div>
-      </EmptyModal>
+      </Modal>
     </>
   );
 };

@@ -2,7 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextArea } from "components/Forms/TextArea";
 import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
-import { EmptyModal } from "components/Modals/EmptyModal";
+import { Modal } from "components/Modals/Modal";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
@@ -29,16 +29,17 @@ export const InternalNote = () => {
         </Button>
       </div>
 
-      <EmptyModal isOpen={open} setIsOpen={setOpen}>
-        <div>
-          <header className="border-b border-gray-200 p-6">
+      <Modal isOpen={open} setIsOpen={setOpen}>
+        <>
+          <header className="border-b border-gray-200 pb-6">
             <Dialog.Title as="h2">👀 Edit Internal Note</Dialog.Title>
           </header>
           <Form
             onSubmit={saveNote}
             initialValues={{ internalNote: "abc123" }}
             render={({ handleSubmit, submitting, pristine }) => (
-              <form className="p-6" onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className="pt-6">
+                <p className="mb-1">✅ Only employees can read this note.</p>
                 <div className="mb-6">
                   <TextArea name="internalNote" label="Internal Note" />
                 </div>
@@ -66,8 +67,8 @@ export const InternalNote = () => {
               </form>
             )}
           />
-        </div>
-      </EmptyModal>
+        </>
+      </Modal>
     </div>
   );
 };

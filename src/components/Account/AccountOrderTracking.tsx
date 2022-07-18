@@ -2,8 +2,9 @@ import { Dialog, Disclosure } from "@headlessui/react";
 import { Button } from "components/Button";
 import { DropdownMenu } from "components/DropdownMenu";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
+import { Select } from "components/Forms/Select";
 import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
-import { EmptyModal } from "components/Modals/EmptyModal";
+import { Modal } from "components/Modals/Modal";
 import { OrderPill } from "components/Orders/OrderPill";
 import dayjs from "dayjs";
 import { RightArrow } from "icons";
@@ -143,20 +144,41 @@ export const AccountOrderTracking = () => {
       </div>
 
       {/* Order Request Modal */}
-      <EmptyModal isOpen={requestModalIsOpen} setIsOpen={setRequestModalIsOpen}>
+      <Modal isOpen={requestModalIsOpen} setIsOpen={setRequestModalIsOpen}>
         <div>
-          <header className="border-b border-gray-200 py-6 px-10">
+          <header className="border-b border-gray-200 pb-6">
             <Dialog.Title as="h2">Request an Order</Dialog.Title>
           </header>
-          <div className="flex justify-between border-b border-gray-200 px-10 py-4">
+          <div className="flex justify-between border-b border-gray-200 p-4">
             <p className="font-bold">Drop off Location</p>
             <p>Campus: Yoda Hoda</p>
           </div>
           <Form
             onSubmit={requestOrder}
+            initialValues={{ orderType: "dryClean" }}
             render={({ handleSubmit, submitting, invalid, pristine }) => (
-              <form className="px-10 py-6" onSubmit={handleSubmit}>
-                <div className="mb-6 flex items-center space-x-2"></div>
+              <form className="pt-6" onSubmit={handleSubmit}>
+                <div className="mb-6 flex items-center space-x-4">
+                  <Select
+                    name="orderType"
+                    label="Order Type"
+                    options={[
+                      { value: "dryClean", label: "Dry Cleaning" },
+                      { value: "washFold", label: "Wash & Fold" },
+                    ]}
+                  />
+                  <Select
+                    name="lockerNumber"
+                    label="Locker Number"
+                    options={[
+                      { value: 1, label: "1" },
+                      { value: 2, label: "2" },
+                      { value: 3, label: "3" },
+                      { value: 4, label: "4" },
+                      { value: 5, label: "5" },
+                    ]}
+                  />
+                </div>
                 <div className="flex items-center justify-end space-x-3 text-right">
                   <Button
                     disabled={submitting}
@@ -182,7 +204,7 @@ export const AccountOrderTracking = () => {
             )}
           />
         </div>
-      </EmptyModal>
+      </Modal>
     </section>
   );
 };
