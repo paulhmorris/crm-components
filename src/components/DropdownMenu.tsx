@@ -6,7 +6,7 @@ import { classNames } from "utils/helpers";
 
 interface DropdownMenuProps extends ComponentPropsWithoutRef<"button"> {
   /** The element that will generate the dropdown. Defaults to a kebab */
-  variant: "icon" | "button";
+  variant: "kebab" | "button";
   /** If using a button, this will be the text on the button */
   buttonText?: string;
   /** The direction in which the menu will pop out from the button. Defaults to left */
@@ -34,9 +34,12 @@ export const DropdownMenu = ({
     >
       <Menu.Button
         {...props}
-        className={classNames(className, variant === "icon" ? "-mx-2 p-2" : "")}
+        className={classNames(
+          className,
+          variant === "kebab" ? "-mx-2 p-2" : ""
+        )}
       >
-        {variant === "icon" && (
+        {variant === "kebab" && (
           <DotsVerticalIcon
             className="h-5 w-5 text-blue-200 hover:text-blue-400"
             aria-hidden="true"

@@ -45,7 +45,7 @@ export const TextInput = ({
       >
         {label}
       </label>
-      <div className="mt-1.5 ml-[1px] min-h-[1.25rem] text-xs">
+      <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
         {((valid && description) || !touched) && (
           <p className="text-xs font-normal text-secondary">{description}</p>
         )}

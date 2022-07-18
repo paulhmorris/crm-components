@@ -34,7 +34,7 @@ export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-xl bg-white px-10 py-6 text-left align-middle shadow-xl transition-all">
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"

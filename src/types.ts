@@ -60,15 +60,15 @@ export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
   fieldProps?: UseFieldConfig<string>;
 }
 
-export interface SelectProps {
+export interface SelectProps extends ComponentPropsWithoutRef<"button"> {
   /** Field name. This name will be used in the payload. */
   name: string;
   /** Field label. This acts as the placeholder until in focus */
   label: string;
-  /** Optional description will show below the input. Will not be shown if the field has an error */
-  description?: string;
   /** The options to populate the select */
   options: SelectOptionProps[];
+  /** Optional description will show below the input. Will not be shown if the field has an error */
+  description?: string;
   fieldProps?: UseFieldConfig<string>;
 }
 

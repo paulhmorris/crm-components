@@ -10,3 +10,20 @@ export const personalDetails = {
   autoRenew: true,
   onHold: false,
 };
+
+export const mockLinkedAccounts = [
+  {
+    id: 1,
+    name: "Marcellus Abernathy",
+    type: "Student",
+    phone: "4496760563",
+    email: "Hulda41@gmail.com",
+  },
+  {
+    id: 2,
+    name: "Jennifer Abernathy",
+    type: "Student",
+    phone: "4496760555",
+    email: "JAbernaThy41@gmail.com",
+  },
+];

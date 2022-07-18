@@ -1,7 +1,5 @@
-import formatStringByPattern from "format-string-by-pattern";
 import { AutopayIcon } from "icons";
-import { formatCurrency, getAutopayStatus } from "utils/helpers";
-import { phoneMask } from "utils/masks";
+import { formatCurrency, formatPhone, getAutopayStatus } from "utils/helpers";
 
 const mockData = {
   phone: "5555555555",
@@ -20,9 +18,7 @@ export const AccountOverview = () => {
     <section className="grid grid-cols-3 grid-rows-3 gap-x-20 gap-y-4 p-6">
       <div>
         <p className="font-bold">Phone</p>
-        <p className="text-secondary">
-          {formatStringByPattern(phoneMask, mockData.phone)}
-        </p>
+        <p className="text-secondary">{formatPhone(mockData.phone)}</p>
       </div>
       <div>
         <p className="font-bold">Detergent</p>

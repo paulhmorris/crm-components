@@ -1,5 +1,7 @@
 import { Tab } from "@headlessui/react";
+import { mockLinkedAccounts } from "mockData";
 import { AccountOverview } from "./AccountOverview";
+import { LinkedAccounts } from "./LinkedAccounts";
 
 export const AccountOverviewTabs = () => {
   return (
@@ -21,9 +23,7 @@ export const AccountOverviewTabs = () => {
           <AccountOverview />
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Linked Accounts 👋🏼</p>
-          </div>
+          <LinkedAccounts linkedAccounts={mockLinkedAccounts} />
         </Tab.Panel>
       </Tab.Panels>
     </Tab.Group>
