@@ -10,7 +10,7 @@ export const SelectOption = ({ value, label }: SelectOptionProps) => {
       className={({ active }) =>
         classNames(
           active ? "bg-gray-200" : "bg-white",
-          "relative cursor-default select-none py-1.5 pl-9 pr-4 text-sm"
+          "relative cursor-default select-none py-1.5 pl-9 pr-4 text-sm hover:bg-gray-200"
         )
       }
     >

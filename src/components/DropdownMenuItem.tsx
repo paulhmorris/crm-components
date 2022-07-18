@@ -18,7 +18,7 @@ export const DropdownMenuItem = ({
           {...props}
           className={classNames(
             active && "bg-gray-200",
-            "flex w-full items-center py-1 pl-4 pr-8"
+            "flex w-full items-center py-1 pl-4 pr-8 hover:bg-gray-200"
           )}
         >
           {children}
