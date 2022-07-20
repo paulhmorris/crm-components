@@ -28,7 +28,7 @@ export const AccountHeader = ({
         />
       )}
       <div className="p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between">
           <div className="mr-auto flex items-center">
             <h1>{fullName}</h1>
             {isLead && (
