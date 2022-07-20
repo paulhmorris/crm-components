@@ -31,7 +31,7 @@
   }
 
   a {
-    @apply font-bold text-blue-200 hover:text-blue-300 active:text-blue-400;
+    @apply font-bold text-blue-200 transition-colors duration-100 hover:text-blue-300 active:text-blue-400;
   }
 
   input {

@@ -1,11 +1,6 @@
 import { AddCircleIcon, HomeIcon, SearchIcon, TideLogo } from "icons";
+import { mockUser } from "mockData";
 import { formatCurrency } from "utils/helpers";
-
-const mockUser = {
-  name: "Bill Esquire",
-  availableRefundAmount: 50.0,
-  availableCreditAmount: 50.0,
-};
 
 export const PepperNav = () => {
   return (
