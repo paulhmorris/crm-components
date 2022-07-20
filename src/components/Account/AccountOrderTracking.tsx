@@ -113,7 +113,7 @@ export const AccountOrderTracking = () => {
                       order.timeStampUtc
                     ).format("h:mma")} by ${order.personName}`}</p>
                   </div>
-                  <DropdownMenu variant="icon" className="ml-auto">
+                  <DropdownMenu variant="kebab" className="ml-auto">
                     <DropdownMenuItem>Add Order Note</DropdownMenuItem>
                   </DropdownMenu>
                 </Disclosure.Button>

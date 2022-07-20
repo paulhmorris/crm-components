@@ -28,7 +28,7 @@ import {
   GroupDot,
   GroupNameTag,
   LostTag,
-  NewLeadTag,
+  NewGuestTag,
   SpecialServiceDot,
   SpecialServicesTag,
   TaxExemptTag,
@@ -240,7 +240,7 @@ export default function ComponentDisplay() {
           <OrderPill pillType="ticket" text="DT67683" />
         </div>
         <GroupNameTag text="group name" />
-        <NewLeadTag />
+        <NewGuestTag />
         <Banner
           variant="info"
           message="🤨 This person has not accepted our terms yet. Hmm..."
