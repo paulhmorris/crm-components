@@ -1,5 +1,5 @@
 import { Banner } from "components/Banner";
-import { GroupNameTag, NewLeadTag } from "components/Tags";
+import { GroupNameTag, NewGuestTag } from "components/Tags";
 import dayjs from "dayjs";
 
 export interface AccountHeaderProps {
@@ -33,7 +33,7 @@ export const AccountHeader = ({
             <h1>{fullName}</h1>
             {isLead && (
               <span className="ml-4">
-                <NewLeadTag />
+                <NewGuestTag />
               </span>
             )}
           </div>
