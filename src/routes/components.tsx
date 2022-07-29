@@ -1,25 +1,16 @@
 import { DropdownMenuItem } from "components/DropdownMenuItem";
-import { Radio } from "components/Forms/Radio";
-import { Select } from "components/Forms/Select";
+import { Form } from "components/Forms/Form";
+import { FormConnector } from "components/Forms/FormConnector";
+import { TextInput } from "components/Forms/TextInput";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
-import { Form } from "react-final-form";
-import { SelectOptionProps } from "types";
-import {
-  mustBeAlphanumeric,
-  required,
-  validateMultiple,
-} from "utils/inputValidations";
+import { sleep } from "utils/helpers";
+// import { SelectOptionProps } from "types";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
 import { DropdownMenu } from "../components/DropdownMenu";
-import { Checkbox } from "../components/Forms/Checkbox";
-import { TextArea } from "../components/Forms/TextArea";
-import { TextInput } from "../components/Forms/TextInput";
-import { Toggle } from "../components/Forms/Toggle";
 import { Modal } from "../components/Modals/Modal";
-import { SearchBox } from "../components/SearchBox";
 import {
   CouponDot,
   CouponTag,
@@ -35,14 +26,14 @@ import {
   WashFoldTag,
 } from "../components/Tags";
 
-const people: SelectOptionProps[] = [
-  { value: 1, label: "Wade Cooper" },
-  { value: 2, label: "Arlene Mccoy" },
-  { value: 3, label: "Devon Webb" },
-  { value: 4, label: "Tom Cook" },
-  { value: 5, label: "Tanya Fox" },
-  { value: 6, label: "Hellen Schmidt" },
-];
+// const people: SelectOptionProps[] = [
+//   { value: 1, label: "Wade Cooper" },
+//   { value: 2, label: "Arlene Mccoy" },
+//   { value: 3, label: "Devon Webb" },
+//   { value: 4, label: "Tom Cook" },
+//   { value: 5, label: "Tanya Fox" },
+//   { value: 6, label: "Hellen Schmidt" },
+// ];
 
 export default function ComponentDisplay() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -96,7 +87,48 @@ export default function ComponentDisplay() {
         <DropdownMenuItem>Route Stop</DropdownMenuItem>
         <DropdownMenuItem>Submarket</DropdownMenuItem>
       </DropdownMenu>
-      <Form
+      <div className="border-y border-gray-400 pb-12 pt-6">
+        <h2>React hook Form testing</h2>
+        <Form
+          onSubmit={async (data) => {
+            await sleep(3000);
+            console.dir(data);
+          }}
+          defaultValues={{ myInput: "" }}
+        >
+          <div className="mt-4 space-y-4">
+            <TextInput
+              name="myInput"
+              label="First name"
+              description="Hide me when there's an error"
+              controllerProps={{
+                rules: {
+                  required: true,
+                },
+              }}
+            />
+            <TextInput
+              name="myInput2"
+              label="Last name"
+              description="Required, but no error until touched"
+              required
+            />
+          </div>
+          <FormConnector>
+            {({ formState: { isSubmitting } }) => (
+              <Button
+                variant="primary"
+                type="submit"
+                className="mt-4"
+                disabled={isSubmitting}
+              >
+                Log Values
+              </Button>
+            )}
+          </FormConnector>
+        </Form>
+      </div>
+      {/* <Form
         onSubmit={() => console.log("hello")}
         initialValues={{
           bestTeam: "scarlet",
@@ -124,6 +156,12 @@ export default function ComponentDisplay() {
                   name="mySelect"
                   options={people}
                   description="I'm a custom select component!"
+                />
+                <Typeahead
+                  label="Typeahead"
+                  name="myTypeAhead"
+                  options={people}
+                  description="try me out!"
                 />
                 <TextInput
                   label="Basic field"
@@ -200,7 +238,7 @@ export default function ComponentDisplay() {
             </div>
           </form>
         )}
-      />
+      /> */}
       <Button variant="primary" onClick={() => setModalOpen(true)}>
         Open Modal
       </Button>

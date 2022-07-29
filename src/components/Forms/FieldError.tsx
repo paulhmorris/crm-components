@@ -1,21 +1,14 @@
-import { Field } from "react-final-form";
+import { FieldError } from "react-hook-form";
 
-export const FieldError = ({ name }: { name: string }) => (
-  <Field
-    name={name}
-    subscription={{
-      touched: true,
-      error: true,
-      submitError: true,
-      dirtySinceLastSubmit: true,
-    }}
-    render={({ meta: { touched, error, submitError, dirtySinceLastSubmit } }) =>
-      touched &&
-      (error || (submitError && !dirtySinceLastSubmit)) && (
-        <span role="alert" id={`${name}-error`}>
-          {error || submitError}
-        </span>
-      )
-    }
-  />
-);
+type FieldErrorProps = {
+  name: string;
+  error: FieldError;
+};
+export const ErrorMessage = ({ error, name }: FieldErrorProps) => {
+  if (!error) return null;
+  return (
+    <span role="alert" id={`${name}-error`} className="text-error">
+      {error.message}
+    </span>
+  );
+};

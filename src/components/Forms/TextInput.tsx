@@ -1,57 +1,82 @@
-import { useField } from "react-final-form";
+import { useController, useFormContext } from "react-hook-form";
 import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
-import { FieldError } from "./FieldError";
+import { ErrorMessage } from "./FieldError";
 
 export const TextInput = ({
   name,
   label,
   type = "text",
   description,
-  fieldProps,
+  controllerProps,
   ...props
 }: TextInputProps) => {
   const {
-    input,
-    meta: { touched, submitting, invalid, valid },
-  } = useField(name, { ...fieldProps });
+    register,
+    formState: { isSubmitting },
+  } = useFormContext();
+  const {
+    fieldState: { error },
+  } = useController({ name });
+
+  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
+  const isRequired: boolean | undefined =
+    props.required || !!controllerProps?.rules?.required;
 
   return (
     <div className="relative pt-5">
       <input
-        {...input}
+        {...register(name, {
+          ...controllerProps?.rules,
+          required: {
+            value: !!props.required,
+            message: "This field is required",
+          },
+        })}
         {...props}
         id={name}
         type={type}
         placeholder="doNotRemove"
-        disabled={submitting || props.disabled}
-        aria-describedby={`${name}-error`}
+        disabled={isDisabled}
+        required={isRequired}
+        aria-describedby={
+          error
+            ? `${name}-error`
+            : description
+            ? `${name}-description`
+            : undefined
+        }
         className={classNames(
           "peer inline-block w-full border-0 py-0 pl-0.5 text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0 disabled:pointer-events-none disabled:text-gray-300",
-          touched &&
-            invalid &&
-            "shadow-error hover:shadow-error focus:shadow-error"
+          error && "shadow-error hover:shadow-error focus:shadow-error"
         )}
       />
       <label
         className={classNames(
-          touched && invalid && "text-error",
-          submitting || props.disabled
+          "absolute top-0 left-0.5 select-none text-sm font-medium transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
+          isDisabled
             ? "pointer-events-none text-gray-300"
-            : "text-gray-400",
-          "absolute top-0 left-0.5 select-none text-sm font-bold transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5"
+            : error
+            ? "text-error"
+            : "text-secondary"
         )}
         htmlFor={name}
       >
         {label}
       </label>
       <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-        {((valid && description) || !touched) && (
-          <p className="text-xs font-normal text-secondary">{description}</p>
+        {description && !error && (
+          <p
+            id={`${name}-description`}
+            className={classNames(
+              "text-xs font-normal transition-colors",
+              isDisabled ? "text-gray-300" : "text-secondary"
+            )}
+          >
+            {description}
+          </p>
         )}
-        <span className="text-error">
-          <FieldError name={name} />
-        </span>
+        {error && <ErrorMessage name={name} error={error} />}
       </div>
     </div>
   );
