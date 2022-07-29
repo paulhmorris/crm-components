@@ -7,6 +7,7 @@ import { Select } from "components/Forms/Select";
 import { TextArea } from "components/Forms/TextArea";
 import { TextInput } from "components/Forms/TextInput";
 import { Toggle } from "components/Forms/Toggle";
+import { Typeahead } from "components/Forms/Typeahead";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
@@ -93,7 +94,7 @@ export default function ComponentDisplay() {
         <DropdownMenuItem>Route Stop</DropdownMenuItem>
         <DropdownMenuItem>Submarket</DropdownMenuItem>
       </DropdownMenu>
-      <div className="border-y border-gray-400 pb-12 pt-6">
+      <div className="max-w-sm border-y border-gray-400 pb-12 pt-6">
         <h2>React hook Form testing</h2>
         <Form
           onSubmit={async (data) => {
@@ -110,6 +111,8 @@ export default function ComponentDisplay() {
             myBoolean2: true,
             myDisabledBoolean: true,
             myDisabledBoolean2: false,
+            myTypeAhead: 3,
+            myTypeAheadD: 5,
           }}
         >
           <div className="mt-4 space-y-4">
@@ -124,6 +127,19 @@ export default function ComponentDisplay() {
               name="mySelect2"
               options={people}
               description="I'm a custom select component, but disabled"
+              disabled
+            />
+            <Typeahead
+              label="Typeahead"
+              name="myTypeAhead"
+              options={people}
+              description="try me out!"
+            />
+            <Typeahead
+              label="Typeahead"
+              name="myTypeAheadD"
+              options={people}
+              description="try me out!"
               disabled
             />
             <TextInput
