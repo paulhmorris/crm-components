@@ -1,4 +1,5 @@
 import { DropdownMenuItem } from "components/DropdownMenuItem";
+import { Checkbox } from "components/Forms/Checkbox";
 import { Form } from "components/Forms/Form";
 import { FormConnector } from "components/Forms/FormConnector";
 import { TextArea } from "components/Forms/TextArea";
@@ -6,8 +7,6 @@ import { TextInput } from "components/Forms/TextInput";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
-import { sleep } from "utils/helpers";
-import { required } from "utils/inputValidations";
 // import { SelectOptionProps } from "types";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
@@ -92,47 +91,32 @@ export default function ComponentDisplay() {
       <div className="border-y border-gray-400 pb-12 pt-6">
         <h2>React hook Form testing</h2>
         <Form
-          onSubmit={async (data) => {
-            await sleep(3000);
-            console.dir(data);
+          onSubmit={(data) => {
+            console.log(data);
           }}
-          defaultValues={{ myInput: "" }}
+          defaultValues={{ myInput: "", checkbox2: true, checkbox3: true }}
         >
           <div className="mt-4 space-y-4">
             <TextInput
               name="myInput"
               label="First name"
-              description="Hide me when there's an error"
-              controllerProps={{
-                rules: {
-                  validate: required,
-                },
-              }}
-              required
+              description="Some description about this field"
               disabled
             />
             <TextInput
               name="myInput2"
               label="Last name"
-              description="Required, but no error until touched"
-              controllerProps={{
-                rules: {
-                  validate: required,
-                },
-              }}
-              required
+              description="Some description about this field"
             />
             <TextArea
               name="myTextArea"
               label="A long message"
               description="Check it out!"
-              controllerProps={{
-                rules: {
-                  validate: required,
-                },
-              }}
-              disabled
+              defaultValue={""}
             />
+            <Checkbox name="checkbox2" label="Check me off" />
+            <Checkbox name="checkbox3" label="Check me off" />
+            <Checkbox name="checkbox4" label="Check me off" disabled />
           </div>
           <FormConnector>
             {({ formState: { isSubmitting } }) => (

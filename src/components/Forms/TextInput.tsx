@@ -32,7 +32,7 @@ export const TextInput = ({
         type={type}
         placeholder="doNotRemove"
         disabled={isDisabled}
-        required={isRequired}
+        required={isRequired && !isDisabled}
         aria-describedby={
           error
             ? `${name}-error`

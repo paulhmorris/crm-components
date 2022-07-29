@@ -45,7 +45,7 @@ export const TextArea = ({
         rows={4}
         placeholder="Go ahead, type something..."
         disabled={isDisabled}
-        required={isRequired}
+        required={isRequired && !isDisabled}
         aria-describedby={
           error
             ? `${name}-error`
