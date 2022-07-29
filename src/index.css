@@ -50,6 +50,10 @@
     @apply rounded bg-gray-200 py-1 px-2 text-xs;
   }
 
+  fieldset {
+    @apply disabled:opacity-60;
+  }
+
   [type="checkbox"]:focus {
     @apply ring-0;
   }

@@ -99,13 +99,13 @@ export interface RadioProps extends ComponentPropsWithoutRef<"input"> {
   name: string;
   value: string | number;
   label: string;
-  fieldProps?: UseFieldConfig<string>;
+  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
 export interface CheckboxProps extends ComponentPropsWithoutRef<"input"> {
   name: string;
   label?: string;
-  fieldProps?: UseFieldConfig<string>;
+  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
 /** Options for order tags */

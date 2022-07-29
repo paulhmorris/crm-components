@@ -2,11 +2,13 @@ import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { Checkbox } from "components/Forms/Checkbox";
 import { Form } from "components/Forms/Form";
 import { FormConnector } from "components/Forms/FormConnector";
+import { Radio } from "components/Forms/Radio";
 import { TextArea } from "components/Forms/TextArea";
 import { TextInput } from "components/Forms/TextInput";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
+import { sleep } from "utils/helpers";
 // import { SelectOptionProps } from "types";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
@@ -91,7 +93,8 @@ export default function ComponentDisplay() {
       <div className="border-y border-gray-400 pb-12 pt-6">
         <h2>React hook Form testing</h2>
         <Form
-          onSubmit={(data) => {
+          onSubmit={async (data) => {
+            await sleep(2000);
             console.log(data);
           }}
           defaultValues={{ myInput: "", checkbox2: true, checkbox3: true }}
@@ -114,9 +117,22 @@ export default function ComponentDisplay() {
               description="Check it out!"
               defaultValue={""}
             />
-            <Checkbox name="checkbox2" label="Check me off" />
-            <Checkbox name="checkbox3" label="Check me off" />
-            <Checkbox name="checkbox4" label="Check me off" disabled />
+            <fieldset>
+              <legend>Notification Options</legend>
+              <div className="mt-1 space-y-1">
+                <Checkbox name="shouldEmail" label="Email" />
+                <Checkbox name="shouldText" label="Text" />
+                <Checkbox name="shouldCall" label="Call" />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Best dev team</legend>
+              <div className="mt-1 space-y-1">
+                <Radio name="bestTeam" label="Scarlet" value="scarlet" />
+                <Radio name="bestTeam" label="Atlas" value="atlas" />
+                <Radio name="bestTeam" label="Steam" value="steam" />
+              </div>
+            </fieldset>
           </div>
           <FormConnector>
             {({ formState: { isSubmitting } }) => (

@@ -1,28 +1,42 @@
-import { Field } from "react-final-form";
+import { useFormContext } from "react-hook-form";
 import { RadioProps } from "types";
+import { classNames } from "utils/helpers";
 
 export const Radio = ({
   label,
   name,
   value,
-  fieldProps,
+  controllerProps,
   ...props
 }: RadioProps) => {
+  const {
+    register,
+    formState: { isSubmitting },
+  } = useFormContext();
+
+  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
+
   return (
-    <Field name={name} type="radio" value={value.toString()} {...fieldProps}>
-      {({ input }) => (
-        <div className="flex items-center space-x-2">
-          <input
-            {...input}
-            {...props}
-            id={value.toString()}
-            className="cursor-pointer border-tide-blue text-tide-blue focus:ring-transparent"
-          />
-          <label htmlFor={value.toString()} className="cursor-pointer text-xs">
-            {label}
-          </label>
-        </div>
-      )}
-    </Field>
+    <div className="flex items-center space-x-2">
+      <input
+        {...register(name, { ...controllerProps?.rules })}
+        {...props}
+        id={value.toString()}
+        type="radio"
+        value={value}
+        name={name}
+        disabled={isDisabled}
+        className="cursor-pointer border-tide-blue text-tide-blue transition duration-75 focus:ring-transparent disabled:border-blue-100 disabled:text-blue-100"
+      />
+      <label
+        htmlFor={value.toString()}
+        className={classNames(
+          "cursor-pointer text-xs transition-colors duration-75",
+          isDisabled && "text-gray-300"
+        )}
+      >
+        {label}
+      </label>
+    </div>
   );
 };

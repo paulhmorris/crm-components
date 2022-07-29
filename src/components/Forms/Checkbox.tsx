@@ -31,7 +31,8 @@ export const Checkbox = ({
       <label
         htmlFor={name}
         className={classNames(
-          isDisabled && "pointer-events-none cursor-auto opacity-30",
+          isDisabled &&
+            "pointer-events-none cursor-auto opacity-30 transition-colors duration-75",
           "cursor-pointer text-xs"
         )}
       >
