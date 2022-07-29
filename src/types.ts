@@ -4,7 +4,6 @@ import {
   ReactNode,
   SetStateAction,
 } from "react";
-import { UseFieldConfig } from "react-final-form";
 import {
   FieldValues,
   SubmitHandler,
@@ -87,7 +86,8 @@ export interface SelectProps extends ComponentPropsWithoutRef<"button"> {
   options: SelectOptionProps[];
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  fieldProps?: UseFieldConfig<string>;
+  /** Props for useController. Add rules and validation here */
+  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
 export interface SelectOptionProps {

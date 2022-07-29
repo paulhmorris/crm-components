@@ -3,11 +3,13 @@ import { Checkbox } from "components/Forms/Checkbox";
 import { Form } from "components/Forms/Form";
 import { FormConnector } from "components/Forms/FormConnector";
 import { Radio } from "components/Forms/Radio";
+import { Select } from "components/Forms/Select";
 import { TextArea } from "components/Forms/TextArea";
 import { TextInput } from "components/Forms/TextInput";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
+import { SelectOptionProps } from "types";
 import { sleep } from "utils/helpers";
 // import { SelectOptionProps } from "types";
 import { Banner } from "../components/Banner";
@@ -29,14 +31,14 @@ import {
   WashFoldTag,
 } from "../components/Tags";
 
-// const people: SelectOptionProps[] = [
-//   { value: 1, label: "Wade Cooper" },
-//   { value: 2, label: "Arlene Mccoy" },
-//   { value: 3, label: "Devon Webb" },
-//   { value: 4, label: "Tom Cook" },
-//   { value: 5, label: "Tanya Fox" },
-//   { value: 6, label: "Hellen Schmidt" },
-// ];
+const people: SelectOptionProps[] = [
+  { value: 1, label: "Wade Cooper" },
+  { value: 2, label: "Arlene Mccoy" },
+  { value: 3, label: "Devon Webb" },
+  { value: 4, label: "Tom Cook" },
+  { value: 5, label: "Tanya Fox" },
+  { value: 6, label: "Hellen Schmidt" },
+];
 
 export default function ComponentDisplay() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -94,12 +96,31 @@ export default function ComponentDisplay() {
         <h2>React hook Form testing</h2>
         <Form
           onSubmit={async (data) => {
-            await sleep(2000);
+            await sleep(1000);
             console.log(data);
           }}
-          defaultValues={{ myInput: "", checkbox2: true, checkbox3: true }}
+          defaultValues={{
+            myInput: "",
+            checkbox2: true,
+            checkbox3: true,
+            mySelect: 3,
+            mySelect2: 5,
+          }}
         >
           <div className="mt-4 space-y-4">
+            <Select
+              label="Select"
+              name="mySelect"
+              options={people}
+              description="I'm a custom select component!"
+            />
+            <Select
+              label="Select"
+              name="mySelect2"
+              options={people}
+              description="I'm a custom select component, but disabled"
+              disabled
+            />
             <TextInput
               name="myInput"
               label="First name"

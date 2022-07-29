@@ -1,41 +1,46 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import { useField } from "react-final-form";
+import { useController, useFormContext } from "react-hook-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
-import { FieldError } from "./FieldError";
+import { ErrorMessage } from "./ErrorMessage";
 import { SelectOption } from "./SelectOption";
 
 export const Select = ({
   name,
   label,
   description,
-  fieldProps,
+  controllerProps,
   options,
   ...props
 }: SelectProps) => {
   const {
-    input,
-    meta: { valid, touched },
-  } = useField(name, { ...fieldProps });
+    formState: { isSubmitting },
+  } = useFormContext();
+  const {
+    field,
+    fieldState: { error },
+  } = useController({ name, rules: { ...controllerProps?.rules } });
 
   const [selectedOption, setSelectedOption] = useState(
-    options.find((o) => o.value === input.value)
+    options.find((o) => o.value === field.value)
   );
 
   useEffect(() => {
-    setSelectedOption(options.find((o) => o.value === input.value));
-  }, [input.value, options]);
+    setSelectedOption(options.find((o) => o.value === field.value));
+  }, [field.value, options]);
+
+  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
 
   return (
-    <Listbox {...input} disabled={props.disabled}>
+    <Listbox {...field} disabled={props.disabled}>
       {({ open }) => (
         <div className="relative mt-1 h-[70px] w-full pt-5">
           <Listbox.Button
             className={classNames(
               "form-select relative inline-block w-full cursor-pointer border-0 bg-white py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0",
               open && "shadow-border-b-2 shadow-blue-200",
-              props.disabled && "pointer-events-none text-gray-300"
+              isDisabled && "pointer-events-none text-gray-300"
             )}
             {...props}
           >
@@ -43,11 +48,13 @@ export const Select = ({
           </Listbox.Button>
           <Listbox.Label
             className={classNames(
-              input.value || open ? "pointer-events-auto top-0" : "top-5",
+              field.value || open ? "pointer-events-auto top-0" : "top-5",
               "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
-              props.disabled
+              isDisabled
                 ? "pointer-events-none text-gray-300"
-                : "text-gray-400"
+                : error
+                ? "text-error"
+                : "text-secondary"
             )}
           >
             {label}
@@ -69,15 +76,21 @@ export const Select = ({
               ))}
             </Listbox.Options>
           </Transition>
+
+          {/* Description and error visibility logic */}
           <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-            {((valid && description) || !touched) && (
-              <p className="text-xs font-normal text-secondary">
+            {description && (isDisabled || !error) && (
+              <p
+                id={`${name}-description`}
+                className={classNames(
+                  "text-xs font-normal transition-colors",
+                  isDisabled ? "text-gray-300" : "text-secondary"
+                )}
+              >
                 {description}
               </p>
             )}
-            <span className="text-error">
-              <FieldError name={name} />
-            </span>
+            {error && !isDisabled && <ErrorMessage name={name} error={error} />}
           </div>
         </div>
       )}
