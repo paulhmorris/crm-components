@@ -6,6 +6,7 @@ import { Radio } from "components/Forms/Radio";
 import { Select } from "components/Forms/Select";
 import { TextArea } from "components/Forms/TextArea";
 import { TextInput } from "components/Forms/TextInput";
+import { Toggle } from "components/Forms/Toggle";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
@@ -105,6 +106,10 @@ export default function ComponentDisplay() {
             checkbox3: true,
             mySelect: 3,
             mySelect2: 5,
+            myBoolean: false,
+            myBoolean2: true,
+            myDisabledBoolean: true,
+            myDisabledBoolean2: false,
           }}
         >
           <div className="mt-4 space-y-4">
@@ -154,6 +159,20 @@ export default function ComponentDisplay() {
                 <Radio name="bestTeam" label="Steam" value="steam" />
               </div>
             </fieldset>
+          </div>
+          <div className="mt-4 space-y-4">
+            <Toggle name="myBoolean" label="Toggle me!" />
+            <Toggle name="myBoolean2" label="And me!" />
+            <Toggle
+              name="myDisabledBoolean"
+              label="I'm disabled and on 👋🏼"
+              disabled
+            />
+            <Toggle
+              name="myDisabledBoolean2"
+              label="Disabled and off 🥺"
+              disabled
+            />
           </div>
           <FormConnector>
             {({ formState: { isSubmitting } }) => (

@@ -90,6 +90,12 @@ export interface SelectProps extends ComponentPropsWithoutRef<"button"> {
   controllerProps?: Omit<UseControllerProps, "name">;
 }
 
+export interface ToggleProps
+  extends Omit<ComponentPropsWithoutRef<"button">, "onChange"> {
+  name: string;
+  label?: string;
+}
+
 export interface SelectOptionProps {
   value: string | number;
   label: string;
