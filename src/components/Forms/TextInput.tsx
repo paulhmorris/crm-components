@@ -1,7 +1,7 @@
 import { useController, useFormContext } from "react-hook-form";
 import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
-import { ErrorMessage } from "./FieldError";
+import { ErrorMessage } from "./ErrorMessage";
 
 export const TextInput = ({
   name,
@@ -20,19 +20,13 @@ export const TextInput = ({
   } = useController({ name });
 
   const isDisabled: boolean | undefined = isSubmitting || props.disabled;
-  const isRequired: boolean | undefined =
+  const isRequired: boolean =
     props.required || !!controllerProps?.rules?.required;
 
   return (
     <div className="relative pt-5">
       <input
-        {...register(name, {
-          ...controllerProps?.rules,
-          required: {
-            value: !!props.required,
-            message: "This field is required",
-          },
-        })}
+        {...register(name, { ...controllerProps?.rules })}
         {...props}
         id={name}
         type={type}
@@ -64,8 +58,10 @@ export const TextInput = ({
       >
         {label}
       </label>
+
+      {/* Description and error visibility logic */}
       <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-        {description && !error && (
+        {description && (isDisabled || !error) && (
           <p
             id={`${name}-description`}
             className={classNames(
@@ -76,7 +72,7 @@ export const TextInput = ({
             {description}
           </p>
         )}
-        {error && <ErrorMessage name={name} error={error} />}
+        {error && !isDisabled && <ErrorMessage name={name} error={error} />}
       </div>
     </div>
   );

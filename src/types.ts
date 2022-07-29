@@ -74,7 +74,8 @@ export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
   label: string;
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  fieldProps?: UseFieldConfig<string>;
+  /** Props for useController. Add rules and validation here */
+  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
 export interface SelectProps extends ComponentPropsWithoutRef<"button"> {

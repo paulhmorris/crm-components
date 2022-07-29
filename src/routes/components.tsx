@@ -1,11 +1,13 @@
 import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { Form } from "components/Forms/Form";
 import { FormConnector } from "components/Forms/FormConnector";
+import { TextArea } from "components/Forms/TextArea";
 import { TextInput } from "components/Forms/TextInput";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
 import { sleep } from "utils/helpers";
+import { required } from "utils/inputValidations";
 // import { SelectOptionProps } from "types";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
@@ -103,15 +105,33 @@ export default function ComponentDisplay() {
               description="Hide me when there's an error"
               controllerProps={{
                 rules: {
-                  required: true,
+                  validate: required,
                 },
               }}
+              required
+              disabled
             />
             <TextInput
               name="myInput2"
               label="Last name"
               description="Required, but no error until touched"
+              controllerProps={{
+                rules: {
+                  validate: required,
+                },
+              }}
               required
+            />
+            <TextArea
+              name="myTextArea"
+              label="A long message"
+              description="Check it out!"
+              controllerProps={{
+                rules: {
+                  validate: required,
+                },
+              }}
+              disabled
             />
           </div>
           <FormConnector>
