@@ -1,6 +1,7 @@
 import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { Radio } from "components/Forms/Radio";
 import { Select } from "components/Forms/Select";
+import { Typeahead } from "components/Forms/Typeahead";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
@@ -124,6 +125,12 @@ export default function ComponentDisplay() {
                   name="mySelect"
                   options={people}
                   description="I'm a custom select component!"
+                />
+                <Typeahead
+                  label="Typeahead"
+                  name="myTypeahead"
+                  options={people}
+                  description="I'm a custom typeahead component!"
                 />
                 <TextInput
                   label="Basic field"
