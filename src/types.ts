@@ -1,5 +1,16 @@
-import { ComponentPropsWithoutRef, Dispatch, SetStateAction } from "react";
+import {
+  ComponentPropsWithoutRef,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+} from "react";
 import { UseFieldConfig } from "react-final-form";
+import {
+  FieldValues,
+  SubmitHandler,
+  UseControllerProps,
+  UseFormProps,
+} from "react-hook-form";
 
 export type OrderTypes = "dryClean" | "washFold";
 /** A function that's passed into the validate property on a react-final-form input */
@@ -39,15 +50,21 @@ export interface PersonalDetailsProps {
 // ----------- C O M P O N E N T S ----------- //
 
 export interface TextInputProps extends ComponentPropsWithoutRef<"input"> {
-  /** Field name. This name will be used in the payload. */
+  /** Field name. This will be used for the payload. */
   name: string;
   /** Field label. This acts as the placeholder until in focus */
   label: string;
   /** Field type. Defaults to "text" */
   type?: "text" | "password" | "email" | "number" | "tel";
+  /** Props for useController. Add rules and validation here */
+  controllerProps?: Omit<UseControllerProps, "name">;
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  fieldProps?: UseFieldConfig<string>;
+}
+
+export interface FormComponent extends UseFormProps {
+  children: ReactNode;
+  onSubmit: SubmitHandler<FieldValues>;
 }
 
 export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
