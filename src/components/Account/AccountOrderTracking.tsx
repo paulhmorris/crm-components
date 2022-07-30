@@ -54,7 +54,7 @@ export const AccountOrderTracking = () => {
         <h4>Order Tracking</h4>
         <Button
           variant="tertiary"
-          className="-mb-2"
+          className="-mb-2 -mr-2"
           onClick={() => setRequestModalIsOpen(true)}
         >
           + Order Request
@@ -75,8 +75,8 @@ export const AccountOrderTracking = () => {
                   as="div"
                   className={classNames(
                     "flex w-full cursor-pointer select-none items-center justify-between border-b border-gray-200 px-6 py-4 text-xs transition-colors duration-100 ",
-                    open ? "bg-blue-ice" : "bg-white",
-                    key % 2 !== 0 && "bg-gray-100"
+                    key % 2 !== 0 && !open && "bg-gray-100",
+                    open ? "bg-blue-ice" : "bg-white"
                   )}
                 >
                   <div className="flex flex-[0_1_40%] items-center space-x-2">
@@ -179,7 +179,7 @@ export const AccountOrderTracking = () => {
                     ]}
                   />
                 </div>
-                <div className="flex items-center justify-end space-x-3 text-right">
+                <div className="mt-4 flex items-center justify-end space-x-3 text-right">
                   <Button
                     disabled={submitting}
                     variant="secondary"

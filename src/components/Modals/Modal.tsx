@@ -13,21 +13,21 @@ export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-150"
+          enter="ease-out duration-100"
           enterFrom="opacity-0"
           enterTo="opacity-100"
           leave="ease-in duration-75"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-black bg-opacity-25 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-x-0 top-0 bottom-1/3 overflow-y-visible">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-150"
+              enter="ease-out duration-100"
               enterFrom="opacity-0 scale-95"
               enterTo="opacity-100 scale-100"
               leave="ease-in duration-75"
@@ -38,7 +38,7 @@ export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"
-                    className="bg-transparent text-gray-300 transition-colors hover:text-blue-200 focus:outline-none"
+                    className="bg-transparent text-gray-400 transition-colors hover:text-blue-200 focus:outline-none"
                     onClick={closeModal}
                   >
                     <span className="sr-only">Close</span>

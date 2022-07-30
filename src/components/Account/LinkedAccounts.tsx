@@ -148,6 +148,7 @@ export const LinkedAccounts = ({
                   <Select
                     name="relationshipType"
                     label="Relationship Type"
+                    disabled={submitting}
                     fieldProps={{ validate: required }}
                     options={[
                       { value: "parent", label: "Parent" },

@@ -12,7 +12,7 @@ export const AccountPaymentMethods = () => {
       <section className="flex w-full flex-col">
         <div className="flex items-end justify-between border-b border-gray-200 px-6 py-3">
           <h4>Payment Methods</h4>
-          <Button variant="tertiary" className="-mb-2">
+          <Button variant="tertiary" className="-mb-2 -mr-2">
             + Credit Card
             <span className="sr-only">Add Credit Card</span>
           </Button>

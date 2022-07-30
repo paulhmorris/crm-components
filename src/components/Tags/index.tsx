@@ -97,3 +97,12 @@ export const CouponDot = () => {
     <span className="inline-block h-2 w-2 rounded-full border-[0.5px] border-error bg-tag-yellow"></span>
   );
 };
+
+export const GenericDot = ({ color }: { color: string }) => {
+  return (
+    <span
+      className="inline-block h-2 w-2 rounded-full border-[0.5px]"
+      style={{ backgroundColor: color, borderColor: color }}
+    />
+  );
+};
