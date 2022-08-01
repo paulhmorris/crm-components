@@ -1,7 +1,5 @@
 import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
-import { Form } from "components/Forms/Form";
-import { FormConnector } from "components/Forms/FormConnector";
 import { TextInput } from "components/Forms/TextInput";
 import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
@@ -9,6 +7,7 @@ import { GenericDot } from "components/Tags";
 import dayjs from "dayjs";
 import { mockBags } from "mockData";
 import { useState } from "react";
+import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
 
 export const AccountBags = () => {
@@ -76,36 +75,33 @@ export const AccountBags = () => {
           <Form
             onSubmit={activateBag}
             defaultValues={{ orderType: "dryClean" }}
-          >
-            <TextInput label="Barcode" name="barcode" />
-            <div className="mt-4 flex items-center justify-end space-x-3 text-right">
-              <FormConnector>
-                {({ formState: { isSubmitting, isDirty, isValid } }) => (
-                  <>
-                    <Button
-                      disabled={isSubmitting}
-                      variant="secondary"
-                      onClick={() => setActivateModalOpen(false)}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      disabled={isSubmitting || !isValid || !isDirty}
-                      type="submit"
-                      variant="primary"
-                    >
-                      {isSubmitting ? "Activating..." : "Activate"}
-                      {isSubmitting && (
-                        <span className="-mr-1 ml-2">
-                          <ButtonSpinner />
-                        </span>
-                      )}
-                    </Button>
-                  </>
-                )}
-              </FormConnector>
-            </div>
-          </Form>
+            render={({ submitting, valid, dirty }) => (
+              <>
+                <TextInput label="Barcode" name="barcode" />
+                <div className="mt-4 flex items-center justify-end space-x-3 text-right">
+                  <Button
+                    disabled={submitting}
+                    variant="secondary"
+                    onClick={() => setActivateModalOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    disabled={submitting || !valid || !dirty}
+                    type="submit"
+                    variant="primary"
+                  >
+                    {submitting ? "Activating..." : "Activate"}
+                    {submitting && (
+                      <span className="-mr-1 ml-2">
+                        <ButtonSpinner />
+                      </span>
+                    )}
+                  </Button>
+                </div>
+              </>
+            )}
+          />
         </div>
       </Modal>
     </section>

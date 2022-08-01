@@ -50,8 +50,38 @@ export const mockAccountCoupons = [
 ];
 
 export const mockBags = [
-  { id: 1, typeId: 1, barCode: "AAG0793286" },
-  { id: 2, typeId: 2, barCode: "MIKEBAG1" },
+  {
+    id: 1,
+    typeId: 1,
+    barCode: "10928301",
+    hex: "#000",
+    colorName: "black",
+    lastScanned: "2022-04-26T02:40:17Z",
+  },
+  {
+    id: 2,
+    typeId: 2,
+    barCode: "4798241",
+    hex: "#0d9f3f",
+    colorName: "green",
+    lastScanned: "2022-04-27T18:10:48Z",
+  },
+  {
+    id: 3,
+    typeId: 3,
+    barCode: "8023948",
+    hex: "#EB43B2",
+    colorName: "pink",
+    lastScanned: "2022-04-10T21:41:54Z",
+  },
+  {
+    id: 4,
+    typeId: null,
+    barCode: "2734987",
+    hex: "#AC3DB9",
+    colorName: "purple",
+    lastScanned: null,
+  },
 ];
 
 export const mockUser = {
