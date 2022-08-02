@@ -65,7 +65,7 @@
   }
 
   .btn-secondary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-lg border border-blue-200 bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-200 transition-colors duration-75 ease-out hover:border-blue-300 hover:text-blue-300 active:border-blue-400 active:text-blue-400 disabled:border-blue-100 disabled:text-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-lg border border-blue-200 bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-200 transition-colors duration-75 ease-out hover:border-blue-300 hover:bg-gray-100 hover:text-blue-300 active:border-blue-400 active:bg-gray-200/50 active:text-blue-400 disabled:border-blue-100 disabled:bg-white disabled:text-blue-100;
   }
 
   .btn-tertiary {

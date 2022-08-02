@@ -32,7 +32,7 @@ export const PersonalDetails = ({
   return (
     <>
       <section className="flex w-full flex-col">
-        <div className="flex items-end justify-between px-6 py-3">
+        <div className="flex items-end justify-between border-b border-gray-200 px-6 py-3">
           <h4>Personal Details</h4>
           <Button
             onClick={() => setOpenEditDetails(true)}
@@ -42,7 +42,7 @@ export const PersonalDetails = ({
             Edit
           </Button>
         </div>
-        <div className="flex items-center justify-between border-b border-t border-gray-200 p-6">
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
           <p className="text-left text-secondary">Name</p>
           <p className="text-right font-bold">{fullName}</p>
         </div>

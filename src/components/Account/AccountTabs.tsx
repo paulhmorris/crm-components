@@ -3,6 +3,7 @@ import { personalDetails } from "mockData";
 import { AccountBags } from "./AccountBags";
 import { AccountCoupons } from "./AccountCoupons";
 import { AccountPaymentMethods } from "./AccountPaymentMethods";
+import { AccountPlans } from "./AccountPlans";
 import { PersonalDetails } from "./PersonalDetails";
 
 export const AccountTabs = () => {
@@ -53,9 +54,7 @@ export const AccountTabs = () => {
           />
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Plans 👋🏼</p>
-          </div>
+          <AccountPlans />
         </Tab.Panel>
         <Tab.Panel>
           <AccountBags />

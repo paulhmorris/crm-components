@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Link, Outlet } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Link to="/group-profile">Group Profile</Link>
       </nav>
       <Outlet />
+      <Toaster position="top-center" />
     </div>
   );
 }
