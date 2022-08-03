@@ -1,3 +1,5 @@
+import { classNames } from "utils/helpers";
+
 type TagPropsWithText = { text: string };
 
 export const CouponTag = ({ text }: TagPropsWithText) => {
@@ -95,6 +97,21 @@ export const SpecialServiceDot = () => {
 export const CouponDot = () => {
   return (
     <span className="inline-block h-2 w-2 rounded-full border-[0.5px] border-error bg-tag-yellow"></span>
+  );
+};
+
+export const DriverTaskDot = ({ status }: { status: 0 | 1 | 2 }) => {
+  return (
+    <span
+      className={classNames(
+        "inline-block h-2 w-2 rounded-full border-[0.5px]",
+        status === 0
+          ? "border-gray-400 bg-gray-300"
+          : status === 1
+          ? "border-success bg-success"
+          : "border-error bg-error"
+      )}
+    ></span>
   );
 };
 

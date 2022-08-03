@@ -9,23 +9,14 @@ import { mockBags } from "mockData";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
+import { required } from "utils/inputValidations";
 
 export const AccountBags = () => {
   const [activateModalOpen, setActivateModalOpen] = useState(false);
-  async function activateBag({
-    orderType,
-    lockerNumber,
-  }: {
-    orderType: string;
-    lockerNumber: number;
-  }) {
+
+  async function activateBag() {
     await sleep(2000);
-    // setActivateModalOpen(false);
-    console.log(orderType);
-    console.log(lockerNumber);
-    return {
-      barcode: "This bag is already in use",
-    };
+    setActivateModalOpen(false);
   }
 
   return (
@@ -43,7 +34,7 @@ export const AccountBags = () => {
       {mockBags.map((bag) => (
         <div
           key={bag.id}
-          className="flex items-center justify-between border-b border-gray-200 p-6 text-xs"
+          className="flex items-center justify-between border-b border-gray-200 p-6 text-sm"
         >
           <div className="space-y-0.5">
             <p className="font-bold">
@@ -66,7 +57,6 @@ export const AccountBags = () => {
       ))}
 
       {/* Bag Activation Modal */}
-      {/* Order Request Modal */}
       <Modal isOpen={activateModalOpen} setIsOpen={setActivateModalOpen}>
         <div>
           <header className="border-b border-gray-200 pb-6">
@@ -75,9 +65,14 @@ export const AccountBags = () => {
           <Form
             onSubmit={activateBag}
             defaultValues={{ orderType: "dryClean" }}
-            render={({ submitting, valid, dirty }) => (
-              <>
-                <TextInput label="Barcode" name="barcode" />
+            render={({ handleSubmit, submitting, dirtySinceLastSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <TextInput
+                  label="Barcode"
+                  name="barcode"
+                  fieldProps={{ validate: required }}
+                  required
+                />
                 <div className="mt-4 flex items-center justify-end space-x-3 text-right">
                   <Button
                     disabled={submitting}
@@ -87,7 +82,7 @@ export const AccountBags = () => {
                     Cancel
                   </Button>
                   <Button
-                    disabled={submitting || !valid || !dirty}
+                    disabled={submitting || !dirtySinceLastSubmit}
                     type="submit"
                     variant="primary"
                   >
@@ -99,7 +94,7 @@ export const AccountBags = () => {
                     )}
                   </Button>
                 </div>
-              </>
+              </form>
             )}
           />
         </div>
