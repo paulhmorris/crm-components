@@ -39,12 +39,12 @@ const Navbar = () => {
               <Tab
                 key={i}
                 className={
-                  selectedTabIndex === i ? "tab tab-active mx-2" : "tab mx-2"
+                  selectedTabIndex === i ? "tab tab-active mx-4" : "tab mx-4"
                 }
               >
                 <>
                   <span onClick={() => redirect(tab.route, i)}>
-                    {`${tab.title} (index ${i})`}{" "}
+                    {tab.title}{" "}
                   </span>{" "}
                   <span
                     className="text-gray-400"
