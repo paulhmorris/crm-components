@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useField } from "react-final-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
+import { FieldDescription } from "./FieldDescription";
 import { FieldError } from "./FieldError";
 import { SelectOption } from "./SelectOption";
 
@@ -16,7 +17,7 @@ export const Select = ({
 }: SelectProps) => {
   const {
     input,
-    meta: { valid, touched },
+    meta: { submitting },
   } = useField(name, { ...fieldProps });
 
   const [selectedOption, setSelectedOption] = useState(
@@ -27,15 +28,17 @@ export const Select = ({
     setSelectedOption(options.find((o) => o.value === input.value));
   }, [input.value, options]);
 
+  const isDisabled = submitting || props.disabled;
+
   return (
-    <Listbox {...input} disabled={props.disabled}>
+    <Listbox {...input} disabled={isDisabled}>
       {({ open }) => (
         <div className="relative mt-1 h-[70px] w-full pt-5">
           <Listbox.Button
             className={classNames(
               "form-select relative inline-block w-full cursor-pointer border-0 bg-white py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0",
               open && "shadow-border-b-2 shadow-blue-200",
-              props.disabled && "pointer-events-none text-gray-300"
+              isDisabled && "pointer-events-none text-gray-300"
             )}
             {...props}
           >
@@ -45,9 +48,7 @@ export const Select = ({
             className={classNames(
               input.value || open ? "pointer-events-auto top-0" : "top-5",
               "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
-              props.disabled
-                ? "pointer-events-none text-gray-300"
-                : "text-gray-400"
+              isDisabled ? "pointer-events-none text-gray-300" : "text-gray-400"
             )}
           >
             {label}
@@ -70,14 +71,8 @@ export const Select = ({
             </Listbox.Options>
           </Transition>
           <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-            {((valid && description) || !touched) && (
-              <p className="text-xs font-normal text-secondary">
-                {description}
-              </p>
-            )}
-            <span className="text-error">
-              <FieldError name={name} />
-            </span>
+            <FieldDescription description={description} name={name} />
+            <FieldError name={name} />
           </div>
         </div>
       )}

@@ -12,7 +12,7 @@ export const FieldError = ({ name }: { name: string }) => (
     render={({ meta: { touched, error, submitError, dirtySinceLastSubmit } }) =>
       touched &&
       (error || (submitError && !dirtySinceLastSubmit)) && (
-        <span role="alert" id={`${name}-error`}>
+        <span className="text-error" role="alert" id={`${name}-error`}>
           {error || submitError}
         </span>
       )

@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { useField } from "react-final-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
+import { FieldDescription } from "./FieldDescription";
 import { FieldError } from "./FieldError";
 import { TypeaheadOption } from "./TypeaheadOption";
 
@@ -17,19 +18,21 @@ export const Typeahead = ({
 }: SelectProps) => {
   const {
     input,
-    meta: { valid, touched },
+    meta: { submitting },
   } = useField(name, { ...fieldProps });
 
   const [query, setQuery] = useState("");
   const filteredOptions =
     query === ""
       ? options
-      : options.filter((option) => {
-          return option.label.toLowerCase().includes(query.toLowerCase());
-        });
+      : options.filter((option) =>
+          option.label.toLowerCase().includes(query.toLowerCase())
+        );
+
+  const isDisabled = submitting || props.disabled;
 
   return (
-    <Combobox {...input} name={name} disabled={props.disabled}>
+    <Combobox {...input} name={name} disabled={isDisabled}>
       {({ open }) => (
         <div className="relative mt-1 h-[70px] w-full pt-5">
           <Combobox.Input
@@ -40,14 +43,14 @@ export const Typeahead = ({
             className={classNames(
               "relative inline-block w-full border-0 bg-white bg-none py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0",
               open && "shadow-border-b-2 shadow-blue-200",
-              props.disabled && "pointer-events-none text-gray-300"
+              isDisabled && "pointer-events-none text-gray-300"
             )}
           />
           <Combobox.Button className="absolute right-0.5 bottom-7 flex items-center pr-2">
             <SelectorIcon
               className={classNames(
                 "h-5 w-5",
-                props.disabled ? "text-gray-300" : "text-secondary"
+                isDisabled ? "text-gray-300" : "text-secondary"
               )}
               aria-hidden="true"
             />
@@ -56,9 +59,7 @@ export const Typeahead = ({
             className={classNames(
               input.value || open ? "pointer-events-auto top-0" : "top-5",
               "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
-              props.disabled
-                ? "pointer-events-none text-gray-300"
-                : "text-gray-400"
+              isDisabled ? "pointer-events-none text-gray-300" : "text-gray-400"
             )}
           >
             {label}
@@ -82,14 +83,8 @@ export const Typeahead = ({
           </Transition>
           {/* Description and error visibility logic */}
           <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-            {((valid && description) || !touched) && (
-              <p className="text-xs font-normal text-secondary">
-                {description}
-              </p>
-            )}
-            <span className="text-error">
-              <FieldError name={name} />
-            </span>
+            <FieldDescription description={description} name={name} />
+            <FieldError name={name} />
           </div>
         </div>
       )}
