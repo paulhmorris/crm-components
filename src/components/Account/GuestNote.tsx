@@ -1,8 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextArea } from "components/Forms/TextArea";
-import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
+import { SubmitButton } from "components/SubmitButton";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
@@ -37,7 +37,7 @@ export const GuestNote = () => {
           <Form
             onSubmit={saveNote}
             initialValues={{ guestNote: "This dude is weird!" }}
-            render={({ handleSubmit, submitting, pristine }) => (
+            render={({ handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit} className="pt-6">
                 <p className="mb-1">
                   ⛔️ You are editing a note the guest can see.
@@ -57,18 +57,7 @@ export const GuestNote = () => {
                   >
                     Cancel
                   </Button>
-                  <Button
-                    disabled={submitting || pristine}
-                    type="submit"
-                    variant="primary"
-                  >
-                    {submitting ? "Saving..." : "Save"}
-                    {submitting && (
-                      <span className="-mr-1 ml-2">
-                        <ButtonSpinner />
-                      </span>
-                    )}
-                  </Button>
+                  <SubmitButton text="Save" submittingText="Saving..." />
                 </div>
               </form>
             )}

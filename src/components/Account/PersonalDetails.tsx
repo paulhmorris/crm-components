@@ -2,8 +2,8 @@ import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
 import { Toggle } from "components/Forms/Toggle";
-import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
+import { SubmitButton } from "components/SubmitButton";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { PersonalDetailsProps } from "types";
@@ -102,13 +102,7 @@ export const PersonalDetails = ({
               firstName: "Johnny",
               lastName: "Rocket",
             }}
-            render={({
-              handleSubmit,
-              submitting,
-              pristine,
-              validating,
-              invalid,
-            }) => (
+            render={({ handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit} className="pt-6">
                 <div className="mb-6 space-y-1">
                   <TextInput
@@ -148,18 +142,7 @@ export const PersonalDetails = ({
                   >
                     Cancel
                   </Button>
-                  <Button
-                    disabled={submitting || pristine || validating || invalid}
-                    type="submit"
-                    variant="primary"
-                  >
-                    {submitting ? "Saving..." : "Save"}
-                    {submitting && (
-                      <span className="-mr-1 ml-2">
-                        <ButtonSpinner />
-                      </span>
-                    )}
-                  </Button>
+                  <SubmitButton text="Save" submittingText="Saving..." />
                 </div>
               </form>
             )}

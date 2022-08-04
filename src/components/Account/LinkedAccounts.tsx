@@ -4,8 +4,8 @@ import { DropdownMenu } from "components/DropdownMenu";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { Select } from "components/Forms/Select";
 import { TextInput } from "components/Forms/TextInput";
-import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
+import { SubmitButton } from "components/SubmitButton";
 import { mockLinkedAccounts } from "mockData";
 import { useState } from "react";
 import { Form } from "react-final-form";
@@ -105,7 +105,7 @@ export const LinkedAccounts = ({
                 utils.changeValue(state, "phone", () => searchedGuest.phone);
               },
             }}
-            render={({ form, handleSubmit, submitting, invalid }) => (
+            render={({ form, handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit}>
                 <div className="mb-6 space-y-1">
                   <TextInput
@@ -165,18 +165,7 @@ export const LinkedAccounts = ({
                   >
                     Cancel
                   </Button>
-                  <Button
-                    disabled={submitting || invalid}
-                    type="submit"
-                    variant="primary"
-                  >
-                    {submitting ? "Saving..." : "Save"}
-                    {submitting && (
-                      <span className="-mr-1 ml-2">
-                        <ButtonSpinner />
-                      </span>
-                    )}
-                  </Button>
+                  <SubmitButton text="Save" submittingText="Saving..." />
                 </div>
               </form>
             )}

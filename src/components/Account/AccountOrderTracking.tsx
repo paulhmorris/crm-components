@@ -3,9 +3,9 @@ import { Button } from "components/Button";
 import { DropdownMenu } from "components/DropdownMenu";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { Select } from "components/Forms/Select";
-import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
 import { OrderPill } from "components/Orders/OrderPill";
+import { SubmitButton } from "components/SubmitButton";
 import dayjs from "dayjs";
 import { RightArrow } from "icons";
 import { useState } from "react";
@@ -156,7 +156,7 @@ export const AccountOrderTracking = () => {
           <Form
             onSubmit={requestOrder}
             initialValues={{ orderType: "dryClean" }}
-            render={({ handleSubmit, submitting, invalid, pristine }) => (
+            render={({ handleSubmit, submitting }) => (
               <form className="pt-6" onSubmit={handleSubmit}>
                 <div className="mb-6 flex items-center space-x-4">
                   <Select
@@ -187,18 +187,7 @@ export const AccountOrderTracking = () => {
                   >
                     Cancel
                   </Button>
-                  <Button
-                    disabled={submitting || invalid || pristine}
-                    type="submit"
-                    variant="primary"
-                  >
-                    {submitting ? "Requesting..." : "Request"}
-                    {submitting && (
-                      <span className="-mr-1 ml-2">
-                        <ButtonSpinner />
-                      </span>
-                    )}
-                  </Button>
+                  <SubmitButton text="Request" submittingText="Requesting..." />
                 </div>
               </form>
             )}

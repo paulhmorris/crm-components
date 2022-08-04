@@ -1,8 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextArea } from "components/Forms/TextArea";
-import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
+import { SubmitButton } from "components/SubmitButton";
 import { useState } from "react";
 import { Form } from "react-final-form";
 import { sleep } from "utils/helpers";
@@ -14,7 +14,9 @@ export const InternalNote = () => {
   async function saveNote(value: string) {
     await sleep(2000);
     console.log(value);
-    setOpen(false);
+    return {
+      internalNote: "Error saving note",
+    };
   }
 
   return (
@@ -38,7 +40,7 @@ export const InternalNote = () => {
           <Form
             onSubmit={saveNote}
             initialValues={{ internalNote: "abc123" }}
-            render={({ handleSubmit, submitting, pristine, invalid }) => (
+            render={({ handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit} className="pt-6">
                 <p className="mb-1">✅ Only employees can read this note.</p>
                 <div className="mb-2">
@@ -46,6 +48,7 @@ export const InternalNote = () => {
                     name="internalNote"
                     label="Internal Note"
                     fieldProps={{ validate: required }}
+                    required
                   />
                 </div>
                 <div className="flex items-center justify-end space-x-3 text-right">
@@ -56,18 +59,7 @@ export const InternalNote = () => {
                   >
                     Cancel
                   </Button>
-                  <Button
-                    disabled={submitting || pristine || invalid}
-                    type="submit"
-                    variant="primary"
-                  >
-                    {submitting ? "Saving..." : "Save"}
-                    {submitting && (
-                      <span className="-mr-1 ml-2">
-                        <ButtonSpinner />
-                      </span>
-                    )}
-                  </Button>
+                  <SubmitButton text="Save" submittingText="Saving..." />
                 </div>
               </form>
             )}

@@ -1,8 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
-import { ButtonSpinner } from "components/Loaders/ButtonSpinner";
 import { Modal } from "components/Modals/Modal";
+import { SubmitButton } from "components/SubmitButton";
 import { GenericDot } from "components/Tags";
 import dayjs from "dayjs";
 import { mockBags } from "mockData";
@@ -65,8 +65,8 @@ export const AccountBags = () => {
           <Form
             onSubmit={activateBag}
             defaultValues={{ orderType: "dryClean" }}
-            render={({ handleSubmit, submitting, dirtySinceLastSubmit }) => (
-              <form onSubmit={handleSubmit}>
+            render={({ handleSubmit, submitting }) => (
+              <form onSubmit={handleSubmit} className="mt-4">
                 <TextInput
                   label="Barcode"
                   name="barcode"
@@ -81,18 +81,10 @@ export const AccountBags = () => {
                   >
                     Cancel
                   </Button>
-                  <Button
-                    disabled={submitting || !dirtySinceLastSubmit}
-                    type="submit"
-                    variant="primary"
-                  >
-                    {submitting ? "Activating..." : "Activate"}
-                    {submitting && (
-                      <span className="-mr-1 ml-2">
-                        <ButtonSpinner />
-                      </span>
-                    )}
-                  </Button>
+                  <SubmitButton
+                    text="Activate"
+                    submittingText="Activating..."
+                  />
                 </div>
               </form>
             )}
