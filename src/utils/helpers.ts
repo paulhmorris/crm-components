@@ -1,4 +1,5 @@
 import formatStringByPattern from "format-string-by-pattern";
+import { SelectOptionProps } from "types";
 import { phoneMask } from "./masks";
 
 /** Combines multiple class strings into one. Separate by comma */
@@ -38,3 +39,20 @@ export const getAutopayStatus = (status: boolean): string =>
 
 export const sleep = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
+
+/** Converts an array of objects into a format ready for the Select component
+ * @param {string} optionValue - the key to use for the SelectOption value
+ * @param {string} optionsLabel - the key to use for the SelectOption label
+ */
+export const convertArrayToSelectOptions = (
+  array: { [key: string]: string | number }[],
+  optionValue: string | number,
+  optionLabel: string
+): SelectOptionProps[] => {
+  return array.map((object) => {
+    return {
+      value: object[optionValue].toString(),
+      label: object[optionLabel].toString(),
+    };
+  });
+};
