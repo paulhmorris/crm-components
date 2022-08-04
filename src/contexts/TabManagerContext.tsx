@@ -1,15 +1,10 @@
 import { useState, useEffect, createContext, ReactNode, SetStateAction, Dispatch } from "react";
 import { getLocalStorage, setLocalStorage } from '../utils/test';
-
-interface TabType {
-    title: string;
-    route: string;
-}
-
+import { TabDetails } from '../types';
 interface TabManagerContextType {
-    tabs: [];
-    setTabs: Dispatch<SetStateAction<TabType | null>>;
-    selectedTabIndex: number | null;
+    tabs: TabDetails[];
+    setTabs: Dispatch<SetStateAction<TabDetails[] | null>>;
+    selectedTabIndex: number;
     setSelectedTabIndex: Dispatch<SetStateAction<number | null>>;
 }
 interface TabManagerProviderProps {
@@ -19,12 +14,12 @@ export const TabManagerContext = createContext({} as TabManagerContextType);
 
 export const TabManagerProvider = ({ children }: TabManagerProviderProps) => {
 
-    const [tabs, setTabs] = useState(() => getLocalStorage("tab"));
-    const [selectedTabIndex, setSelectedTabIndex] = useState(() => getLocalStorage("tabIndex"));
+    const [tabs, setTabs] = useState(() => getLocalStorage("tabs"));
+    const [selectedTabIndex, setSelectedTabIndex] = useState(() => getLocalStorage("activeTabIndex"));
 
     useEffect(() => {
-        setLocalStorage("tab", tabs);
-        setLocalStorage("tabIndex", selectedTabIndex);
+        setLocalStorage("tabs", tabs);
+        setLocalStorage("activeTabIndex", selectedTabIndex);
     }, [tabs, selectedTabIndex]);
 
     return (

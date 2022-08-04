@@ -2,57 +2,49 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TabManagerContext } from "../contexts/TabManagerContext";
 import { Tab } from "@headlessui/react";
-
-interface TabProps {
-  title: string;
-  route: string;
-}
+import { TabDetails } from '../types';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } =
-    useContext(TabManagerContext);
-
+  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } = useContext(TabManagerContext);
+  //WHEN A USER CLOSES A TAB USING 'X' BUTTON ON THE TAB
   const closeTab = (title: string) => {
-    const updatedTabsData = tabs.filter((tab: TabProps) => tab.title !== title);
-    console.log({ updatedTabsData });
-    console.log({ tabs });
-    console.log({ title });
+    const updatedTabsData: TabDetails[] = tabs.filter(
+      (tab: TabDetails) => tab.title !== title
+    );
     if (updatedTabsData.length) {
+      //IF THERE ACTIVE TAB/S REMAINING
       setSelectedTabIndex(updatedTabsData.length - 1);
-      navigate(updatedTabsData[updatedTabsData.length - 1]?.route);
+      navigate(updatedTabsData[updatedTabsData.length - 1].route);
     } else {
+      //IF THERE ARE NO TABS REMAINING
       navigate("/");
       setSelectedTabIndex(null);
     }
     setTabs(updatedTabsData);
   };
-  const redirect = (route: string, index: number) => {
-    setSelectedTabIndex(index);
+  //REDIRECT WHEN A USER CLICKS ON A TAB
+  const redirect = (route: string, tabIndex: number) => {
+    setSelectedTabIndex(tabIndex);
     navigate(route);
     return;
   };
 
   return (
     <nav className="mb-10 flex w-full space-x-4 border-b-2 border-gray-300 pb-2">
-      <Tab.Group
-        selectedIndex={selectedTabIndex}
-        onChange={setSelectedTabIndex}
-      >
+      <Tab.Group selectedIndex={selectedTabIndex}>
         <Tab.List>
-          {tabs.map((tab: { route: string; title: string }, i: number) => {
+          {tabs.map((tab: TabDetails, i: number) => {
             return (
               <Tab
                 key={i}
-                className={({ selected }) =>
-                  selected || selectedTabIndex === i
-                    ? "tab tab-active mx-2"
-                    : "tab mx-2"
+                className={
+                  selectedTabIndex === i ? "tab tab-active mx-2" : "tab mx-2"
                 }
               >
                 <>
                   <span onClick={() => redirect(tab.route, i)}>
-                    {tab.title}{" "}
+                    {`${tab.title} (index ${i})`}{" "}
                   </span>{" "}
                   <span
                     className="text-gray-400"

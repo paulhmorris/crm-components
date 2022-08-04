@@ -4,7 +4,7 @@ import { TabManagerContext } from 'contexts/TabManagerContext';
 import { useNavigate } from "react-router-dom";
 import { Button } from './Button';
 
-const Topbar = () => {
+const TabSelection = () => {
     const navigate = useNavigate();
     const { tabs, setTabs, setSelectedTabIndex } = useContext(TabManagerContext);
 
@@ -20,4 +20,4 @@ const Topbar = () => {
     )
 }
 
-export default Topbar;
+export default TabSelection;

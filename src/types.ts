@@ -9,3 +9,8 @@ export type StarchType =
   | "medium starch"
   | "heavy starch"
   | "cowboy";
+
+  export interface TabDetails {
+    title: string;
+    route: string;
+};
