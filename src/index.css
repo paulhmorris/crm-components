@@ -112,7 +112,13 @@
   }
 
   .tab-active {
-    @apply text-blue-200 shadow-border-b-3 shadow-blue-200;
+    @apply text-blue-200 shadow-border-b-3 shadow-blue-200 font-bold;
+  }
+}
+
+@layer utilities {
+  .striped .striped-child:nth-child(odd) {
+    @apply bg-gray-100
   }
 }
 
