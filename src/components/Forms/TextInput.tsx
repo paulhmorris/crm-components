@@ -1,19 +1,8 @@
-import { ComponentPropsWithoutRef } from "react";
-import { useField, UseFieldConfig } from "react-final-form";
+import { useField } from "react-final-form";
+import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
+import { FieldDescription } from "./FieldDescription";
 import { FieldError } from "./FieldError";
-
-interface ITextInput extends ComponentPropsWithoutRef<"input"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
-  /** Field label. This acts as the placeholder until in focus */
-  label: string;
-  /** Field type. Defaults to "text" */
-  type?: "text" | "password" | "email" | "number" | "tel";
-  /** Optional description will show below the input. Will not be shown if the field has an error */
-  description?: string;
-  fieldProps?: UseFieldConfig<string>;
-}
 
 export const TextInput = ({
   name,
@@ -22,46 +11,49 @@ export const TextInput = ({
   description,
   fieldProps,
   ...props
-}: ITextInput) => {
+}: TextInputProps) => {
   const {
     input,
-    meta: { touched, submitting, invalid, valid },
+    meta: { touched, submitting, dirtySinceLastSubmit, submitError, invalid },
   } = useField(name, { ...fieldProps });
 
+  const shouldShowError = touched && invalid && !dirtySinceLastSubmit;
+  const isDisabled = submitting || props.disabled;
+
   return (
-    <div className="form-group pt-5">
+    <div className="relative pt-5">
       <input
         {...input}
         {...props}
         id={name}
         type={type}
         placeholder="doNotRemove"
-        disabled={submitting || props.disabled}
+        disabled={isDisabled}
         aria-describedby={`${name}-error`}
+        aria-invalid={invalid}
+        aria-errormessage={submitError ?? undefined}
         className={classNames(
-          touched &&
-            invalid &&
-            "shadow-error hover:shadow-error focus:shadow-error",
-          "peer form-input"
+          "peer inline-block w-full border-0 py-0 pl-0.5 text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0 disabled:pointer-events-none disabled:text-gray-300",
+          shouldShowError &&
+            "shadow-error hover:shadow-error focus:shadow-error"
         )}
       />
       <label
         className={classNames(
-          "form-label peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
-          touched && invalid && "text-error",
-          props.disabled && "pointer-events-none text-gray-300"
+          isDisabled
+            ? "pointer-events-none text-gray-300"
+            : shouldShowError
+            ? "text-error"
+            : "text-gray-400",
+          "absolute top-0 left-0.5 select-none text-sm font-bold transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5"
         )}
         htmlFor={name}
       >
         {label}
       </label>
-      <div className="mt-1.5 ml-[1px] text-xs">
-        {valid && description && (
-          <p className="text-xs font-normal text-secondary">{description}</p>
-        )}
-        <span className="text-error">
-          <FieldError name={name} />
-        </span>
+      <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
+        <FieldDescription description={description} name={name} />
+        <FieldError name={name} />
       </div>
     </div>
   );

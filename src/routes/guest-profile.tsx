@@ -1,24 +1,13 @@
 import { AccountNotesTabs } from "components/Account/AccountNotesTabs";
+import { AccountOrderTracking } from "components/Account/AccountOrderTracking";
 import { AccountOverviewTabs } from "components/Account/AccountOverviewTabs";
 import { AccountTabs } from "components/Account/AccountTabs";
-import {
-  AccountHeader,
-  AccountHeaderProps,
-} from "../components/Account/AccountHeader";
-import { StatementsTab } from "components/Groups/StatementsTab";
-
-const mockAccount: AccountHeaderProps = {
-  fullName: "Johnny Rocket",
-  createDate: new Date(2020, 4, 1).toDateString(),
-  groupId: 42,
-  groupName: "Cartoon Network",
-  isLead: true,
-  acceptTerms: false,
-};
+import { mockAccount } from "mockData";
+import { AccountHeader } from "../components/Account/AccountHeader";
 
 export default function GuestProfile() {
   return (
-    <div className="w-full">
+    <div className="mx-auto w-full max-w-5xl">
       <AccountHeader
         fullName={mockAccount.fullName}
         createDate={mockAccount.createDate}
@@ -34,10 +23,10 @@ export default function GuestProfile() {
         <AccountNotesTabs />
       </div>
       <div className="mt-10">
-        <AccountTabs />
+        <AccountOrderTracking />
       </div>
-      <div className='mt-10'>
-        <StatementsTab />
+      <div className="mt-10">
+        <AccountTabs />
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
-import { Listbox } from "@headlessui/react";
+import { Combobox } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/solid";
 import { SelectOptionProps } from "types";
 import { classNames } from "utils/helpers";
 
-export const SelectOption = ({ value, label }: SelectOptionProps) => {
+export const TypeaheadOption = ({ value, label }: SelectOptionProps) => {
   return (
-    <Listbox.Option
+    <Combobox.Option
       value={value}
       className={({ active }) =>
         classNames(
@@ -35,6 +35,6 @@ export const SelectOption = ({ value, label }: SelectOptionProps) => {
           )}
         </>
       )}
-    </Listbox.Option>
+    </Combobox.Option>
   );
 };

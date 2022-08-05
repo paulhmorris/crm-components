@@ -13,10 +13,13 @@ module.exports = {
         400: "#616161",
       },
       blue: {
+        50: "#b2cef3",
         100: "#d7e6fa",
         200: "#0d4b9f",
         300: "#2c44a6",
         400: "#203177",
+        ice: "rgba(23, 219, 228, 0.1)",
+        jarvis: "#253A8F",
       },
       tide: {
         blue: "#0d4b9f",
@@ -36,11 +39,12 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       white: "#fff",
-      black: "#000",
+      black: "#1b1b1b",
     },
     borderRadius: {
       none: "0",
-      sm: "2px",
+      tiny: "2px",
+      sm: "3px",
       DEFAULT: "4px",
       md: "6px",
       lg: "8px",
@@ -73,6 +77,9 @@ module.exports = {
         "border-b": "0 1px 0 0",
         "border-b-2": "0 2px 0 0",
         "border-b-3": "0 3px 0 0",
+        "border-t": "0 -1px 0 0",
+        "border-t-2": "0 -2px 0 0",
+        "border-y-2": "0 -2px 0 0 #000, 0 2px 0 0 #000",
         toggle:
           "0px 2.5px 6.5px rgba(0, 0, 0, 0.15), 0px 2.5px 0.8px rgba(0, 0, 0, 0.06);",
       },

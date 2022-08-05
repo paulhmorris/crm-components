@@ -1,32 +1,31 @@
-import { ComponentPropsWithoutRef } from "react";
-import { useField, UseFieldConfig } from "react-final-form";
-import { ValidatorFunction } from "types";
+import { useField } from "react-final-form";
+import { TextAreaProps } from "types";
 import { classNames } from "utils/helpers";
+import { FieldDescription } from "./FieldDescription";
 import { FieldError } from "./FieldError";
 
-interface ITextArea extends ComponentPropsWithoutRef<"textarea"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
-  /** Field label. This acts as the placeholder until active */
-  label: string;
-  /** Field type. */
-  fieldProps?: UseFieldConfig<string>;
-  validate?: ValidatorFunction | ((value: string) => ValidatorFunction);
-}
-
-export const TextArea = ({ name, label, validate, ...props }: ITextArea) => {
+export const TextArea = ({
+  name,
+  label,
+  description,
+  fieldProps,
+  ...props
+}: TextAreaProps) => {
   const {
     input,
-    meta: { touched, submitting, invalid },
-  } = useField(name, { validate });
+    meta: { touched, submitting, submitError, invalid, dirtySinceLastSubmit },
+  } = useField(name, { ...fieldProps });
+
+  const shouldShowError = touched && invalid && !dirtySinceLastSubmit;
+  const isDisabled = submitting || props.disabled;
 
   return (
-    <div className="form-group">
+    <div className="relative">
       <label
         className={classNames(
-          "text-[.625rem] font-bold uppercase",
-          touched && invalid && "text-error",
-          props.disabled && "text-gray-300"
+          "text-[.625rem] font-bold uppercase transition",
+          shouldShowError && "text-error",
+          isDisabled && "text-gray-300"
         )}
         htmlFor={name}
       >
@@ -37,17 +36,19 @@ export const TextArea = ({ name, label, validate, ...props }: ITextArea) => {
         {...input}
         {...props}
         id={name}
-        value={input.value ?? ""}
+        rows={4}
         placeholder="Go ahead, type something..."
-        required={props.required}
-        disabled={submitting || props.disabled}
+        disabled={isDisabled}
         aria-describedby={`${name}-error`}
+        aria-invalid={invalid}
+        aria-errormessage={submitError ?? undefined}
         className={classNames(
-          "form-textarea",
-          touched && invalid && "border-error text-error focus:border-error"
+          "inline-block h-full w-full rounded border-0 bg-white text-sm ring-1 ring-gray-400 transition placeholder:text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent",
+          shouldShowError && "ring-error focus:border-error"
         )}
       ></textarea>
-      <div className="mt-1 ml-[1px] text-xs text-error">
+      <div className="ml-[1px] min-h-[1.25rem] text-xs">
+        <FieldDescription description={description} name={name} />
         <FieldError name={name} />
       </div>
     </div>

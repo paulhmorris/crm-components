@@ -1,0 +1,154 @@
+import { Dialog } from "@headlessui/react";
+import { Button } from "components/Button";
+import { TextInput } from "components/Forms/TextInput";
+import { Toggle } from "components/Forms/Toggle";
+import { Modal } from "components/Modals/Modal";
+import { SubmitButton } from "components/SubmitButton";
+import { useState } from "react";
+import { Form } from "react-final-form";
+import { PersonalDetailsProps } from "types";
+import { formatPhone, sleep } from "utils/helpers";
+import { required } from "utils/inputValidations";
+
+export const PersonalDetails = ({
+  fullName,
+  email,
+  phone,
+  address,
+  group,
+  autoRenew,
+  onHold,
+}: PersonalDetailsProps) => {
+  const [openEditDetails, setOpenEditDetails] = useState(false);
+
+  async function saveDetails() {
+    await sleep(2000);
+    console.log("Saved details");
+    setOpenEditDetails(false);
+    await sleep(75);
+    return;
+  }
+
+  return (
+    <>
+      <section className="flex w-full flex-col">
+        <div className="flex items-end justify-between border-b border-gray-200 px-6 py-3">
+          <h4>Personal Details</h4>
+          <Button
+            onClick={() => setOpenEditDetails(true)}
+            variant="tertiary"
+            className="-mb-2"
+          >
+            Edit
+          </Button>
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
+          <p className="text-left text-secondary">Name</p>
+          <p className="text-right font-bold">{fullName}</p>
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
+          <p className="text-left text-secondary">Email</p>
+          <p className="text-right font-bold">{email}</p>
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
+          <p className="text-left text-secondary">Phone</p>
+          <p className="text-right font-bold">{formatPhone(phone)}</p>
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
+          <p className="text-left text-secondary">Home Address</p>
+          <p className="text-right font-bold">{address}</p>
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
+          <p className="text-left text-secondary">Group</p>
+          {group ? (
+            <a href="#" className="text-right">
+              {group.name}
+            </a>
+          ) : (
+            <p className="text-right font-bold">No Group</p>
+          )}
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
+          <p className="text-left text-secondary">
+            Auto-Renew Academic Subscriptions
+          </p>
+          <Form
+            onSubmit={() => console.log("autoRenew toggled")}
+            initialValues={{ autoRenew }}
+            className="ml-auto"
+            render={() => <Toggle name="autoRenew" />}
+          />
+        </div>
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
+          <p className="text-left text-secondary">Account on Hold</p>
+          <Form
+            onSubmit={() => console.log("onHold toggled")}
+            initialValues={{ onHold }}
+            className="ml-auto"
+            render={() => <Toggle name="onHold" />}
+          />
+        </div>
+      </section>
+      <Modal isOpen={openEditDetails} setIsOpen={setOpenEditDetails}>
+        <div>
+          <header className="border-b border-gray-200 pb-6">
+            <Dialog.Title as="h2">Change Personal Details</Dialog.Title>
+          </header>
+          <Form
+            onSubmit={saveDetails}
+            initialValues={{
+              phone,
+              email,
+              firstName: "Johnny",
+              lastName: "Rocket",
+            }}
+            render={({ handleSubmit, submitting }) => (
+              <form onSubmit={handleSubmit} className="pt-6">
+                <div className="mb-6 space-y-1">
+                  <TextInput
+                    name="firstName"
+                    label="First Name"
+                    fieldProps={{ validate: required }}
+                    required
+                  />
+                  <TextInput
+                    name="lastName"
+                    label="Last Name"
+                    fieldProps={{ validate: required }}
+                    required
+                  />
+                  <TextInput
+                    name="email"
+                    label="Email"
+                    fieldProps={{ validate: required }}
+                    required
+                  />
+                  <TextInput
+                    name="phone"
+                    label="Phone"
+                    type="tel"
+                    fieldProps={{
+                      validate: required,
+                      format: formatPhone,
+                    }}
+                    required
+                  />
+                </div>
+                <div className="flex items-center justify-end space-x-3 text-right">
+                  <Button
+                    disabled={submitting}
+                    variant="secondary"
+                    onClick={() => setOpenEditDetails(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <SubmitButton text="Save" submittingText="Saving..." />
+                </div>
+              </form>
+            )}
+          />
+        </div>
+      </Modal>
+    </>
+  );
+};

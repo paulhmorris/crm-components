@@ -1,19 +1,14 @@
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
 import TabSelection from "./TabSelection";
-
-const queryClient = new QueryClient();
+import { Toaster } from "react-hot-toast";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="mx-auto mt-10 max-w-[820px] p-4">
-        <TabSelection />
-        <Navbar />
-        <Outlet />
-      </div>
-    </QueryClientProvider>
+    <div className="mt-10 p-4 pb-24">
+      <TabSelection />
+      <Outlet />
+      <Toaster position="top-center" />
+    </div>
   );
 }
 

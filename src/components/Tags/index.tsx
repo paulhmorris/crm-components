@@ -1,65 +1,125 @@
-type TagProps = { text: string };
+import { classNames } from "utils/helpers";
 
-export const CouponTag = ({ text }: TagProps) => {
+type TagPropsWithText = { text: string };
+
+export const CouponTag = ({ text }: TagPropsWithText) => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded bg-tag-yellow px-2 py-1 align-middle font-bold text-tide-orange">
-      <span>{text}</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-tag-yellow px-2 py-1 font-bold text-tide-orange">
+      {text}
+    </span>
   );
 };
 
-export const SpecialServicesTag = ({ text }: TagProps) => {
+export const SpecialServicesTag = ({ text }: TagPropsWithText) => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded bg-tag-purple px-2 py-1 align-middle font-bold text-white">
-      <span className="capitalize">{text}</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-tag-purple px-2 py-1 font-bold capitalize text-white">
+      {text}
+    </span>
   );
 };
 
-export const GroupNameTag = ({ text }: TagProps) => {
+export const GroupNameTag = ({ text }: TagPropsWithText) => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded-pill bg-blue-200 px-2 py-0.5 align-middle text-sm text-white">
-      <span className="capitalize">{text}</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-pill bg-blue-200 px-2 py-0.5 text-sm capitalize text-white">
+      {text}
+    </span>
   );
 };
 
 export const DefaultTag = () => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap bg-tag-green px-1 align-middle text-xs font-bold leading-[18px] text-white">
-      <span>DEFAULT</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tag-green px-1 py-0.5 text-xs font-bold leading-5 text-white">
+      Default
+    </span>
   );
 };
 
 export const TaxExemptTag = () => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded-sm bg-blue-200 px-[3px] py-[1px] align-middle text-tiny font-bold leading-[11px] text-white">
-      <span>TE</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-blue-200 px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white">
+      TE
+    </span>
   );
 };
 
 export const WashFoldTag = () => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded-sm bg-tide-orange px-[3px] py-[1px] align-middle text-tiny font-bold leading-[11px] text-white">
-      <span>WF</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tide-orange px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white">
+      WF
+    </span>
+  );
+};
+
+export const LostTag = () => {
+  return (
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-error px-2 py-[1px] text-[11px] leading-4 text-white">
+      LOST
+    </span>
   );
 };
 
 export const DryCleanTag = () => {
   return (
-    <div className="inline-flex max-w-min items-center whitespace-nowrap rounded-sm bg-black px-[3px] py-[1px] align-middle text-tiny font-bold leading-[11px] text-white">
-      <span>DC</span>
-    </div>
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-black px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white">
+      DC
+    </span>
   );
 };
 
-export const NewLeadTag = () => {
+export const NewGuestTag = () => {
   return (
-    <div className="inline-flex h-7 max-w-min items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 align-middle text-sm font-bold text-tag-green">
-      <span>I&apos;m New!</span>
-    </div>
+    <span className="inline-flex h-7 max-w-min flex-grow-0 items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 text-sm font-bold text-tag-green">
+      I&apos;m New!
+    </span>
+  );
+};
+
+export const LeadTag = () => {
+  return (
+    <span className="inline-flex h-7 max-w-min flex-grow-0 items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 text-sm font-bold text-tag-green">
+      Lead
+    </span>
+  );
+};
+
+export const GroupDot = () => {
+  return (
+    <span className="inline-block h-2 w-2 rounded-full bg-tide-blue"></span>
+  );
+};
+
+export const SpecialServiceDot = () => {
+  return (
+    <span className="inline-block h-2 w-2 rounded-full bg-tag-purple"></span>
+  );
+};
+
+export const CouponDot = () => {
+  return (
+    <span className="inline-block h-2 w-2 rounded-full border-[0.5px] border-error bg-tag-yellow"></span>
+  );
+};
+
+export const DriverTaskDot = ({ status }: { status: 0 | 1 | 2 }) => {
+  return (
+    <span
+      className={classNames(
+        "inline-block h-2 w-2 rounded-full border-[0.5px]",
+        status === 0
+          ? "border-gray-400 bg-gray-300"
+          : status === 1
+          ? "border-success bg-success"
+          : "border-error bg-error"
+      )}
+    ></span>
+  );
+};
+
+export const GenericDot = ({ color }: { color: string }) => {
+  return (
+    <span
+      className="inline-block h-2 w-2 rounded-full border-[0.5px]"
+      style={{ backgroundColor: color, borderColor: color }}
+    />
   );
 };
