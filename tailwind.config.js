@@ -72,6 +72,10 @@ module.exports = {
       lineHeight: {
         4.5: "1.125rem",
       },
+      transitionDuration: {
+        25: "25ms",
+        50: "50ms",
+      },
       boxShadow: {
         "border-b": "0 1px 0 0",
         "border-b-2": "0 2px 0 0",

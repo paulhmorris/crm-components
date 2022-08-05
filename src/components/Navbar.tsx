@@ -1,7 +1,8 @@
+import { Tab } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TabManagerContext } from "../contexts/TabManagerContext";
-import { Tab } from "@headlessui/react";
 import { TabDetails } from "../types";
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
       (tab: TabDetails) => tab.title !== title
     );
     if (updatedTabsData.length) {
-      //IF THERE ACTIVE TAB/S REMAINING
+      //IF THERE ACTIVE TABS REMAINING
       setSelectedTabIndex(updatedTabsData.length - 1);
       navigate(updatedTabsData[updatedTabsData.length - 1].route);
     } else {
@@ -32,33 +33,34 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mb-10 flex w-full justify-center space-x-4 border-b-2 border-blue-100 pb-2">
+    <nav className="mb-10 w-full">
       <Tab.Group selectedIndex={selectedTabIndex}>
-        <Tab.List>
-          {tabs.map((tab: TabDetails, i: number) => {
-            return (
-              <Tab
-                key={i}
-                className={
-                  selectedTabIndex === i ? "tab tab-active mx-4" : "tab mx-4"
-                }
-              >
+        <Tab.List className="space-x-4">
+          {tabs.map(({ title, route }: TabDetails, index: number) => (
+            <Tab key={title} className="relative">
+              {({ selected }) => (
                 <>
-                  <span onClick={() => redirect(tab.route, i)}>
-                    {tab.title}{" "}
-                  </span>{" "}
+                  <div className="peer flex items-center pr-5">
+                    <span
+                      className={selected ? "tab tab-active" : "tab"}
+                      onClick={() => redirect(route, index)}
+                    >
+                      {title}
+                    </span>
+                  </div>
                   <span
-                    className="text-gray-400"
-                    onClick={() => closeTab(tab.title)}
+                    className="absolute top-0 right-0 text-transparent transition-colors duration-75 hover:text-gray-400 peer-hover:text-gray-300"
+                    onClick={() => closeTab(title)}
                   >
-                    x
+                    <XIcon className="-ml-2 h-4 w-4" />
                   </span>
                 </>
-              </Tab>
-            );
-          })}
+              )}
+            </Tab>
+          ))}
         </Tab.List>
       </Tab.Group>
+      <hr className="mt-0.5" />
     </nav>
   );
 };
