@@ -85,8 +85,3 @@
   }
 }
 
-@layer utilities {
-  .striped .striped-child:nth-child(odd) {
-    @apply bg-gray-100
-  }
-}
