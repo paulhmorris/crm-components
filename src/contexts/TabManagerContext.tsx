@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, ReactNode, SetStateAction, Dispatch } from "react";
-import { getLocalStorage, setLocalStorage } from '../utils/test';
+import { getLocalStorage, setLocalStorage } from '../utils/storage';
 import { TabDetails } from '../types';
 interface TabManagerContextType {
     tabs: TabDetails[];

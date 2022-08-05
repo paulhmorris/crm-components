@@ -1,4 +1,4 @@
-export const setLocalStorage = (key, value) => {
+export const setLocalStorage = (key: string, value: [] | number) => {
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {
@@ -6,7 +6,7 @@ export const setLocalStorage = (key, value) => {
     }
   }
   
-  export const getLocalStorage = (key) => {
+  export const getLocalStorage = (key: string) => {
     try {
       const value = window.localStorage.getItem(key);
       return value ? JSON.parse(value) : [];
