@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import { TabDetails } from "../types";
-import { getLocalStorage, setLocalStorage } from "../utils/test";
+import { getLocalStorage, setLocalStorage } from "../utils/storage";
 interface TabManagerContextType {
   tabs: TabDetails[];
   setTabs: Dispatch<SetStateAction<TabDetails[] | null>>;
