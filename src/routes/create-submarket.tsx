@@ -1,10 +1,5 @@
-
 const CreateSubmarket = () => {
-    return (
-        <div>
-            Submarket Form
-        </div>
-    )
-}
+  return <div>Submarket Form</div>;
+};
 
 export default CreateSubmarket;

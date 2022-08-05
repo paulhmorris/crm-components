@@ -14,10 +14,10 @@ export type StarchType =
   | "heavy starch"
   | "cowboy";
 
-  export interface TabDetails {
-    title: string;
-    route: string;
-};
+export interface TabDetails {
+  title: string;
+  route: string;
+}
 export type BusinessUnit =
   | "Procter & Gamble"
   | "Tide Dry Cleaners"

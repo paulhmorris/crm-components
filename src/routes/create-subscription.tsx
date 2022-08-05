@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CreateSubscription = () => {
-    return (
-        <div>
-            Subscription Form
-        </div>
-    )
-}
+  return <div>Subscription Form</div>;
+};
 
 export default CreateSubscription;

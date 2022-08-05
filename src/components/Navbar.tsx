@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TabManagerContext } from "../contexts/TabManagerContext";
 import { Tab } from "@headlessui/react";
-import { TabDetails } from '../types';
+import { TabDetails } from "../types";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } = useContext(TabManagerContext);
+  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } =
+    useContext(TabManagerContext);
   //WHEN A USER CLOSES A TAB USING 'X' BUTTON ON THE TAB
   const closeTab = (title: string) => {
     const updatedTabsData: TabDetails[] = tabs.filter(
@@ -31,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mb-10 flex justify-center w-full space-x-4 border-b-2 border-blue-100 pb-2">
+    <nav className="mb-10 flex w-full justify-center space-x-4 border-b-2 border-blue-100 pb-2">
       <Tab.Group selectedIndex={selectedTabIndex}>
         <Tab.List>
           {tabs.map((tab: TabDetails, i: number) => {
