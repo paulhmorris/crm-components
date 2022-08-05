@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mb-10 flex w-full space-x-4 border-b-2 border-blue-100 pb-2">
+    <nav className="mb-10 flex justify-center w-full space-x-4 border-b-2 border-blue-100 pb-2">
       <Tab.Group selectedIndex={selectedTabIndex}>
         <Tab.List>
           {tabs.map((tab: TabDetails, i: number) => {
