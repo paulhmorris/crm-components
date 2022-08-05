@@ -1,4 +1,3 @@
-import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
 import { Toggle } from "components/Forms/Toggle";
@@ -89,65 +88,64 @@ export const PersonalDetails = ({
           />
         </div>
       </section>
-      <Modal isOpen={openEditDetails} setIsOpen={setOpenEditDetails}>
-        <div>
-          <header className="border-b border-gray-200 pb-6">
-            <Dialog.Title as="h2">Change Personal Details</Dialog.Title>
-          </header>
-          <Form
-            onSubmit={saveDetails}
-            initialValues={{
-              phone,
-              email,
-              firstName: "Johnny",
-              lastName: "Rocket",
-            }}
-            render={({ handleSubmit, submitting }) => (
-              <form onSubmit={handleSubmit} className="pt-6">
-                <div className="mb-6 space-y-1">
-                  <TextInput
-                    name="firstName"
-                    label="First Name"
-                    fieldProps={{ validate: required }}
-                    required
-                  />
-                  <TextInput
-                    name="lastName"
-                    label="Last Name"
-                    fieldProps={{ validate: required }}
-                    required
-                  />
-                  <TextInput
-                    name="email"
-                    label="Email"
-                    fieldProps={{ validate: required }}
-                    required
-                  />
-                  <TextInput
-                    name="phone"
-                    label="Phone"
-                    type="tel"
-                    fieldProps={{
-                      validate: required,
-                      format: formatPhone,
-                    }}
-                    required
-                  />
-                </div>
-                <div className="flex items-center justify-end space-x-3 text-right">
-                  <Button
-                    disabled={submitting}
-                    variant="secondary"
-                    onClick={() => setOpenEditDetails(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <SubmitButton text="Save" submittingText="Saving..." />
-                </div>
-              </form>
-            )}
-          />
-        </div>
+      <Modal
+        isOpen={openEditDetails}
+        setIsOpen={setOpenEditDetails}
+        title="Change Personal Details"
+      >
+        <Form
+          onSubmit={saveDetails}
+          initialValues={{
+            phone,
+            email,
+            firstName: "Johnny",
+            lastName: "Rocket",
+          }}
+          render={({ handleSubmit, submitting }) => (
+            <form onSubmit={handleSubmit} className="pt-6">
+              <div className="mb-6 space-y-1">
+                <TextInput
+                  name="firstName"
+                  label="First Name"
+                  fieldProps={{ validate: required }}
+                  required
+                />
+                <TextInput
+                  name="lastName"
+                  label="Last Name"
+                  fieldProps={{ validate: required }}
+                  required
+                />
+                <TextInput
+                  name="email"
+                  label="Email"
+                  fieldProps={{ validate: required }}
+                  required
+                />
+                <TextInput
+                  name="phone"
+                  label="Phone"
+                  type="tel"
+                  fieldProps={{
+                    validate: required,
+                    format: formatPhone,
+                  }}
+                  required
+                />
+              </div>
+              <div className="flex items-center justify-end space-x-3 text-right">
+                <Button
+                  disabled={submitting}
+                  variant="secondary"
+                  onClick={() => setOpenEditDetails(false)}
+                >
+                  Cancel
+                </Button>
+                <SubmitButton text="Save" submittingText="Saving..." />
+              </div>
+            </form>
+          )}
+        />
       </Modal>
     </>
   );

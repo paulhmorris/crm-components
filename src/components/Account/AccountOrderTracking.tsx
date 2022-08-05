@@ -1,4 +1,4 @@
-import { Dialog, Disclosure } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { Button } from "components/Button";
 import { DropdownMenu } from "components/DropdownMenu";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
@@ -144,55 +144,54 @@ export const AccountOrderTracking = () => {
       </div>
 
       {/* Order Request Modal */}
-      <Modal isOpen={requestModalIsOpen} setIsOpen={setRequestModalIsOpen}>
-        <div>
-          <header className="border-b border-gray-200 pb-6">
-            <Dialog.Title as="h2">Request an Order</Dialog.Title>
-          </header>
-          <div className="flex justify-between border-b border-gray-200 p-4">
-            <p className="font-bold">Drop off Location</p>
-            <p>Campus: Yoda Hoda</p>
-          </div>
-          <Form
-            onSubmit={requestOrder}
-            initialValues={{ orderType: "dryClean" }}
-            render={({ handleSubmit, submitting }) => (
-              <form className="pt-6" onSubmit={handleSubmit}>
-                <div className="mb-6 flex items-center space-x-4">
-                  <Select
-                    name="orderType"
-                    label="Order Type"
-                    options={[
-                      { value: "dryClean", label: "Dry Cleaning" },
-                      { value: "washFold", label: "Wash & Fold" },
-                    ]}
-                  />
-                  <Select
-                    name="lockerNumber"
-                    label="Locker Number"
-                    options={[
-                      { value: 1, label: "1" },
-                      { value: 2, label: "2" },
-                      { value: 3, label: "3" },
-                      { value: 4, label: "4" },
-                      { value: 5, label: "5" },
-                    ]}
-                  />
-                </div>
-                <div className="mt-4 flex items-center justify-end space-x-3 text-right">
-                  <Button
-                    disabled={submitting}
-                    variant="secondary"
-                    onClick={() => setRequestModalIsOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <SubmitButton text="Request" submittingText="Requesting..." />
-                </div>
-              </form>
-            )}
-          />
+      <Modal
+        isOpen={requestModalIsOpen}
+        setIsOpen={setRequestModalIsOpen}
+        title="Request an Order"
+      >
+        <div className="flex justify-between border-b border-gray-200 p-4">
+          <p className="font-bold">Drop off Location</p>
+          <p>Campus: Yoda Hoda</p>
         </div>
+        <Form
+          onSubmit={requestOrder}
+          initialValues={{ orderType: "dryClean" }}
+          render={({ handleSubmit, submitting }) => (
+            <form className="pt-6" onSubmit={handleSubmit}>
+              <div className="mb-6 flex items-center space-x-4">
+                <Select
+                  name="orderType"
+                  label="Order Type"
+                  options={[
+                    { value: "dryClean", label: "Dry Cleaning" },
+                    { value: "washFold", label: "Wash & Fold" },
+                  ]}
+                />
+                <Select
+                  name="lockerNumber"
+                  label="Locker Number"
+                  options={[
+                    { value: 1, label: "1" },
+                    { value: 2, label: "2" },
+                    { value: 3, label: "3" },
+                    { value: 4, label: "4" },
+                    { value: 5, label: "5" },
+                  ]}
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-end space-x-3 text-right">
+                <Button
+                  disabled={submitting}
+                  variant="secondary"
+                  onClick={() => setRequestModalIsOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <SubmitButton text="Request" submittingText="Requesting..." />
+              </div>
+            </form>
+          )}
+        />
       </Modal>
     </section>
   );

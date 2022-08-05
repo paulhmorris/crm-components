@@ -31,7 +31,7 @@ module.exports = {
         green: "#0d9f3f",
         yellow: "#fffaaf",
       },
-      body: "#303030",
+      primary: "#303030",
       secondary: "#616161",
       warning: "#ffdf00",
       success: "#0d9f3f",

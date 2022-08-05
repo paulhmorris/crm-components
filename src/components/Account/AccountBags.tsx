@@ -1,4 +1,3 @@
-import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
 import { Modal } from "components/Modals/Modal";
@@ -57,39 +56,35 @@ export const AccountBags = () => {
       ))}
 
       {/* Bag Activation Modal */}
-      <Modal isOpen={activateModalOpen} setIsOpen={setActivateModalOpen}>
-        <div>
-          <header className="border-b border-gray-200 pb-6">
-            <Dialog.Title as="h2">Activate Bag</Dialog.Title>
-          </header>
-          <Form
-            onSubmit={activateBag}
-            defaultValues={{ orderType: "dryClean" }}
-            render={({ handleSubmit, submitting }) => (
-              <form onSubmit={handleSubmit} className="mt-4">
-                <TextInput
-                  label="Barcode"
-                  name="barcode"
-                  fieldProps={{ validate: required }}
-                  required
-                />
-                <div className="mt-4 flex items-center justify-end space-x-3 text-right">
-                  <Button
-                    disabled={submitting}
-                    variant="secondary"
-                    onClick={() => setActivateModalOpen(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <SubmitButton
-                    text="Activate"
-                    submittingText="Activating..."
-                  />
-                </div>
-              </form>
-            )}
-          />
-        </div>
+      <Modal
+        isOpen={activateModalOpen}
+        setIsOpen={setActivateModalOpen}
+        title="Activate Bag"
+      >
+        <Form
+          onSubmit={activateBag}
+          defaultValues={{ orderType: "dryClean" }}
+          render={({ handleSubmit, submitting }) => (
+            <form onSubmit={handleSubmit} className="mt-4">
+              <TextInput
+                label="Barcode"
+                name="barcode"
+                fieldProps={{ validate: required }}
+                required
+              />
+              <div className="mt-4 flex items-center justify-end space-x-3 text-right">
+                <Button
+                  disabled={submitting}
+                  variant="secondary"
+                  onClick={() => setActivateModalOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <SubmitButton text="Activate" submittingText="Activating..." />
+              </div>
+            </form>
+          )}
+        />
       </Modal>
     </section>
   );

@@ -60,7 +60,7 @@ const Navbar = () => {
           ))}
         </Tab.List>
       </Tab.Group>
-      <hr className="mt-0.5" />
+      <hr className="mt-[3px]" />
     </nav>
   );
 };

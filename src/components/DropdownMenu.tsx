@@ -57,7 +57,7 @@ export const DropdownMenu = ({
       </Menu.Button>
       <Transition
         as={Fragment}
-        enter="transition ease-out duration-[50ms]"
+        enter="transition ease-out duration-50"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"
         leave="transition ease-in duration-100"

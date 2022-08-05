@@ -3,7 +3,7 @@ import { XIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
 import { ModalProps } from "types";
 
-export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
+export const Modal = ({ isOpen, setIsOpen, title, children }: ModalProps) => {
   function closeModal() {
     setIsOpen(false);
   }
@@ -35,10 +35,13 @@ export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-xl bg-white px-10 py-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Title className="border-b border-gray-200 pb-6" as="h2">
+                  {title}
+                </Dialog.Title>
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"
-                    className="bg-transparent text-gray-400 transition-colors hover:text-blue-200 focus:outline-none"
+                    className="rounded bg-transparent text-gray-400 transition-colors hover:text-blue-200 focus:outline-none"
                     onClick={closeModal}
                   >
                     <span className="sr-only">Close</span>

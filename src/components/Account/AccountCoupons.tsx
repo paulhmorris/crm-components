@@ -1,4 +1,3 @@
-import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { DropdownMenu } from "components/DropdownMenu";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
@@ -65,36 +64,31 @@ export const AccountCoupons = () => {
         ))}
       </section>
       {/* Bag Activation Modal */}
-      <Modal isOpen={openModal} setIsOpen={setOpenModal}>
-        <div>
-          <header className="border-b border-gray-200 pb-6">
-            <Dialog.Title as="h2">Add Coupon</Dialog.Title>
-          </header>
-          <Form
-            onSubmit={addCoupon}
-            defaultValues={{ orderType: "dryClean" }}
-            render={({ handleSubmit, submitting }) => (
-              <form onSubmit={handleSubmit} className="mt-4">
-                <Select
-                  label="Add a coupon"
-                  name="coupon"
-                  fieldProps={{ validate: required }}
-                  options={couponSelectOptions}
-                />
-                <div className="mt-4 flex items-center justify-end space-x-3 text-right">
-                  <Button
-                    disabled={submitting}
-                    variant="secondary"
-                    onClick={() => setOpenModal(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <SubmitButton text="Save" submittingText="Saving..." />
-                </div>
-              </form>
-            )}
-          />
-        </div>
+      <Modal isOpen={openModal} setIsOpen={setOpenModal} title="Add Coupon">
+        <Form
+          onSubmit={addCoupon}
+          defaultValues={{ orderType: "dryClean" }}
+          render={({ handleSubmit, submitting }) => (
+            <form onSubmit={handleSubmit} className="mt-4">
+              <Select
+                label="Add a coupon"
+                name="coupon"
+                fieldProps={{ validate: required }}
+                options={couponSelectOptions}
+              />
+              <div className="mt-4 flex items-center justify-end space-x-3 text-right">
+                <Button
+                  disabled={submitting}
+                  variant="secondary"
+                  onClick={() => setOpenModal(false)}
+                >
+                  Cancel
+                </Button>
+                <SubmitButton text="Save" submittingText="Saving..." />
+              </div>
+            </form>
+          )}
+        />
       </Modal>
     </>
   );

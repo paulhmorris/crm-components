@@ -70,9 +70,9 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
 
   return (
     <li className="flex border-b border-gray-200 py-4 px-6 even:bg-gray-100">
-      <div className="text-sm text-secondary">
+      <div className="font-bold leading-4 text-secondary">
         <div className="mb-4">
-          <p className="text-base font-bold text-body">
+          <p className="text-sm leading-5 text-primary">
             {plan.market}
             {plan.isDefault && (
               <span className="ml-2">
@@ -80,10 +80,10 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
               </span>
             )}
           </p>
-          <p>{plan.name}</p>
+          <p className="text-xs">{plan.name}</p>
         </div>
-        <div>
-          <p className="font-bold text-body">{plan.interactionType}</p>
+        <div className="text-xs">
+          <p className="text-primary">{plan.interactionType}</p>
           <p>{plan.servicePoint}</p>
           {plan.routes.length > 0 &&
             plan.routes.map((route) => (
