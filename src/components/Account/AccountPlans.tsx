@@ -36,7 +36,7 @@ export const AccountPlans = () => {
         <div className="border-b border-gray-200 px-6 pb-3 pt-6">
           <h4>Canceled</h4>
         </div>
-        <ul>
+        <ul className="opacity-50">
           {mockPlansData
             .filter((plan) => !plan.isActive)
             .map((plan) => (
@@ -69,8 +69,8 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
   };
 
   return (
-    <li className="flex w-full justify-between border-b border-gray-200 py-4 px-6 even:bg-gray-100">
-      <div className="flex flex-col justify-between text-sm font-normal">
+    <li className="flex border-b border-gray-200 py-4 px-6 even:bg-gray-100">
+      <div className="text-sm font-bold text-secondary">
         <div className="mb-4">
           <p className="text-base font-bold text-body">
             {plan.market}
@@ -83,7 +83,7 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
           <p>{plan.name}</p>
         </div>
         <div>
-          <p>{plan.interactionType}</p>
+          <p className="text-body">{plan.interactionType}</p>
           <p>{plan.servicePoint}</p>
           {plan.routes.length > 0 &&
             plan.routes.map((route) => (
@@ -93,12 +93,12 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
             ))}
         </div>
         {plan.group && (
-          <a className="mt-2 block font-normal" href="#">
+          <div className="mt-2">
             <GroupNameTag text={plan.group.name} />
-          </a>
+          </div>
         )}
       </div>
-      <p className="ml-auto mr-4 pt-1.5 text-right text-xs text-secondary">
+      <p className="ml-auto mr-4 pt-2 text-right text-xs text-secondary">
         Created {dayjs(plan.created).format("MMMM D, YYYY")}
       </p>
       <div>

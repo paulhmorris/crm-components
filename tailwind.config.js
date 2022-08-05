@@ -69,10 +69,10 @@ module.exports = {
       bold: 800,
       black: 900,
     },
+    fontFamily: {
+      avenir: ["Avenir", ...defaultTheme.fontFamily.sans],
+    },
     extend: {
-      fontFamily: {
-        avenir: ["Avenir", ...defaultTheme.fontFamily.sans],
-      },
       boxShadow: {
         "border-b": "0 1px 0 0",
         "border-b-2": "0 2px 0 0",
