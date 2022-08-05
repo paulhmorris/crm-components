@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } =
     useContext(TabManagerContext);
-  //WHEN A USER CLOSES A TAB USING 'X' BUTTON ON THE TAB
+  //When a user closes a tab using 'X' button on the tab
   const closeTab = (title: string) => {
     //Remove Deleted Tab from Tab Data
     const updatedTabsData: TabDetails[] = tabs.filter(
@@ -21,7 +21,7 @@ const Navbar = () => {
     if(activeTab.title !== title) {
        activeTabIndex = updatedTabsData.findIndex(tab => tab.title === activeTab.title)
     }
-      //IF THERE ARE TABS REMAINING
+      //If there are tabs remaining
     if (updatedTabsData.length) {
       if(activeTabIndex) {
         //if the closed tab wasn't the active tab, the active tab will remain active
@@ -33,13 +33,13 @@ const Navbar = () => {
         navigate(updatedTabsData[updatedTabsData.length - 1].route);
       }
     } else {
-      //IF THERE ARE NO TABS REMAINING
+      //If there are no tabs remaining
       navigate("/");
       setSelectedTabIndex(null);
     }
     setTabs(updatedTabsData);
   };
-  //Redirect When a User Clicks on a Tab
+  //Redirect when a user clicks on a tab
   const redirect = (route: string, tabIndex: number) => {
     setSelectedTabIndex(tabIndex);
     navigate(route);
