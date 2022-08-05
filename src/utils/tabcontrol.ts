@@ -9,7 +9,7 @@ export const tabControl = (
   title: string,
   route: string
 ) => {
-  let isTabOpen;
+  let isTabOpen = false;
   let tabIndex = 0;
   tabs.forEach((tab: TabDetails, i: number) => {
     if (tab.title === title) {
