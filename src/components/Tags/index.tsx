@@ -29,7 +29,7 @@ export const GroupNameTag = ({ text }: TagPropsWithText) => {
 export const DefaultTag = () => {
   return (
     <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tag-green px-1 py-0.5 text-xs font-bold leading-5 text-white">
-      Default
+      DEFAULT
     </span>
   );
 };

@@ -48,7 +48,7 @@ export const PersonalDetails = ({
         </div>
         <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
           <p className="text-left text-secondary">Email</p>
-          <p className="text-right font-bold">{email}</p>
+          <p className="text-right font-bold lowercase">{email}</p>
         </div>
         <div className="flex items-center justify-between border-b border-gray-200 p-6">
           <p className="text-left text-secondary">Phone</p>

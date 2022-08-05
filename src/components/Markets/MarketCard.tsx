@@ -19,7 +19,7 @@ export const MarketCard = ({
       {...props}
       className={classNames(
         className,
-        "max-w-[256px] flex-auto space-y-0.5 rounded border border-gray-200 p-6 transition-colors duration-75 hover:bg-gray-100 active:bg-gray-200/50"
+        "max-w-[256px] flex-auto space-y-0.5 rounded border border-gray-300 p-6 transition-colors duration-75 hover:bg-gray-100 active:bg-gray-200/50"
       )}
       role="listitem"
     >

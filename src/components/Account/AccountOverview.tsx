@@ -46,7 +46,7 @@ export const AccountOverview = () => {
       </div>
       <div>
         <p className="flex items-center font-bold">
-          <AutopayIcon className="inline-block h-4 w-4" /> Autopay
+          <AutopayIcon className="-mb-0.5 h-4 w-4" /> Autopay
         </p>
         <p className="text-secondary">
           {getAutopayStatus(mockAccountData.autoPayIsOn)}

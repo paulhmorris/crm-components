@@ -21,7 +21,7 @@ export const InternalNote = () => {
 
   return (
     <div className="flex justify-between">
-      <p className="max-w-[80%] text-secondary">
+      <p className="max-w-[80%]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ipsam a
         deleniti amet quia doloremque harum fugiat eaque nostrum! Ducimus
         corporis, aperiam sit iusto praesentium vel ex! Eius, deserunt odit.

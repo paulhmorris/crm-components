@@ -62,17 +62,16 @@ module.exports = {
       "2xl": "2rem",
     },
     fontWeight: {
-      light: 400,
       normal: 500,
-      medium: 600,
-      semibold: 700,
       bold: 800,
-      black: 900,
     },
     fontFamily: {
       avenir: ["Avenir", ...defaultTheme.fontFamily.sans],
     },
     extend: {
+      lineHeight: {
+        4.5: "1.125rem",
+      },
       boxShadow: {
         "border-b": "0 1px 0 0",
         "border-b-2": "0 2px 0 0",

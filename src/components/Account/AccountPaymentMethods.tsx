@@ -3,7 +3,7 @@ import { DropdownMenu } from "components/DropdownMenu";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { DefaultTag } from "components/Tags";
 import dayjs from "dayjs";
-import { CardVisa } from "icons";
+import { AutopayIcon, CardVisa } from "icons";
 import { mockPaymentMethods } from "mockData";
 
 export const AccountPaymentMethods = () => {
@@ -22,19 +22,29 @@ export const AccountPaymentMethods = () => {
             key={method.id}
             className="flex items-center border-b border-gray-200 px-6 py-3 text-xs"
           >
-            <div className="flex space-x-4">
-              <div className="flex items-start">
-                <CardVisa className="h-10 w-10" />
+            <div className="flex">
+              <div className="mr-4 flex items-start">
+                <CardVisa className="h-6 w-10" />
               </div>
-              <div className="flex flex-col items-start justify-start font-bold">
+              <div className="mr-2 flex flex-col items-start justify-start font-bold leading-4.5">
                 <p>Ending in {method.lastFour}</p>
                 <p>Exp {dayjs(method.expiration).format("MM/YYYY")}</p>
-                <p className="font-normal">
+                <p>Zip {method.zipCode}</p>
+                <p className="font-normal italic text-secondary">
                   {method.paymentProcessors.join(", ")}
                 </p>
+                {method.isAutoPay !== null && (
+                  <p className="mt-2 flex items-center font-normal">
+                    <AutopayIcon className="mr-0.5 -mt-0.5 h-4 w-4" />
+                    <span>Autopay:&nbsp;</span>
+                    <span className={`${!method.isAutoPay && "text-error"}`}>
+                      {method.isAutoPay ? "On" : "Off"}
+                    </span>
+                  </p>
+                )}
               </div>
               {method.isDefault && (
-                <div className="flex items-start">
+                <div>
                   <DefaultTag />
                 </div>
               )}

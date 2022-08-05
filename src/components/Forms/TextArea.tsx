@@ -43,7 +43,7 @@ export const TextArea = ({
         aria-invalid={invalid}
         aria-errormessage={submitError ?? undefined}
         className={classNames(
-          "inline-block h-full w-full rounded border-0 bg-white text-sm ring-1 ring-gray-400 transition placeholder:text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent",
+          "inline-block h-full w-full rounded border-0 bg-white text-sm ring-1 ring-gray-400 transition placeholder:text-sm placeholder:text-gray-300 hover:ring-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent",
           shouldShowError && "ring-error focus:border-error"
         )}
       ></textarea>

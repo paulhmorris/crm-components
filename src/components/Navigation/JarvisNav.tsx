@@ -8,7 +8,7 @@ export const JarvisNav = () => {
         <TideLogo className="h-14 w-14" aria-hidden="true" />
       </div>
       <ul className="mb-auto mt-8 flex flex-col text-sm text-blue-50">
-        <li className="mb-10 flex w-full cursor-pointer items-center space-x-2 py-1 transition-colors duration-75 hover:text-white">
+        <li className="mb-10 flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors duration-75 hover:text-white">
           <HomeIcon className="h-4 w-4" />
           <span>Support</span>
         </li>

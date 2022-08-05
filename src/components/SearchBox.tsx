@@ -10,7 +10,7 @@ interface SearchBoxProps extends ComponentPropsWithRef<"input"> {
 
 export const SearchBox = ({ name, fieldProps, ...props }: SearchBoxProps) => {
   const { input } = useField(name, { ...fieldProps });
-  const [hasFocus, setHasFocus] = useState<boolean>(false);
+  const [hasFocus, setHasFocus] = useState(false);
 
   return (
     <div className="relative inline-flex w-full items-center justify-between">
