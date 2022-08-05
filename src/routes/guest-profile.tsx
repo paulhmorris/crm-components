@@ -5,7 +5,7 @@ import {
   AccountHeader,
   AccountHeaderProps,
 } from "../components/Account/AccountHeader";
-import { StatementsTab } from "components/Group/StatementsTab";
+import { StatementsTab } from "components/Groups/StatementsTab";
 
 const mockAccount: AccountHeaderProps = {
   fullName: "Johnny Rocket",
