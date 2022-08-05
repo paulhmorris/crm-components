@@ -18,12 +18,14 @@ const Navbar = () => {
     //Track Active Tab
     const activeTab: TabDetails = tabs[selectedTabIndex];
     let activeTabIndex: number | null = null;
-    if(activeTab.title !== title) {
-       activeTabIndex = updatedTabsData.findIndex(tab => tab.title === activeTab.title)
+    if (activeTab.title !== title) {
+      activeTabIndex = updatedTabsData.findIndex(
+        (tab) => tab.title === activeTab.title
+      );
     }
-      //If there are tabs remaining
+    //If there are tabs remaining
     if (updatedTabsData.length) {
-      if(activeTabIndex) {
+      if (activeTabIndex) {
         //if the closed tab wasn't the active tab, the active tab will remain active
         setSelectedTabIndex(activeTabIndex);
         navigate(updatedTabsData[activeTabIndex].route);
@@ -47,7 +49,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mb-10 w-full ml-60">
+    <nav className="mb-10 w-full">
       <Tab.Group selectedIndex={selectedTabIndex}>
         <Tab.List className="space-x-4">
           {tabs.map(({ title, route }: TabDetails, index: number) => (

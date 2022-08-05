@@ -4,7 +4,7 @@ import { formatCurrency } from "utils/helpers";
 
 export const PepperNav = () => {
   return (
-    <nav className="fixed inset-y-0 left-0 mt-[90px] flex w-[212px] flex-col items-start justify-start border-r border-gray-200 bg-white p-10 pr-0">
+    <nav className="fixed inset-y-0 left-0 mt-[180px] flex w-[212px] flex-col items-start justify-start border-r border-gray-200 bg-white p-10 pr-0">
       <div>
         <TideLogo className="h-14 w-14" aria-hidden="true" />
       </div>
