@@ -1,7 +1,7 @@
 import { TabManagerContext } from "contexts/TabManagerContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { tabControl } from "utils/tabControl";
+import { tabControl } from "../utils/tabcontrol";
 import { Button } from "./Button";
 
 const TabSelection = () => {

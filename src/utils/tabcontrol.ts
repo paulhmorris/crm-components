@@ -9,7 +9,8 @@ export const tabControl = (
   title: string,
   route: string
 ) => {
-  let isTabOpen;
+  //Find if the tab is already open
+  let isTabOpen = false;
   let tabIndex = 0;
   tabs.forEach((tab: TabDetails, i: number) => {
     if (tab.title === title) {
@@ -18,10 +19,10 @@ export const tabControl = (
     }
   });
   if (isTabOpen) {
-    //EXISTING TAB
+    //Existing Tab
     setSelectedTabIndex(tabIndex);
   } else {
-    //NEW TAB
+    //New Tab
     setSelectedTabIndex(tabs.length);
     setTabs([...tabs, { title, route }]);
   }
