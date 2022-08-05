@@ -4,25 +4,20 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TabManagerContext } from "../contexts/TabManagerContext";
 import { TabDetails } from "../types";
+import { getActiveTabIndex } from '../utils/tabcontrol';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } =
-    useContext(TabManagerContext);
+  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } = useContext(TabManagerContext);
   //When a user closes a tab using 'X' button on the tab
   const closeTab = (title: string) => {
     //Remove Deleted Tab from Tab Data
     const updatedTabsData: TabDetails[] = tabs.filter(
       (tab: TabDetails) => tab.title !== title
     );
-    //Track Active Tab
-    const activeTab: TabDetails = tabs[selectedTabIndex];
-    let activeTabIndex: number | null = null;
-    if (activeTab.title !== title) {
-      activeTabIndex = updatedTabsData.findIndex(
-        (tab) => tab.title === activeTab.title
-      );
-    }
+    //Retrieve new tab index, if the closed tab wasn't the active tab,
+    const activeTabIndex = getActiveTabIndex(tabs, updatedTabsData, title, selectedTabIndex);
+
     //If there are tabs remaining
     if (updatedTabsData.length) {
       if (activeTabIndex) {
@@ -41,8 +36,8 @@ const Navbar = () => {
     }
     setTabs(updatedTabsData);
   };
-  //Redirect when a user clicks on a tab
-  const redirect = (route: string, tabIndex: number) => {
+  //Change tab and redirect page, when a user clicks on a tab
+  const changeTab = (route: string, tabIndex: number) => {
     setSelectedTabIndex(tabIndex);
     navigate(route);
     return;
@@ -59,7 +54,7 @@ const Navbar = () => {
                   <div className="peer flex items-center pr-5">
                     <span
                       className={selected ? "tab tab-active" : "tab"}
-                      onClick={() => redirect(route, index)}
+                      onClick={() => changeTab(route, index)}
                     >
                       {title}
                     </span>

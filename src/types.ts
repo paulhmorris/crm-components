@@ -112,7 +112,7 @@ export interface ModalProps {
   /** Controls rendering of the modal */
   isOpen: boolean;
   /** Header */
-  title: string;
+  title?: string;
   /** Callback for the Modal to close itself */
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   children: React.ReactNode;
