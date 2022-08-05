@@ -20,7 +20,7 @@ export const SpecialServicesTag = ({ text }: TagPropsWithText) => {
 
 export const GroupNameTag = ({ text }: TagPropsWithText) => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-pill bg-blue-200 px-2 py-0.5 text-sm capitalize text-white">
+    <span className="inline-flex max-w-min flex-grow-0 items-center whitespace-nowrap rounded-pill bg-blue-200 px-2 pt-[3px] pb-[1px] text-sm font-normal capitalize text-white">
       {text}
     </span>
   );
@@ -52,7 +52,7 @@ export const WashFoldTag = () => {
 
 export const LostTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-error px-2 py-[1px] text-[11px] leading-4 text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-error px-2 pt-[2px] pb-[1px] text-[11px] leading-4 text-white">
       LOST
     </span>
   );
