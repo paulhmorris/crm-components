@@ -28,3 +28,16 @@ export const tabControl = (
   }
   navigate(route);
 };
+
+export const getActiveTabIndex = (
+  prevTabData: TabDetails[],
+  newTabData: TabDetails[],
+  prevTabTitle: string,
+  prevActiveTabIndex: number
+) => {
+  const activeTab: TabDetails = prevTabData[prevActiveTabIndex];
+  if (activeTab.title !== prevTabTitle) {
+    return newTabData.findIndex((tab) => tab.title === activeTab.title);
+  }
+  return null;
+};
