@@ -211,7 +211,7 @@ export default function ComponentDisplay() {
       <Button variant="primary" onClick={() => setModalOpen(true)}>
         Open Modal
       </Button>
-      <Modal isOpen={modalOpen} setIsOpen={setModalOpen}>
+      <Modal isOpen={modalOpen} setIsOpen={setModalOpen} title="tester">
         <div className="grid h-48 w-full place-items-center">
           <p>Hello, I am your children.</p>
           <p>

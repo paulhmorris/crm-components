@@ -1,9 +1,14 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
-import { ModalProps } from "types";
+import { FormModalProps } from "types";
 
-export const Modal = ({ isOpen, setIsOpen, title, children }: ModalProps) => {
+export const Modal = ({
+  isOpen,
+  setIsOpen,
+  title,
+  children,
+}: FormModalProps) => {
   function closeModal() {
     setIsOpen(false);
   }
