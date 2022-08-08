@@ -15,13 +15,12 @@ const Navbar = () => {
     const updatedTabsData: TabDetails[] = tabs.filter(
       (tab: TabDetails) => tab.title !== title
     );
-    //Retrieve new tab index, if the closed tab wasn't the active tab,
+    //Check if the closed tab was the active tab. if not, retrieve new tab index
     const activeTabIndex = getActiveTabIndex(tabs, updatedTabsData, title, selectedTabIndex);
-
     //If there are tabs remaining
     if (updatedTabsData.length) {
       if (activeTabIndex) {
-        //if the closed tab wasn't the active tab, the active tab will remain active
+        //If the closed tab wasn't the active tab, the active tab will remain active
         setSelectedTabIndex(activeTabIndex);
         navigate(updatedTabsData[activeTabIndex].route);
       } else {
@@ -53,7 +52,7 @@ const Navbar = () => {
                 <>
                   <div className="peer flex items-center pr-5">
                     <span
-                      className={selected ? "tab tab-active" : "tab"}
+                      className={(selected || (index > 1 && selectedTabIndex === index)) ? "tab tab-active" : "tab"}
                       onClick={() => changeTab(route, index)}
                     >
                       {title}

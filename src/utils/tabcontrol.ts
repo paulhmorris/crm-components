@@ -35,7 +35,9 @@ export const getActiveTabIndex = (
   prevTabTitle: string,
   prevActiveTabIndex: number
 ) => {
+  //Get previous active title
   const activeTab: TabDetails = prevTabData[prevActiveTabIndex];
+  //If the closed tab wasn't the active, Find the new index for the previous active tab.
   if (activeTab.title !== prevTabTitle) {
     return newTabData.findIndex((tab) => tab.title === activeTab.title);
   }
