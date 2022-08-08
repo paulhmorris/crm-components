@@ -1,121 +1,37 @@
 import { TabManagerContext } from "contexts/TabManagerContext";
+import { GlobalTab } from "contexts/types";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { tabControl } from "../utils/tabcontrol";
 import { Button } from "./Button";
 
 const TabSelection = () => {
-  const navigate = useNavigate();
-  const { tabs, setTabs, setSelectedTabIndex } = useContext(TabManagerContext);
+  const { openTab } = useContext(TabManagerContext);
+
+  const tabButtons: GlobalTab[] = [
+    { title: "Components", route: "/components", isActive: false },
+    { title: "Guest Profile", route: "/guest-profile", isActive: false },
+    { title: "Pepper Nav", route: "/nav", isActive: false },
+    { title: "Jarvis", route: "/jarvis", isActive: false },
+    { title: "Group Profile", route: "/group-profile", isActive: false },
+    { title: "Create Submarket", route: "/create-submarket", isActive: false },
+    {
+      title: "Create Subscription",
+      route: "/create-subscription",
+      isActive: false,
+    },
+  ];
 
   return (
     <div className="mb-10">
-      <div className="flex justify-center space-x-4">
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Components",
-              "/components"
-            )
-          }
-          variant="secondary"
-        >
-          Components
-        </Button>
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Guest Profile",
-              "/guest-profile"
-            )
-          }
-          variant="secondary"
-        >
-          Guest Profile
-        </Button>
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Pepper Nav",
-              "/nav"
-            )
-          }
-          variant="secondary"
-        >
-          Pepper Nav
-        </Button>
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Jarvis",
-              "/jarvis"
-            )
-          }
-          variant="secondary"
-        >
-          Jarvis
-        </Button>
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Group Profile",
-              "/group-profile"
-            )
-          }
-          variant="secondary"
-        >
-          Group Profile
-        </Button>
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Create Submarket",
-              "/create-submarket"
-            )
-          }
-          variant="secondary"
-        >
-          Create Submarket
-        </Button>
-        <Button
-          onClick={() =>
-            tabControl(
-              tabs,
-              setTabs,
-              setSelectedTabIndex,
-              navigate,
-              "Create Subscription",
-              "/create-subscription"
-            )
-          }
-          variant="secondary"
-        >
-          Create Subscription
-        </Button>
+      <div className="flex flex-wrap justify-center gap-4">
+        {tabButtons.map((tab) => (
+          <Button
+            key={tab.title}
+            onClick={() => openTab(tab)}
+            variant="secondary"
+          >
+            {tab.title}
+          </Button>
+        ))}
       </div>
     </div>
   );

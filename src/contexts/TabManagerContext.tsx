@@ -1,38 +1,70 @@
+import { useLocalStorage } from "hooks/useLocalStorage";
 import {
   createContext,
-  Dispatch,
   ReactNode,
-  SetStateAction,
+  useCallback,
   useEffect,
+  useReducer,
   useState,
 } from "react";
-import { TabDetails } from "../types";
-import { getLocalStorage, setLocalStorage } from "../utils/storage";
-interface TabManagerContextType {
-  tabs: TabDetails[];
-  setTabs: Dispatch<SetStateAction<TabDetails[] | null>>;
-  selectedTabIndex: number;
-  setSelectedTabIndex: Dispatch<SetStateAction<number | null>>;
-}
-interface TabManagerProviderProps {
-  children: ReactNode;
-}
+import { useNavigate } from "react-router-dom";
+import { tabReducer } from "utils/tabReducer";
+import { GlobalTab, TabManagerContextType } from "./types";
+
 export const TabManagerContext = createContext({} as TabManagerContextType);
 
-export const TabManagerProvider = ({ children }: TabManagerProviderProps) => {
-  const [tabs, setTabs] = useState(() => getLocalStorage("tabs"));
-  const [selectedTabIndex, setSelectedTabIndex] = useState(() =>
-    getLocalStorage("activeTabIndex")
+export const TabManagerProvider = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
+  const [storedTabs, setStoredTabs] = useLocalStorage<GlobalTab[]>("tabs", []);
+  const initialIndex = storedTabs.findIndex((t) => t.isActive);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(
+    initialIndex === -1 ? 0 : initialIndex
   );
+  const [tabState, dispatch] = useReducer(tabReducer, storedTabs);
+
+  const openTab = useCallback((tab: GlobalTab) => {
+    dispatch({
+      type: "OPEN",
+      payload: tab,
+    });
+  }, []);
+
+  const closeTab = useCallback((tab: GlobalTab) => {
+    dispatch({
+      type: "CLOSE",
+      payload: tab,
+    });
+  }, []);
+
+  const changeTab = useCallback((tab: GlobalTab) => {
+    dispatch({
+      type: "CHANGE",
+      payload: tab,
+    });
+  }, []);
 
   useEffect(() => {
-    setLocalStorage("tabs", tabs);
-    setLocalStorage("activeTabIndex", selectedTabIndex);
-  }, [tabs, selectedTabIndex]);
+    const activeTabIndex = tabState.findIndex((t) => t.isActive);
+    setSelectedTabIndex(activeTabIndex === -1 ? 0 : activeTabIndex);
+    setStoredTabs(tabState);
+  }, [tabState]);
+
+  useEffect(() => {
+    if (tabState.length > 0 && tabState[selectedTabIndex]) {
+      navigate(tabState[selectedTabIndex].route);
+    }
+  }, [selectedTabIndex, tabState]);
 
   return (
     <TabManagerContext.Provider
-      value={{ tabs, setTabs, selectedTabIndex, setSelectedTabIndex }}
+      value={{
+        tabState,
+        openTab,
+        closeTab,
+        changeTab,
+        selectedTabIndex,
+        setSelectedTabIndex,
+      }}
     >
       {children}
     </TabManagerContext.Provider>
