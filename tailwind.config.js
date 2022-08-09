@@ -31,7 +31,7 @@ module.exports = {
         green: "#0d9f3f",
         yellow: "#fffaaf",
       },
-      body: "#303030",
+      primary: "#303030",
       secondary: "#616161",
       warning: "#ffdf00",
       success: "#0d9f3f",
@@ -62,16 +62,19 @@ module.exports = {
       "2xl": "2rem",
     },
     fontWeight: {
-      light: 400,
       normal: 500,
-      medium: 600,
-      semibold: 700,
       bold: 800,
-      black: 900,
+    },
+    fontFamily: {
+      avenir: ["Avenir", ...defaultTheme.fontFamily.sans],
     },
     extend: {
-      fontFamily: {
-        avenir: ["Avenir", ...defaultTheme.fontFamily.sans],
+      lineHeight: {
+        4.5: "1.125rem",
+      },
+      transitionDuration: {
+        25: "25ms",
+        50: "50ms",
       },
       boxShadow: {
         "border-b": "0 1px 0 0",

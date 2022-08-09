@@ -7,11 +7,11 @@
     @apply h-full text-[16px];
   }
   body {
-    @apply h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal text-body;
+    @apply text-primary h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal;
   }
 
   .body-small {
-    @apply text-xs leading-[1.125rem];
+    @apply leading-4.5 text-xs;
   }
 
   h1 {
@@ -23,7 +23,7 @@
   }
 
   h3 {
-    @apply text-lg font-normal leading-[1.125rem];
+    @apply leading-4.5 text-lg font-normal;
   }
 
   h4 {
@@ -31,7 +31,7 @@
   }
 
   a {
-    @apply font-bold text-blue-200 transition-colors duration-100 hover:text-blue-300 active:text-blue-400;
+    @apply rounded font-bold text-blue-200 transition-colors duration-100 hover:text-blue-300 active:text-blue-400;
   }
 
   input {
@@ -46,12 +46,24 @@
     @apply select-none;
   }
 
+  /* Accessible focus styles. Excludes <Tab /> and <Select /> since they have their own */
+  button:not([role="tab"]):not([aria-haspopup="true"]),
+  a,
+  input[type="radio"],
+  input[type="checkbox"] {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-50 focus-visible:ring-offset-2;
+  }
+
+  [role="tab"] {
+    @apply focus-visible:outline-dashed focus-visible:outline-offset-8 focus-visible:outline-blue-50;
+  }
+
   code {
     @apply rounded bg-gray-200 py-1 px-2 text-xs;
   }
 
-  fieldset {
-    @apply disabled:opacity-60;
+  hr {
+    @apply h-[1px] w-full bg-gray-300;
   }
 
   [type="checkbox"]:focus {
@@ -69,11 +81,11 @@
   }
 
   .btn-secondary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-lg border border-blue-200 bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-200 transition duration-75 ease-out hover:border-blue-300 hover:text-blue-300 active:border-blue-400 active:text-blue-400 disabled:border-blue-100 disabled:text-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-lg border border-blue-200 bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-200 transition duration-75 ease-out hover:border-blue-300 hover:bg-gray-100 hover:text-blue-300 active:border-blue-400 active:bg-gray-200/50 active:text-blue-400 disabled:border-blue-100 disabled:bg-white disabled:text-blue-100;
   }
 
   .btn-tertiary {
-    @apply relative inline-flex select-none items-center justify-center whitespace-nowrap p-2 text-sm font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-4 transition duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
+    @apply relative inline-flex select-none items-center justify-center whitespace-nowrap rounded p-2 text-sm font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-4 transition duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
   }
 
   .tab-list {
@@ -81,10 +93,34 @@
   }
 
   .tab {
-    @apply text-sm capitalize transition duration-[25ms] hover:text-blue-200 focus:outline-none;
+    @apply duration-25 text-sm capitalize text-secondary shadow-border-b-3 shadow-transparent transition hover:shadow-gray-200;
   }
 
   .tab-active {
-    @apply text-blue-200 shadow-border-b-3 shadow-blue-200;
+    @apply text-blue-200 shadow-blue-200 hover:shadow-blue-200 focus:ring-0;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: "Avenir";
+    src: url("/src/public/fonts/Avenir-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Avenir";
+    src: url("/src/public/fonts/Avenir-MediumOblique.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Avenir";
+    src: url("/src/public/fonts/Avenir-Heavy.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
   }
 }
