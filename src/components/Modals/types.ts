@@ -10,7 +10,7 @@ export type PersonalDetailsFormValues = {
   email: string;
 };
 
-export type LinkdAccountFormValues = {
+export type LinkedAccountFormValues = {
   guestProfileUrl: string;
   name: string;
   phone: string;

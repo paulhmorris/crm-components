@@ -1,19 +1,26 @@
-import { Dialog } from "@headlessui/react";
 import { Button } from "components/Button";
 import { Select } from "components/Forms/Select";
 import { TextInput } from "components/Forms/TextInput";
 import { SubmitButton } from "components/SubmitButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormModalProps } from "types";
 import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
-import { LinkdAccountFormValues } from "./types";
+import { LinkedAccountFormValues } from "./types";
 
 export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
   const { control, handleSubmit, formState, setValue } =
-    useForm<LinkdAccountFormValues>({ ...modalFormConfig });
+    useForm<LinkedAccountFormValues>({
+      ...modalFormConfig,
+      defaultValues: {
+        name: "",
+        phone: "",
+        email: "",
+        relationshipType: "student",
+      },
+    });
   const { isSubmitting } = formState;
   const [searchedGuest, setSearchedGuest] = useState({
     name: "",
@@ -21,7 +28,7 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
     email: "",
   });
 
-  async function saveDetails(data: LinkdAccountFormValues) {
+  async function saveDetails(data: LinkedAccountFormValues) {
     await sleep(2000);
     console.log("Saved details", data);
     setIsOpen(false);
@@ -31,20 +38,32 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
 
   async function handleUrlSearch() {
     // Fake api response
-    setSearchedGuest({
-      name: "Jefferson Pierce",
-      phone: "4322668901",
-      email: "jeff@gmail.com",
+    return new Promise((resolve) => {
+      setSearchedGuest({
+        name: "Jefferson Pierce",
+        phone: "4322668901",
+        email: "jeff@gmail.com",
+      });
+      resolve(true);
     });
   }
 
+  useEffect(() => {
+    setValue("name", searchedGuest.name, { shouldDirty: true });
+    setValue("phone", searchedGuest.phone, { shouldDirty: true });
+    setValue("email", searchedGuest.email, { shouldDirty: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchedGuest]);
+
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Add Linked Account">
-      <Dialog.Description className="py-10 pb-3 text-secondary">
-        To link an account to this profile, paste the URL of the guest you want
-        to link in the field below.
-      </Dialog.Description>
-      <form onSubmit={handleSubmit(saveDetails)}>
+    <Modal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      title="Add Linked Account"
+      description="To link an account to this profile, paste the URL of the guest you want
+    to link in the field below."
+    >
+      <form onSubmit={handleSubmit(saveDetails)} className="mt-6">
         <div className="mb-6 space-y-1">
           <TextInput
             control={control}
@@ -54,9 +73,6 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
             required
             onPaste={async () => {
               await handleUrlSearch();
-              setValue("name", searchedGuest.name);
-              setValue("phone", searchedGuest.phone);
-              setValue("email", searchedGuest.email);
             }}
           />
           <TextInput
@@ -88,8 +104,8 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
             disabled={isSubmitting}
             options={[
               { value: "parent", label: "Parent" },
-              { value: "Guardian", label: "Guardian" },
-              { value: "Student", label: "Student" },
+              { value: "guardian", label: "Guardian" },
+              { value: "student", label: "Student" },
             ]}
           />
         </div>

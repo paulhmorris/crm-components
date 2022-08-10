@@ -3,10 +3,25 @@ import { XIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
 import { ModalProps } from "types";
 
-export const Modal = ({ isOpen, setIsOpen, title, children }: ModalProps) => {
+export const Modal = ({
+  isOpen,
+  setIsOpen,
+  title,
+  description,
+  size = "sm",
+  children,
+}: ModalProps) => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const sizes = {
+    xs: "max-w-sm",
+    sm: "max-w-md",
+    md: "max-w-xl",
+    lg: "max-w-3xl",
+    full: "max-w-full",
+  };
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -34,14 +49,24 @@ export const Modal = ({ isOpen, setIsOpen, title, children }: ModalProps) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-visible rounded-lg bg-white px-10 py-6 text-left align-middle shadow-xl transition-all">
-                <Dialog.Title className="border-b border-gray-200 pb-6" as="h2">
+              <Dialog.Panel
+                className={`${sizes[size]} w-full min-w-[400px] transform overflow-visible rounded-lg bg-white px-10 py-6 text-left align-middle shadow-xl transition-all`}
+              >
+                <Dialog.Title
+                  className="mb-6 border-b border-gray-200 pb-6"
+                  as="h2"
+                >
                   {title}
                 </Dialog.Title>
+                {description && (
+                  <Dialog.Description className="px-2 py-3 text-secondary">
+                    {description}
+                  </Dialog.Description>
+                )}
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"
-                    className="rounded bg-transparent text-gray-400 transition-colors hover:text-blue-200 focus:outline-none"
+                    className="rounded bg-transparent text-gray-300 transition-colors hover:text-blue-200 focus:outline-none"
                     onClick={closeModal}
                   >
                     <span className="sr-only">Close</span>

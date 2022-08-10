@@ -46,7 +46,7 @@ export const Select = <T extends FieldValues>({
           </Listbox.Button>
           <Listbox.Label
             className={classNames(
-              field.value || open
+              !!field.value || open
                 ? "pointer-events-auto top-0 text-xs"
                 : "top-5 text-sm",
               "font-medium pointer-events-none absolute left-0.5 select-none transition-all ease-out",

@@ -135,6 +135,10 @@ export interface ModalProps {
   isOpen: boolean;
   /** Header */
   title: string;
+  /** Optional description. Displays below the header. */
+  description?: string;
+  /** Width of the modal. "fluid" will automatically stretch to the content size */
+  size?: "xs" | "sm" | "md" | "lg" | "full";
   /** Callback for the Modal to close itself */
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   children: React.ReactNode;

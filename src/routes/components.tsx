@@ -1,5 +1,6 @@
 import { ComponentsForm } from "components/ComponentsForm";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
+import { PasscodeForm } from "components/Forms/PasscodeForm";
 import { SignInForm } from "components/Forms/SignInForm";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
@@ -133,8 +134,11 @@ export default function ComponentDisplay() {
         />
         <Banner variant="error" message="✋ Bummer—something bad happened." />
       </div>
-      <div className="max-w-sm rounded-lg border border-gray-200 p-8">
+      <div className="flex max-w-sm gap-8 rounded-lg border border-gray-200 p-8">
         <SignInForm />
+      </div>
+      <div className="flex max-w-sm gap-8 rounded-lg border border-gray-200 p-8">
+        <PasscodeForm />
       </div>
     </div>
   );
