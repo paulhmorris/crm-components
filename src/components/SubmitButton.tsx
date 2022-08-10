@@ -1,10 +1,11 @@
 import { ComponentPropsWithoutRef } from "react";
-import { FormSpy } from "react-final-form";
+import { UseFormReturn } from "react-hook-form";
 import { classNames } from "utils/helpers";
 import { ButtonSpinner } from "./Loaders/ButtonSpinner";
 
 export interface SubmitButtonProps
   extends Omit<ComponentPropsWithoutRef<"button">, "type" | "disabled"> {
+  formState: Pick<UseFormReturn, "formState">;
   text: string;
   submittingText: string;
   variant?: "primary" | "secondary" | "tertiary";
@@ -15,51 +16,34 @@ export const SubmitButton = ({
   submittingText,
   variant = "primary",
   className,
+  formState,
   ...props
 }: SubmitButtonProps) => {
+  const {
+    formState: { isDirty, isSubmitting, isValid, isSubmitSuccessful },
+  } = formState;
   return (
-    <FormSpy
-      subscription={{
-        hasValidationErrors: true,
-        pristine: true,
-        submitting: true,
-        submitFailed: true,
-        dirtySinceLastSubmit: true,
-      }}
-    >
-      {({
-        pristine,
-        hasValidationErrors,
-        submitting,
-        submitFailed,
-        dirtySinceLastSubmit,
-      }) => (
-        <button
-          type="submit"
-          disabled={
-            submitting ||
-            pristine ||
-            hasValidationErrors ||
-            (submitFailed && !dirtySinceLastSubmit)
-          }
-          {...props}
-          className={classNames(
-            variant === "primary"
-              ? "btn-primary"
-              : variant === "secondary"
-              ? "btn-secondary"
-              : variant === "tertiary" && "btn-tertiary",
-            className
-          )}
-        >
-          {submitting ? submittingText : text}
-          {submitting && (
-            <span className="-mr-1 ml-2">
-              <ButtonSpinner />
-            </span>
-          )}
-        </button>
+    <button
+      type="submit"
+      disabled={
+        isSubmitting || !isDirty || !isValid || (!isSubmitSuccessful && isDirty)
+      }
+      {...props}
+      className={classNames(
+        variant === "primary"
+          ? "btn-primary"
+          : variant === "secondary"
+          ? "btn-secondary"
+          : variant === "tertiary" && "btn-tertiary",
+        className
       )}
-    </FormSpy>
+    >
+      {isSubmitting ? submittingText : text}
+      {isSubmitting && (
+        <span className="-mr-1 ml-2">
+          <ButtonSpinner />
+        </span>
+      )}
+    </button>
   );
 };
