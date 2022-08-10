@@ -1,5 +1,15 @@
-import { ComponentPropsWithoutRef, Dispatch, SetStateAction } from "react";
-import { UseFieldConfig } from "react-final-form";
+import {
+  ComponentPropsWithoutRef,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+} from "react";
+import {
+  FieldValues,
+  SubmitHandler,
+  UseControllerProps,
+  UseFormProps,
+} from "react-hook-form";
 
 export type OrderTypes = "dryClean" | "washFold";
 /** A function that's passed into the validate property on a react-final-form input */
@@ -42,38 +52,49 @@ export interface PersonalDetailsProps {
 
 // ----------- C O M P O N E N T S ----------- //
 
-export interface TextInputProps extends ComponentPropsWithoutRef<"input"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
+export interface TextInputProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"input">, "name" | "defaultValue"> {
   /** Field label. This acts as the placeholder until in focus */
   label: string;
   /** Field type. Defaults to "text" */
   type?: "text" | "password" | "email" | "number" | "tel";
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  fieldProps?: UseFieldConfig<string>;
 }
 
-export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
+export interface FormComponent extends UseFormProps {
+  children: ReactNode;
+  onSubmit: SubmitHandler<FieldValues>;
+}
+
+export interface TextAreaProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"textarea">, "name" | "defaultValue"> {
   /** Field label. This acts as the placeholder until active */
   label: string;
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  fieldProps?: UseFieldConfig<string>;
 }
 
-export interface SelectProps extends ComponentPropsWithoutRef<"button"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
+export interface SelectProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"button">, "name" | "defaultValue"> {
   /** Field label. This acts as the placeholder until in focus */
   label: string;
-  /** The options to populate the select */
-  options: SelectOptionProps[];
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  fieldProps?: UseFieldConfig<string>;
+  /** The options to populate the select */
+  options: SelectOptionProps[];
+}
+
+export interface ToggleProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<
+      ComponentPropsWithoutRef<"button">,
+      "name" | "defaultValue" | "onChange" | "value"
+    > {
+  label?: string;
 }
 
 export interface SelectOptionProps {
@@ -81,17 +102,18 @@ export interface SelectOptionProps {
   label: string;
 }
 
-export interface RadioProps extends ComponentPropsWithoutRef<"input"> {
-  name: string;
+export interface RadioProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"input">, "name" | "defaultValue"> {
   value: string | number;
   label: string;
-  fieldProps?: UseFieldConfig<string>;
+  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
-export interface CheckboxProps extends ComponentPropsWithoutRef<"input"> {
-  name: string;
+export interface CheckboxProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"input">, "name" | "defaultValue"> {
   label?: string;
-  fieldProps?: UseFieldConfig<string>;
 }
 
 /** Options for order tags */

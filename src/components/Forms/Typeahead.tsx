@@ -1,38 +1,36 @@
 import { Combobox, Transition } from "@headlessui/react";
-import { SelectorIcon } from "@heroicons/react/solid";
+import { SelectorIcon } from "@heroicons/react/outline";
 import { Fragment, useState } from "react";
-import { useField } from "react-final-form";
+import { FieldValues, useController } from "react-hook-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
-import { FieldDescription } from "./FieldDescription";
-import { FieldError } from "./FieldError";
+import { ErrorMessage } from "./ErrorMessage";
 import { TypeaheadOption } from "./TypeaheadOption";
 
-export const Typeahead = ({
-  name,
+export const Typeahead = <T extends FieldValues>({
   label,
   description,
-  fieldProps,
   options,
   ...props
-}: SelectProps) => {
+}: SelectProps<T>) => {
   const {
-    input,
-    meta: { submitting },
-  } = useField(name, { ...fieldProps });
+    field,
+    formState: { isSubmitting },
+    fieldState: { error },
+  } = useController(props);
+  const { name, disabled } = props;
 
   const [query, setQuery] = useState("");
   const filteredOptions =
     query === ""
       ? options
-      : options.filter((option) =>
-          option.label.toLowerCase().includes(query.toLowerCase())
-        );
+      : options.filter((option) => {
+          return option.label.toLowerCase().includes(query.toLowerCase());
+        });
 
-  const isDisabled = submitting || props.disabled;
-
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
   return (
-    <Combobox {...input} name={name} disabled={isDisabled}>
+    <Combobox {...field} name={name} disabled={isDisabled}>
       {({ open }) => (
         <div className="relative mt-1 h-[70px] w-full pt-5">
           <Combobox.Input
@@ -57,8 +55,10 @@ export const Typeahead = ({
           </Combobox.Button>
           <Combobox.Label
             className={classNames(
-              input.value || open ? "pointer-events-auto top-0" : "top-5",
-              "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
+              field.value || open
+                ? "pointer-events-auto top-0 text-xs"
+                : "top-5 text-sm",
+              "font-medium pointer-events-none absolute left-0.5 select-none transition-all ease-out",
               isDisabled ? "pointer-events-none text-gray-300" : "text-gray-400"
             )}
           >
@@ -83,8 +83,18 @@ export const Typeahead = ({
           </Transition>
           {/* Description and error visibility logic */}
           <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-            <FieldDescription description={description} name={name} />
-            <FieldError name={name} />
+            {description && (isDisabled || !error) && (
+              <p
+                id={`${name}-description`}
+                className={classNames(
+                  "text-xs font-normal transition-colors",
+                  isDisabled ? "text-gray-300" : "text-secondary"
+                )}
+              >
+                {description}
+              </p>
+            )}
+            {error && !isDisabled && <ErrorMessage name={name} error={error} />}
           </div>
         </div>
       )}

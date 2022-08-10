@@ -1,37 +1,36 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import { useField } from "react-final-form";
+import { FieldValues, useController } from "react-hook-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
-import { FieldDescription } from "./FieldDescription";
-import { FieldError } from "./FieldError";
+import { ErrorMessage } from "./ErrorMessage";
 import { SelectOption } from "./SelectOption";
 
-export const Select = ({
-  name,
+export const Select = <T extends FieldValues>({
   label,
   description,
-  fieldProps,
   options,
   ...props
-}: SelectProps) => {
+}: SelectProps<T>) => {
   const {
-    input,
-    meta: { submitting },
-  } = useField(name, { ...fieldProps });
+    field,
+    formState: { isSubmitting },
+    fieldState: { error },
+  } = useController(props);
+  const { disabled, name } = props;
 
   const [selectedOption, setSelectedOption] = useState(
-    options.find((o) => o.value === input.value)
+    options.find((o) => o.value === field.value)
   );
 
   useEffect(() => {
-    setSelectedOption(options.find((o) => o.value === input.value));
-  }, [input.value, options]);
+    setSelectedOption(options.find((o) => o.value === field.value));
+  }, [field.value, options]);
 
-  const isDisabled = submitting || props.disabled;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
 
   return (
-    <Listbox {...input} disabled={isDisabled}>
+    <Listbox {...field} disabled={isDisabled}>
       {({ open }) => (
         <div className="relative mt-1 h-[70px] w-full pt-5">
           <Listbox.Button
@@ -46,9 +45,15 @@ export const Select = ({
           </Listbox.Button>
           <Listbox.Label
             className={classNames(
-              input.value || open ? "pointer-events-auto top-0" : "top-5",
-              "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
-              isDisabled ? "pointer-events-none text-gray-300" : "text-gray-400"
+              field.value || open
+                ? "pointer-events-auto top-0 text-xs"
+                : "top-5 text-sm",
+              "font-medium pointer-events-none absolute left-0.5 select-none transition-all ease-out",
+              isDisabled
+                ? "pointer-events-none text-gray-300"
+                : error
+                ? "text-error"
+                : "text-secondary"
             )}
           >
             {label}
@@ -70,9 +75,21 @@ export const Select = ({
               ))}
             </Listbox.Options>
           </Transition>
+
+          {/* Description and error visibility logic */}
           <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
-            <FieldDescription description={description} name={name} />
-            <FieldError name={name} />
+            {description && (isDisabled || !error) && (
+              <p
+                id={`${name}-description`}
+                className={classNames(
+                  "text-xs font-normal transition-colors",
+                  isDisabled ? "text-gray-300" : "text-secondary"
+                )}
+              >
+                {description}
+              </p>
+            )}
+            {error && !isDisabled && <ErrorMessage name={name} error={error} />}
           </div>
         </div>
       )}
