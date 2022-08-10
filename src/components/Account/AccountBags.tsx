@@ -1,25 +1,19 @@
 import { Button } from "components/Button";
-import { TextInput } from "components/Forms/TextInput";
-import { Modal } from "components/Modals/Modal";
-import { SubmitButton } from "components/SubmitButton";
+import { BagActivationModal } from "components/Modals/BagActivationModal";
 import { GenericDot } from "components/Tags";
 import dayjs from "dayjs";
 import { mockBags } from "mockData";
 import { useState } from "react";
-import { Form } from "react-final-form";
-import { sleep } from "utils/helpers";
-import { required } from "utils/inputValidations";
 
 export const AccountBags = () => {
   const [activateModalOpen, setActivateModalOpen] = useState(false);
 
-  async function activateBag() {
-    await sleep(2000);
-    setActivateModalOpen(false);
-  }
-
   return (
     <section className="flex w-full flex-col">
+      <BagActivationModal
+        isOpen={activateModalOpen}
+        setIsOpen={setActivateModalOpen}
+      />
       <div className="flex items-end justify-between border-b border-gray-200 px-6 py-3">
         <h4>Bags</h4>
         <Button
@@ -54,38 +48,6 @@ export const AccountBags = () => {
           </div>
         </div>
       ))}
-
-      {/* Bag Activation Modal */}
-      <Modal
-        isOpen={activateModalOpen}
-        setIsOpen={setActivateModalOpen}
-        title="Activate Bag"
-      >
-        <Form
-          onSubmit={activateBag}
-          defaultValues={{ orderType: "dryClean" }}
-          render={({ handleSubmit, submitting }) => (
-            <form onSubmit={handleSubmit} className="mt-4">
-              <TextInput
-                label="Barcode"
-                name="barcode"
-                fieldProps={{ validate: required }}
-                required
-              />
-              <div className="mt-4 flex items-center justify-end space-x-3 text-right">
-                <Button
-                  disabled={submitting}
-                  variant="secondary"
-                  onClick={() => setActivateModalOpen(false)}
-                >
-                  Cancel
-                </Button>
-                <SubmitButton text="Activate" submittingText="Activating..." />
-              </div>
-            </form>
-          )}
-        />
-      </Modal>
     </section>
   );
 };
