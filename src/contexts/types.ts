@@ -7,8 +7,8 @@ export interface GlobalTab {
   [key: string]: number | string | boolean;
 }
 
-export interface TabManagerContextType {
-  tabState: GlobalTab[];
+export interface TabContextType {
+  tabs: GlobalTab[];
   selectedTabIndex: number;
   setSelectedTabIndex: Dispatch<SetStateAction<number>>;
 

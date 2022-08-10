@@ -1,10 +1,9 @@
-import { TabManagerContext } from "contexts/TabManagerContext";
+import { useTabs } from "contexts/TabContext";
 import { GlobalTab } from "contexts/types";
-import { useContext } from "react";
 import { Button } from "./Button";
 
 const TabSelection = () => {
-  const { openTab } = useContext(TabManagerContext);
+  const { openTab } = useTabs();
 
   const tabButtons: GlobalTab[] = [
     { title: "Components", route: "/components", isActive: false },

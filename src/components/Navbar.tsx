@@ -1,22 +1,21 @@
 import { Tab } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { useContext } from "react";
-import { TabManagerContext } from "../contexts/TabManagerContext";
+import { useTabs } from "contexts/TabContext";
 
 const Navbar = () => {
-  const { tabState, closeTab, changeTab, selectedTabIndex } =
-    useContext(TabManagerContext);
+  const { tabs, closeTab, changeTab, selectedTabIndex } = useTabs();
 
-  if (!tabState || typeof selectedTabIndex === "undefined") return "Loading...";
+  if (!tabs || typeof selectedTabIndex === "undefined")
+    return <p>Loading...</p>;
 
   return (
     <nav className="mb-10 w-full">
       <Tab.Group
         selectedIndex={selectedTabIndex}
-        onChange={(index) => changeTab(tabState[index])}
+        onChange={(index) => changeTab(tabs[index])}
       >
         <Tab.List className="space-x-4">
-          {tabState.map((tab) => (
+          {tabs.map((tab) => (
             <Tab key={tab.title} className="relative">
               {({ selected }) => (
                 <>
@@ -25,7 +24,7 @@ const Navbar = () => {
                       {tab.title}
                     </span>
                   </div>
-                  {tabState.length > 1 && (
+                  {tabs.length > 1 && (
                     <span
                       role="button"
                       tabIndex={0}
