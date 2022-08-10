@@ -1,5 +1,6 @@
 import { ComponentsForm } from "components/ComponentsForm";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
+import { SignInForm } from "components/Forms/SignInForm";
 import { MarketCard } from "components/Markets/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
@@ -131,6 +132,9 @@ export default function ComponentDisplay() {
           message="👀️ Watch out, something is happening."
         />
         <Banner variant="error" message="✋ Bummer—something bad happened." />
+      </div>
+      <div className="max-w-sm rounded-lg border border-gray-200 p-8">
+        <SignInForm />
       </div>
     </div>
   );
