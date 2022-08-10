@@ -5,6 +5,7 @@ import { FieldValues, useController } from "react-hook-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
+import { FieldDescription } from "./FieldDescription";
 import { TypeaheadOption } from "./TypeaheadOption";
 
 export const Typeahead = <T extends FieldValues>({
@@ -84,15 +85,11 @@ export const Typeahead = <T extends FieldValues>({
           {/* Description and error visibility logic */}
           <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
             {description && (isDisabled || !error) && (
-              <p
-                id={`${name}-description`}
-                className={classNames(
-                  "text-xs font-normal transition-colors",
-                  isDisabled ? "text-gray-300" : "text-secondary"
-                )}
-              >
-                {description}
-              </p>
+              <FieldDescription
+                name={name}
+                description={description}
+                isDisabled={isDisabled}
+              />
             )}
             {error && !isDisabled && <ErrorMessage name={name} error={error} />}
           </div>

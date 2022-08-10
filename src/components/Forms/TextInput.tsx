@@ -2,6 +2,7 @@ import { FieldValues, useController, ValidationRule } from "react-hook-form";
 import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
+import { FieldDescription } from "./FieldDescription";
 
 export const TextInput = <T extends FieldValues>({
   type = "text",
@@ -57,15 +58,11 @@ export const TextInput = <T extends FieldValues>({
       </label>
       <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
         {description && (isDisabled || !error) && (
-          <p
-            id={`${name}-description`}
-            className={classNames(
-              "text-xs font-normal transition-colors",
-              isDisabled ? "text-gray-300" : "text-secondary"
-            )}
-          >
-            {description}
-          </p>
+          <FieldDescription
+            name={name}
+            description={description}
+            isDisabled={isDisabled}
+          />
         )}
         {error && !isDisabled && <ErrorMessage name={name} error={error} />}
       </div>
