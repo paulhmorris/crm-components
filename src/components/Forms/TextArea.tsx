@@ -1,26 +1,23 @@
-import { useController, useFormContext } from "react-hook-form";
+import { FieldValues, useController, ValidationRule } from "react-hook-form";
 import { TextAreaProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
 
-export const TextArea = ({
-  name,
+export const TextArea = <T extends FieldValues>({
   label,
   description,
-  controllerProps,
   ...props
-}: TextAreaProps) => {
+}: TextAreaProps<T>) => {
   const {
-    register,
+    field,
     formState: { isSubmitting },
-  } = useFormContext();
-  const {
     fieldState: { error },
-  } = useController({ name });
+  } = useController(props);
+  const { name, required, disabled, rules } = props;
 
-  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
-  const isRequired: boolean =
-    props.required || !!controllerProps?.rules?.required;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
+  const isRequired: ValidationRule<boolean> | boolean | undefined =
+    required || !!rules?.required;
 
   return (
     <div className="relative">
@@ -36,10 +33,10 @@ export const TextArea = ({
         htmlFor={name}
       >
         {label}
-        {props.required ? " *" : ""}
+        {required ? " *" : ""}
       </label>
       <textarea
-        {...register(name, { ...controllerProps?.rules })}
+        {...field}
         {...props}
         id={name}
         rows={4}

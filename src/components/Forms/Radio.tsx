@@ -1,25 +1,24 @@
-import { useFormContext } from "react-hook-form";
+import { FieldValues, useController } from "react-hook-form";
 import { RadioProps } from "types";
 import { classNames } from "utils/helpers";
 
-export const Radio = ({
+export const Radio = <T extends FieldValues>({
   label,
-  name,
   value,
-  controllerProps,
   ...props
-}: RadioProps) => {
+}: RadioProps<T>) => {
   const {
-    register,
+    field,
     formState: { isSubmitting },
-  } = useFormContext();
+  } = useController(props);
+  const { name, disabled } = props;
 
-  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
 
   return (
     <div className="flex items-center space-x-2">
       <input
-        {...register(name, { ...controllerProps?.rules })}
+        {...field}
         {...props}
         id={value.toString()}
         type="radio"

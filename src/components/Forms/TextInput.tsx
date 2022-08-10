@@ -1,32 +1,29 @@
-import { useController, useFormContext } from "react-hook-form";
+import { FieldValues, useController, ValidationRule } from "react-hook-form";
 import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
 
-export const TextInput = ({
-  name,
-  label,
+export const TextInput = <T extends FieldValues>({
   type = "text",
   description,
-  controllerProps,
+  label,
   ...props
-}: TextInputProps) => {
+}: TextInputProps<T>) => {
   const {
-    register,
-    formState: { isSubmitting },
-  } = useFormContext();
-  const {
+    field,
     fieldState: { error },
-  } = useController({ name });
+    formState: { isSubmitting },
+  } = useController<T>(props);
+  const { name, required, disabled, rules } = props;
 
-  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
-  const isRequired: boolean =
-    props.required || !!controllerProps?.rules?.required;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
+  const isRequired: ValidationRule<boolean> | boolean | undefined =
+    required || !!rules?.required;
 
   return (
-    <div className="relative pt-5">
+    <div className="relative flex flex-col space-y-1 pt-5">
       <input
-        {...register(name, { ...controllerProps?.rules })}
+        {...field}
         {...props}
         id={name}
         type={type}
@@ -47,7 +44,7 @@ export const TextInput = ({
       />
       <label
         className={classNames(
-          "absolute top-0 left-0.5 select-none text-sm font-medium transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:left-0.5 peer-required:after:content-['_*'] peer-focus:top-0 peer-focus:left-0.5",
+          "font-medium absolute -top-0.5 left-0.5 select-none text-xs transition-all ease-out peer-placeholder-shown:pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-sm peer-required:after:content-['_*'] peer-focus:-top-0.5 peer-focus:text-xs",
           isDisabled
             ? "pointer-events-none text-gray-300"
             : error
@@ -58,8 +55,6 @@ export const TextInput = ({
       >
         {label}
       </label>
-
-      {/* Description and error visibility logic */}
       <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
         {description && (isDisabled || !error) && (
           <p

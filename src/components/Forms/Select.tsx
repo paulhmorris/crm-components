@@ -1,26 +1,23 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import { useController, useFormContext } from "react-hook-form";
+import { FieldValues, useController } from "react-hook-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
 import { SelectOption } from "./SelectOption";
 
-export const Select = ({
-  name,
+export const Select = <T extends FieldValues>({
   label,
   description,
-  controllerProps,
   options,
   ...props
-}: SelectProps) => {
-  const {
-    formState: { isSubmitting },
-  } = useFormContext();
+}: SelectProps<T>) => {
   const {
     field,
+    formState: { isSubmitting },
     fieldState: { error },
-  } = useController({ name, rules: { ...controllerProps?.rules } });
+  } = useController(props);
+  const { disabled, name } = props;
 
   const [selectedOption, setSelectedOption] = useState(
     options.find((o) => o.value === field.value)
@@ -30,10 +27,10 @@ export const Select = ({
     setSelectedOption(options.find((o) => o.value === field.value));
   }, [field.value, options]);
 
-  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
 
   return (
-    <Listbox {...field} disabled={props.disabled}>
+    <Listbox {...field} disabled={isDisabled}>
       {({ open }) => (
         <div className="relative mt-1 h-[70px] w-full pt-5">
           <Listbox.Button
@@ -48,8 +45,10 @@ export const Select = ({
           </Listbox.Button>
           <Listbox.Label
             className={classNames(
-              field.value || open ? "pointer-events-auto top-0" : "top-5",
-              "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
+              field.value || open
+                ? "pointer-events-auto top-0 text-xs"
+                : "top-5 text-sm",
+              "font-medium pointer-events-none absolute left-0.5 select-none transition-all ease-out",
               isDisabled
                 ? "pointer-events-none text-gray-300"
                 : error

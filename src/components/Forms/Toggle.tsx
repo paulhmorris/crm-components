@@ -1,15 +1,19 @@
 import { Switch } from "@headlessui/react";
-import { useController, useFormContext } from "react-hook-form";
+import { FieldValues, useController } from "react-hook-form";
 import { ToggleProps } from "types";
 import { classNames } from "utils/helpers";
 
-export const Toggle = ({ name, label, ...props }: ToggleProps) => {
+export const Toggle = <T extends FieldValues>({
+  label,
+  ...props
+}: ToggleProps<T>) => {
   const {
+    field,
     formState: { isSubmitting },
-  } = useFormContext();
-  const { field } = useController({ name });
+  } = useController(props);
+  const { disabled, name } = props;
 
-  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
   return (
     <div className={classNames("flex items-center space-x-2")}>
       <Switch.Group>

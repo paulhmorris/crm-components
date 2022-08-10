@@ -1,30 +1,24 @@
 import { Combobox, Transition } from "@headlessui/react";
-import { SelectorIcon } from "@heroicons/react/solid";
+import { SelectorIcon } from "@heroicons/react/outline";
 import { Fragment, useState } from "react";
-import { useController, useFormContext } from "react-hook-form";
+import { FieldValues, useController } from "react-hook-form";
 import { SelectProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
 import { TypeaheadOption } from "./TypeaheadOption";
 
-export const Typeahead = ({
-  name,
+export const Typeahead = <T extends FieldValues>({
   label,
   description,
-  controllerProps,
   options,
   ...props
-}: SelectProps) => {
-  const {
-    formState: { isSubmitting },
-  } = useFormContext();
+}: SelectProps<T>) => {
   const {
     field,
+    formState: { isSubmitting },
     fieldState: { error },
-  } = useController({
-    name,
-    rules: { ...controllerProps?.rules },
-  });
+  } = useController(props);
+  const { name, disabled } = props;
 
   const [query, setQuery] = useState("");
   const filteredOptions =
@@ -34,7 +28,7 @@ export const Typeahead = ({
           return option.label.toLowerCase().includes(query.toLowerCase());
         });
 
-  const isDisabled: boolean | undefined = isSubmitting || props.disabled;
+  const isDisabled: boolean | undefined = isSubmitting || disabled;
   return (
     <Combobox {...field} name={name} disabled={isDisabled}>
       {({ open }) => (
@@ -61,8 +55,10 @@ export const Typeahead = ({
           </Combobox.Button>
           <Combobox.Label
             className={classNames(
-              field.value || open ? "pointer-events-auto top-0" : "top-5",
-              "pointer-events-none absolute left-0.5 select-none text-sm font-bold transition-all ease-out",
+              field.value || open
+                ? "pointer-events-auto top-0 text-xs"
+                : "top-5 text-sm",
+              "font-medium pointer-events-none absolute left-0.5 select-none transition-all ease-out",
               isDisabled ? "pointer-events-none text-gray-300" : "text-gray-400"
             )}
           >
