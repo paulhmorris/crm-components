@@ -1,34 +1,29 @@
 import { ComponentPropsWithoutRef } from "react";
-import { UseFormReturn } from "react-hook-form";
 import { classNames } from "utils/helpers";
 import { ButtonSpinner } from "./Loaders/ButtonSpinner";
 
 export interface SubmitButtonProps
   extends Omit<ComponentPropsWithoutRef<"button">, "type" | "disabled"> {
-  formState: Pick<UseFormReturn, "formState">;
+  // formState: FormState<T>;
   text: string;
   submittingText: string;
+  isSubmitting: boolean;
   variant?: "primary" | "secondary" | "tertiary";
 }
 
 export const SubmitButton = ({
   text,
   submittingText,
+  isSubmitting,
   variant = "primary",
   className,
-  formState,
   ...props
 }: SubmitButtonProps) => {
-  const {
-    formState: { isDirty, isSubmitting, isValid, isSubmitSuccessful },
-  } = formState;
   return (
     <button
-      type="submit"
-      disabled={
-        isSubmitting || !isDirty || !isValid || (!isSubmitSuccessful && isDirty)
-      }
       {...props}
+      type="submit"
+      disabled={isSubmitting}
       className={classNames(
         variant === "primary"
           ? "btn-primary"

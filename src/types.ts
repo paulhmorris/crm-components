@@ -12,7 +12,7 @@ import {
 } from "react-hook-form";
 
 export type OrderTypes = "dryClean" | "washFold";
-/** A function that's passed into the validate property on a react-final-form input */
+/** A function that's passed into the validate property on a react-hook-form input */
 export type ValidatorFunction = (value: string) => boolean | string | undefined;
 
 export type DetergentType = "normal" | "free and gentle";
@@ -138,4 +138,20 @@ export interface ModalProps {
   /** Callback for the Modal to close itself */
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   children: React.ReactNode;
+}
+
+export interface GenericModalProps {
+  /** Controls rendering of the modal */
+  isOpen: boolean;
+  /** Callback for the Modal to close itself */
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface FormModalProps {
+  /** Controls rendering of the modal */
+  isOpen: boolean;
+  /** Callback for the Modal to close itself */
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultValues?: Record<string, any>;
 }
