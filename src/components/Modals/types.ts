@@ -10,6 +10,14 @@ export type PersonalDetailsFormValues = {
   email: string;
 };
 
+export type LinkdAccountFormValues = {
+  guestProfileUrl: string;
+  name: string;
+  phone: string;
+  email: string;
+  relationshipType: string;
+};
+
 export type AddCouponFormValues = {
   coupon: string;
 };

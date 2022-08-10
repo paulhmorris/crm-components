@@ -10,10 +10,6 @@
     @apply h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal text-primary;
   }
 
-  .body-small {
-    @apply text-xs leading-4.5;
-  }
-
   h1 {
     @apply text-2xl font-normal leading-8;
   }
@@ -54,28 +50,8 @@
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-50 focus-visible:ring-offset-2;
   }
 
-  [role="tab"] {
-    @apply focus-visible:outline-dashed focus-visible:outline-offset-8 focus-visible:outline-blue-50;
-  }
-
-  /* Accessible focus styles. Excludes <Tab /> and <Select /> since they have their own */
-  button:not([role="tab"]):not([aria-haspopup="true"]),
-  a,
-  input[type="radio"],
-  input[type="checkbox"] {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-50 focus-visible:ring-offset-2;
-  }
-
-  [role="tab"] {
-    @apply focus-visible:outline-dashed focus-visible:outline-offset-8 focus-visible:outline-blue-50;
-  }
-
   code {
     @apply rounded bg-gray-200 py-1 px-2 text-xs;
-  }
-
-  hr {
-    @apply h-[1px] w-full bg-gray-300;
   }
 
   hr {
@@ -109,7 +85,7 @@
   }
 
   .tab {
-    @apply text-sm capitalize text-secondary shadow-border-b-3 shadow-transparent transition duration-25 hover:shadow-gray-200;
+    @apply text-sm capitalize text-secondary shadow-border-b-3 shadow-transparent transition duration-25 hover:shadow-gray-200 focus-visible:outline-none;
   }
 
   .tab-active {
