@@ -48,15 +48,13 @@ export interface PersonalDetailsProps {
 
 // ----------- C O M P O N E N T S ----------- //
 
-export interface TextInputProps extends ComponentPropsWithoutRef<"input"> {
-  /** Field name. This will be used for the payload. */
-  name: string;
+export interface TextInputProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"input">, "name" | "defaultValue"> {
   /** Field label. This acts as the placeholder until in focus */
   label: string;
   /** Field type. Defaults to "text" */
   type?: "text" | "password" | "email" | "number" | "tel";
-  /** Props for useController. Add rules and validation here */
-  controllerProps?: Omit<UseControllerProps, "name">;
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
 }
@@ -66,33 +64,32 @@ export interface FormComponent extends UseFormProps {
   onSubmit: SubmitHandler<FieldValues>;
 }
 
-export interface TextAreaProps extends ComponentPropsWithoutRef<"textarea"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
+export interface TextAreaProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"textarea">, "name" | "defaultValue"> {
   /** Field label. This acts as the placeholder until active */
   label: string;
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  /** Props for useController. Add rules and validation here */
-  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
-export interface SelectProps extends ComponentPropsWithoutRef<"button"> {
-  /** Field name. This name will be used in the payload. */
-  name: string;
+export interface SelectProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"button">, "name" | "defaultValue"> {
   /** Field label. This acts as the placeholder until in focus */
   label: string;
-  /** The options to populate the select */
-  options: SelectOptionProps[];
   /** Optional description will show below the input. Will not be shown if the field has an error */
   description?: string;
-  /** Props for useController. Add rules and validation here */
-  controllerProps?: Omit<UseControllerProps, "name">;
+  /** The options to populate the select */
+  options: SelectOptionProps[];
 }
 
-export interface ToggleProps
-  extends Omit<ComponentPropsWithoutRef<"button">, "onChange"> {
-  name: string;
+export interface ToggleProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<
+      ComponentPropsWithoutRef<"button">,
+      "name" | "defaultValue" | "onChange" | "value"
+    > {
   label?: string;
 }
 
@@ -101,17 +98,18 @@ export interface SelectOptionProps {
   label: string;
 }
 
-export interface RadioProps extends ComponentPropsWithoutRef<"input"> {
-  name: string;
+export interface RadioProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"input">, "name" | "defaultValue"> {
   value: string | number;
   label: string;
   controllerProps?: Omit<UseControllerProps, "name">;
 }
 
-export interface CheckboxProps extends ComponentPropsWithoutRef<"input"> {
-  name: string;
+export interface CheckboxProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<ComponentPropsWithoutRef<"input">, "name" | "defaultValue"> {
   label?: string;
-  controllerProps?: Omit<UseControllerProps, "name">;
 }
 
 /** Options for order tags */
