@@ -1,11 +1,10 @@
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { classNames } from "utils/helpers";
 
-interface Props extends ComponentPropsWithoutRef<"td"> {
-  children: ReactNode;
-}
-
-export const TableCell = ({ children, ...props }: Props) => {
+export const TableCell = ({
+  children,
+  ...props
+}: ComponentPropsWithoutRef<"td">) => {
   return (
     <td
       {...props}

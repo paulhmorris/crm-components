@@ -1,15 +1,18 @@
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
+import { classNames } from "utils/helpers";
 
 interface Props extends ComponentPropsWithoutRef<"table"> {
   headers: string[];
-  children: ReactNode;
 }
 
 export const Table = ({ children, headers, ...props }: Props) => {
   return (
     <table
-      className={`relative min-w-full border-separate border-spacing-0 ${props.className}`}
       {...props}
+      className={classNames(
+        "relative min-w-full border-separate border-spacing-0",
+        props.className
+      )}
     >
       <thead className={`bg-white`}>
         <tr>
