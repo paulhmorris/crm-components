@@ -50,6 +50,10 @@
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-50 focus-visible:ring-offset-2;
   }
 
+  [role="tab"] {
+    @apply focus-visible:outline-none;
+  }
+
   code {
     @apply rounded bg-gray-200 py-1 px-2 text-xs;
   }

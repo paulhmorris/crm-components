@@ -10,7 +10,7 @@ const TabSelection = () => {
 
   return (
     <div className="mb-10">
-      <div className="flex justify-center space-x-4">
+      <div className="flex flex-wrap justify-center space-x-4">
         <Button
           onClick={() =>
             tabControl(
@@ -93,6 +93,21 @@ const TabSelection = () => {
               setTabs,
               setSelectedTabIndex,
               navigate,
+              "Sample Table",
+              "/sample-table"
+            )
+          }
+          variant="secondary"
+        >
+          Sample Table
+        </Button>
+        {/* <Button
+          onClick={() =>
+            tabControl(
+              tabs,
+              setTabs,
+              setSelectedTabIndex,
+              navigate,
               "Create Submarket",
               "/create-submarket"
             )
@@ -115,7 +130,7 @@ const TabSelection = () => {
           variant="secondary"
         >
           Create Subscription
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
