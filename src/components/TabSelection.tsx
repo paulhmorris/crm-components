@@ -71,7 +71,7 @@ const TabSelection = () => {
         >
           Jarvis
         </Button>
-        <Button
+        {/* <Button
           onClick={() =>
             tabControl(
               tabs,
@@ -85,7 +85,7 @@ const TabSelection = () => {
           variant="secondary"
         >
           Group Profile
-        </Button>
+        </Button> */}
         <Button
           onClick={() =>
             tabControl(
@@ -100,6 +100,21 @@ const TabSelection = () => {
           variant="secondary"
         >
           Sample Table
+        </Button>
+        <Button
+          onClick={() =>
+            tabControl(
+              tabs,
+              setTabs,
+              setSelectedTabIndex,
+              navigate,
+              "Market",
+              "/market"
+            )
+          }
+          variant="secondary"
+        >
+          Market
         </Button>
         {/* <Button
           onClick={() =>

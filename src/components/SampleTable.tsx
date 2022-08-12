@@ -1,4 +1,5 @@
 import {
+  rand,
   randFutureDate,
   randNumber,
   randPastDate,
@@ -18,22 +19,22 @@ const headers = [
   "pounds per cycle",
   "submarket",
 ];
-const mockTableRow = {
-  id: randUuid(),
-  name: randText(),
-  start: randPastDate(),
-  end: randFutureDate(),
-  billingPeriod: "Semester",
-  price: randNumber({ min: 129, max: 899, precision: 100 }),
-  poundsPerCycle: randNumber({ min: 10, max: 100 }),
-  cycleLength: "week",
+type mockTableRow = {
+  id: string;
+  name: string;
+  start: Date;
+  end: Date;
+  billingPeriod: string;
+  price: number;
+  poundsPerCycle: number;
+  cycleLength: string;
   submarket: {
-    id: randUuid(),
-    name: randText({ charCount: 45 }),
-  },
+    id: string;
+    name: string;
+  };
 };
 
-const data: typeof mockTableRow[] = [];
+const data: mockTableRow[] = [];
 
 export const SampleTable = () => {
   useMemo(() => {
@@ -43,7 +44,7 @@ export const SampleTable = () => {
         name: randText({ charCount: 20 }),
         start: randPastDate(),
         end: randFutureDate(),
-        billingPeriod: "Semester",
+        billingPeriod: rand(["Semester", "Annual", "Monthly"]),
         price: randNumber({ min: 129, max: 899, precision: 100 }),
         poundsPerCycle: randNumber({ min: 10, max: 100 }),
         cycleLength: "week",
@@ -79,7 +80,7 @@ export const SampleTable = () => {
               {`${row.poundsPerCycle}lbs per ${row.cycleLength}`}
             </TableCell>
             <TableCell
-              className="text-xs font-bold text-tide-blue hover:text-tide-orange"
+              className="font-bold text-tide-blue hover:text-tide-orange"
               onClick={(e) => {
                 e.stopPropagation();
                 console.log(`Navigating to submarket/${row.submarket.id}`);

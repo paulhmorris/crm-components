@@ -5,6 +5,7 @@ import ComponentDisplay from "routes/components";
 import GroupProfile from "routes/group-profile";
 import GuestProfile from "routes/guest-profile";
 import Jarvis from "routes/jarvis";
+import { Market } from "routes/market";
 import Nav from "routes/nav";
 import SampleTablePage from "routes/sample-table";
 import { TabManagerProvider } from "./contexts/TabManagerContext";
@@ -23,6 +24,7 @@ root.render(
           <Route path="nav" element={<Nav />} />
           <Route path="jarvis" element={<Jarvis />} />
           <Route path="group-profile" element={<GroupProfile />} />
+          <Route path="market" element={<Market />} />
           {/* <Route path="create-submarket" element={<CreateSubmarket />} /> */}
           {/* <Route path="create-subscription" element={<CreateSubscription />} /> */}
           <Route path="sample-table" element={<SampleTablePage />} />

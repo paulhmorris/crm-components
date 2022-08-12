@@ -5,7 +5,7 @@ import TabSelection from "./TabSelection";
 
 function App() {
   return (
-    <div className="mt-10 p-4 pb-24">
+    <div className="mt-10 pb-24">
       <TabSelection />
       <Navbar />
       <Outlet />

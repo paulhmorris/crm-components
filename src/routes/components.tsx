@@ -2,7 +2,7 @@ import { ComponentsForm } from "components/ComponentsForm";
 import { DropdownMenuItem } from "components/DropdownMenuItem";
 import { PasscodeForm } from "components/Forms/PasscodeForm";
 import { SignInForm } from "components/Forms/SignInForm";
-import { MarketCard } from "components/Markets/MarketCard";
+import { MarketCard } from "components/Jarvis/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
 import { useState } from "react";
 import { Banner } from "../components/Banner";

@@ -19,7 +19,6 @@ module.exports = {
         300: "#2c44a6",
         400: "#203177",
         ice: "rgba(23, 219, 228, 0.1)",
-        jarvis: "#253A8F",
       },
       tide: {
         blue: "#0d4b9f",

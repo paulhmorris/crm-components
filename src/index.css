@@ -85,7 +85,7 @@
   }
 
   .tab-list {
-    @apply space-x-6 border-b border-gray-200 pl-6 pb-0.5;
+    @apply space-x-7 border-b border-gray-200 pl-6 pb-0.5;
   }
 
   .tab {

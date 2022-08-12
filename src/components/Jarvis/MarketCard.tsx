@@ -1,9 +1,8 @@
 import { ComponentPropsWithoutRef } from "react";
-import { BusinessUnit, SubmarketType } from "types";
 import { classNames } from "utils/helpers";
 
 interface MarketCardProps extends ComponentPropsWithoutRef<"button"> {
-  businessType: BusinessUnit | SubmarketType;
+  businessType: string;
   title: string;
 }
 
@@ -19,7 +18,7 @@ export const MarketCard = ({
       {...props}
       className={classNames(
         className,
-        "max-w-[256px] flex-auto space-y-0.5 rounded border border-gray-300 p-6 transition-colors duration-75 hover:bg-gray-100 active:bg-gray-200/50"
+        "h-min w-64 flex-auto flex-grow-0 space-y-0.5 rounded border border-gray-300 p-6 transition-colors duration-75 hover:bg-gray-100 active:bg-gray-200/50"
       )}
       role="listitem"
     >
