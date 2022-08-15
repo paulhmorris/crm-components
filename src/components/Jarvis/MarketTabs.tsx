@@ -1,5 +1,10 @@
 import { Tab } from "@headlessui/react";
+import { Coupons } from "./Coupons";
+import { Employees } from "./Employees";
+import { Groups } from "./Groups";
+import { MarketRoutes } from "./MarketRoutes";
 import { ServicePoints } from "./ServicePoints";
+import { Subscriptions } from "./Subscriptions";
 
 const tabs = [
   "Processors",
@@ -15,8 +20,8 @@ const tabs = [
 
 export const MarketTabs = () => {
   return (
-    <Tab.Group defaultIndex={0}>
-      <Tab.List className="tab-list mb-10">
+    <Tab.Group>
+      <Tab.List className="tab-list mb-6">
         {tabs.map((tab) => (
           <Tab
             key={tab}
@@ -33,27 +38,19 @@ export const MarketTabs = () => {
           </div>
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Routes 👋🏼</p>
-          </div>
+          <MarketRoutes />
         </Tab.Panel>
         <Tab.Panel>
           <ServicePoints />
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Coupons 👋🏼</p>
-          </div>
+          <Coupons />
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Groups 👋🏼</p>
-          </div>
+          <Groups />
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Employees 👋🏼</p>
-          </div>
+          <Employees />
         </Tab.Panel>
         <Tab.Panel>
           <div className="p-6">
@@ -61,9 +58,7 @@ export const MarketTabs = () => {
           </div>
         </Tab.Panel>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Subscriptions 👋🏼</p>
-          </div>
+          <Subscriptions />
         </Tab.Panel>
         <Tab.Panel>
           <div className="p-6">

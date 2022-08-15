@@ -35,8 +35,8 @@ export const DropdownMenu = ({
       <Menu.Button
         {...props}
         className={classNames(
-          className,
-          variant === "kebab" ? "-mx-2 p-2" : ""
+          variant === "kebab" ? "-mx-2 p-2" : "",
+          className
         )}
       >
         {variant === "kebab" && (

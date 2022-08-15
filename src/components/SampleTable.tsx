@@ -11,14 +11,6 @@ import { useMemo } from "react";
 import { formatCurrency } from "utils/helpers";
 import { Table, TableCell, TableRow } from "./Table";
 
-const headers = [
-  "name",
-  "service dates",
-  "billing period",
-  "price",
-  "pounds per cycle",
-  "submarket",
-];
 type mockTableRow = {
   id: string;
   name: string;
@@ -34,12 +26,20 @@ type mockTableRow = {
   };
 };
 
-const data: mockTableRow[] = [];
-
+const headers = [
+  "name",
+  "service dates",
+  "billing period",
+  "price",
+  "pounds per cycle",
+  "submarket",
+];
 export const SampleTable = () => {
-  useMemo(() => {
+  const x = true;
+  const data = useMemo(() => {
+    const arr: mockTableRow[] = [];
     for (let i = 0; i < 50; i++) {
-      data.push({
+      arr.push({
         id: randUuid(),
         name: randText({ charCount: 20 }),
         start: randPastDate(),
@@ -54,7 +54,9 @@ export const SampleTable = () => {
         },
       });
     }
-  }, []);
+    return arr;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [x]);
 
   return (
     <Table headers={headers}>

@@ -26,7 +26,7 @@ export const SearchBox = (props: ComponentPropsWithoutRef<"input">) => {
         {...props}
         type="search"
         className={classNames(
-          "w-full rounded border-0 bg-white py-3.5 pl-10 ring-1 ring-gray-300 transition duration-100 placeholder:text-gray-300 hover:ring-gray-400 focus:ring-gray-400",
+          "w-full rounded border-0 bg-white py-3.5 pl-10 text-sm leading-4 ring-1 ring-gray-300 transition placeholder:text-gray-300 hover:ring-gray-400 focus:ring-gray-400",
           props.className
         )}
         onFocus={() => setHasFocus(true)}

@@ -2,9 +2,19 @@ import { classNames } from "utils/helpers";
 
 type TagPropsWithText = { text: string };
 
-export const CouponTag = ({ text }: TagPropsWithText) => {
+export const CouponTag = ({
+  text,
+  isInactive,
+}: TagPropsWithText & { isInactive: boolean }) => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-tag-yellow px-2 py-1 font-bold text-tide-orange">
+    <span
+      className={classNames(
+        isInactive
+          ? "bg-gray-200 text-secondary"
+          : "bg-tag-yellow text-tide-orange",
+        "max-w-min flex-grow-0 whitespace-nowrap rounded px-2 py-1 font-bold uppercase "
+      )}
+    >
       {text}
     </span>
   );

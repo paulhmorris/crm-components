@@ -1,4 +1,5 @@
 import { AccountHeaderProps } from "components/Account/AccountHeader";
+import { Weekday } from "types";
 
 export const personalDetails = {
   fullName: "Johnny Rocket",
@@ -208,5 +209,43 @@ export const mockPlansData = [
     routes: [],
     created: "2022-04-26T02:40:17Z",
     group: null,
+  },
+];
+
+export const WEEKDAYS: Weekday[] = [
+  {
+    fullName: "Sunday",
+    initial: "S",
+    dayValue: 0,
+  },
+  {
+    fullName: "Monday",
+    initial: "M",
+    dayValue: 1,
+  },
+  {
+    fullName: "Tuesday",
+    initial: "T",
+    dayValue: 2,
+  },
+  {
+    fullName: "Wednesday",
+    initial: "W",
+    dayValue: 3,
+  },
+  {
+    fullName: "Thursday",
+    initial: "T",
+    dayValue: 4,
+  },
+  {
+    fullName: "Friday",
+    initial: "F",
+    dayValue: 5,
+  },
+  {
+    fullName: "Saturday",
+    initial: "S",
+    dayValue: 6,
   },
 ];

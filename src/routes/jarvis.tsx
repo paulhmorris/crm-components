@@ -10,18 +10,20 @@ type mockMarket = {
   type: string;
 };
 
-const data: mockMarket[] = [];
-
 export default function Jarvis() {
-  useMemo(() => {
+  const x = true;
+  const data = useMemo(() => {
+    const markets: mockMarket[] = [];
     for (let i = 0; i < 50; i++) {
-      data.push({
+      markets.push({
         id: randUuid(),
         name: randText({ charCount: 20 }),
         type: Math.random() > 0.3 ? "Tide Cleaners" : "Tide Dry Cleaners",
       });
     }
-  }, []);
+    return markets;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [x]);
 
   const [filter, setFilter] = useState("");
   const filteredOptions =

@@ -137,7 +137,7 @@ export interface ModalProps {
   title: string;
   /** Optional description. Displays below the header. */
   description?: string;
-  /** Width of the modal. "fluid" will automatically stretch to the content size */
+  /** Width of the modal. */
   size?: "xs" | "sm" | "md" | "lg" | "full";
   /** Callback for the Modal to close itself */
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -158,4 +158,20 @@ export interface FormModalProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   defaultValues?: Record<string, any>;
+}
+
+export type Weekday = {
+  fullName: string;
+  initial: string;
+  dayValue: number;
+};
+
+export type WeekdaySelectorActionType =
+  | { type: "add"; payload: number }
+  | { type: "remove"; payload: number };
+
+export interface WeekdaySelectorProps
+  extends Omit<ComponentPropsWithoutRef<"button">, "className"> {
+  activeWeekdays: number[];
+  dispatch: Dispatch<WeekdaySelectorActionType>;
 }
