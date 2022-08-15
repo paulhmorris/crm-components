@@ -8,6 +8,7 @@ import {
 import { SearchBox } from "components/SearchBox";
 import { Table, TableCell, TableRow } from "components/Table";
 import { useMemo, useState } from "react";
+import { formatPhone } from "utils/helpers";
 
 type mockTableRow = {
   id: string;
@@ -78,7 +79,7 @@ export const Employees = () => {
               </TableCell>
               <TableCell className="text-secondary">{employee.role}</TableCell>
               <TableCell>{employee.email}</TableCell>
-              <TableCell>{employee.phone}</TableCell>
+              <TableCell>{formatPhone(employee.phone)}</TableCell>
             </TableRow>
           ))}
       </Table>

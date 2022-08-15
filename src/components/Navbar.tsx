@@ -4,11 +4,12 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { TabManagerContext } from "../contexts/TabManagerContext";
 import { TabDetails } from "../types";
-import { getActiveTabIndex } from '../utils/tabcontrol';
+import { getActiveTabIndex } from "../utils/tabcontrol";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } = useContext(TabManagerContext);
+  const { tabs, setTabs, selectedTabIndex, setSelectedTabIndex } =
+    useContext(TabManagerContext);
   //When a user closes a tab using 'X' button on the tab
   const closeTab = (title: string) => {
     //Remove Deleted Tab from Tab Data
@@ -16,7 +17,12 @@ const Navbar = () => {
       (tab: TabDetails) => tab.title !== title
     );
     //Check if the closed tab was the active tab. if not, retrieve new tab index
-    const activeTabIndex = getActiveTabIndex(tabs, updatedTabsData, title, selectedTabIndex);
+    const activeTabIndex = getActiveTabIndex(
+      tabs,
+      updatedTabsData,
+      title,
+      selectedTabIndex
+    );
     //If there are tabs remaining
     if (updatedTabsData.length) {
       if (activeTabIndex) {
@@ -52,14 +58,18 @@ const Navbar = () => {
                 <>
                   <div className="peer flex items-center pr-5">
                     <span
-                      className={(selected || (index > 1 && selectedTabIndex === index)) ? "tab tab-active" : "tab"}
+                      className={
+                        selected || (index > 1 && selectedTabIndex === index)
+                          ? "tab tab-active"
+                          : "tab"
+                      }
                       onClick={() => changeTab(route, index)}
                     >
                       {title}
                     </span>
                   </div>
                   <span
-                    className="absolute top-0 right-0 text-transparent transition-colors duration-75 hover:text-gray-400 peer-hover:text-gray-300"
+                    className="absolute top-0 right-0 text-transparent transition-colors duration-75 hover:text-secondary peer-hover:text-gray-300"
                     onClick={() => closeTab(title)}
                   >
                     <XIcon className="-ml-2 h-4 w-4" />

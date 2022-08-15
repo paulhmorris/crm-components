@@ -16,8 +16,8 @@ module.exports = {
         50: "#b2cef3",
         100: "#d7e6fa",
         200: "#0d4b9f",
-        300: "#2c44a6",
-        400: "#203177",
+        300: "#0b428e",
+        400: "#0a3b7e",
         ice: "rgba(23, 219, 228, 0.1)",
       },
       tide: {
@@ -37,7 +37,7 @@ module.exports = {
       error: "#eb001c",
       transparent: "transparent",
       current: "currentColor",
-      white: "#fff",
+      white: "#ffffff",
       black: "#1b1b1b",
     },
     borderRadius: {

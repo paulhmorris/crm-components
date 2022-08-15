@@ -3,24 +3,32 @@ import { TextArea } from "components/Forms/TextArea";
 import { SubmitButton } from "components/SubmitButton";
 import { useForm } from "react-hook-form";
 import { FormModalProps } from "types";
+import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
 import { GuestNoteFormValues } from "./types";
 
 export const GuestNoteModal = ({ isOpen, setIsOpen }: FormModalProps) => {
-  const { control, handleSubmit, formState } = useForm<GuestNoteFormValues>();
-  const { isSubmitting } = formState;
+  const { control, handleSubmit, formState } = useForm<GuestNoteFormValues>({
+    ...modalFormConfig,
+  });
+  const { isSubmitting, errors } = formState;
 
   async function saveNote(values: GuestNoteFormValues) {
     await sleep(2000);
     console.log(values);
+    console.log(errors);
     setIsOpen(false);
   }
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="👤 Edit Guest Note">
+    <Modal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      title="👤 Edit Guest Note"
+      description="⛔️ You are editing a note the guest can see."
+    >
       <form onSubmit={handleSubmit(saveNote)} className="pt-6">
-        <p className="mb-1">⛔️ You are editing a note the guest can see.</p>
         <div className="mb-2">
           <TextArea control={control} name="guestNote" label="Guest Note" />
         </div>

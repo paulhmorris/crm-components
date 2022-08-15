@@ -15,6 +15,7 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
     useForm<LinkedAccountFormValues>({
       ...modalFormConfig,
       defaultValues: {
+        guestProfileUrl: "",
         name: "",
         phone: "",
         email: "",
@@ -41,7 +42,7 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
     return new Promise((resolve) => {
       setSearchedGuest({
         name: "Jefferson Pierce",
-        phone: "4322668901",
+        phone: "(432) 266-8901",
         email: "jeff@gmail.com",
       });
       resolve(true);

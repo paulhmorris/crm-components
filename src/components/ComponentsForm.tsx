@@ -51,7 +51,7 @@ export const ComponentsForm = () => {
     control,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<FormValues>({ defaultValues });
+  } = useForm<FormValues>({ defaultValues, mode: "onTouched" });
 
   const onSubmit = async (data: FormValues) => {
     await sleep(1000);
@@ -112,6 +112,9 @@ export const ComponentsForm = () => {
           name="myInput2"
           label="Last name"
           description="Some description about this field"
+          rules={{
+            minLength: { value: 10, message: "Min length 10" },
+          }}
         />
         <TextArea
           control={control}

@@ -30,7 +30,6 @@ export const TextInput = <T extends FieldValues>({
         type={type}
         placeholder="doNotRemove"
         disabled={isDisabled}
-        required={isRequired && !isDisabled}
         aria-describedby={
           error
             ? `${name}-error`
@@ -55,6 +54,7 @@ export const TextInput = <T extends FieldValues>({
         htmlFor={name}
       >
         {label}
+        {isRequired ? " *" : ""}
       </label>
       <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
         {description && (isDisabled || !error) && (

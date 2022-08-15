@@ -34,7 +34,7 @@ export const TextArea = <T extends FieldValues>({
         htmlFor={name}
       >
         {label}
-        {required ? " *" : ""}
+        {isRequired ? " *" : ""}
       </label>
       <textarea
         {...field}
@@ -43,7 +43,6 @@ export const TextArea = <T extends FieldValues>({
         rows={4}
         placeholder="Go ahead, type something..."
         disabled={isDisabled}
-        required={isRequired && !isDisabled}
         aria-describedby={
           error
             ? `${name}-error`
@@ -58,7 +57,7 @@ export const TextArea = <T extends FieldValues>({
       ></textarea>
 
       {/* Description and error visibility logic */}
-      <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
+      <div className="mt-0 ml-[1px] min-h-[1.25rem] text-xs">
         {description && (isDisabled || !error) && (
           <FieldDescription
             name={name}

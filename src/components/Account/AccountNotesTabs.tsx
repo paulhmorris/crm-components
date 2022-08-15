@@ -9,7 +9,7 @@ export const AccountNotesTabs = () => {
         <Tab
           className={({ selected }) => (selected ? "tab tab-active" : "tab")}
         >
-          👀 Internal Notes
+          🔒 Internal Notes
         </Tab>
         <Tab
           className={({ selected }) => (selected ? "tab tab-active" : "tab")}

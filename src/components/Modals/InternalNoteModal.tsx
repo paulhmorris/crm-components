@@ -3,13 +3,15 @@ import { TextArea } from "components/Forms/TextArea";
 import { SubmitButton } from "components/SubmitButton";
 import { useForm } from "react-hook-form";
 import { FormModalProps } from "types";
+import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
 import { InternalNoteFormValues } from "./types";
 
 export const InternalNoteModal = ({ isOpen, setIsOpen }: FormModalProps) => {
-  const { control, handleSubmit, formState } =
-    useForm<InternalNoteFormValues>();
+  const { control, handleSubmit, formState } = useForm<InternalNoteFormValues>({
+    ...modalFormConfig,
+  });
   const { isSubmitting } = formState;
 
   async function saveNote(data: InternalNoteFormValues) {
@@ -19,9 +21,13 @@ export const InternalNoteModal = ({ isOpen, setIsOpen }: FormModalProps) => {
   }
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="👤 Edit Guest Note">
+    <Modal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      title="🔒 Edit Internal Note"
+      description="Only employees can read this note."
+    >
       <form onSubmit={handleSubmit(saveNote)} className="pt-6">
-        <p className="mb-1">✅ Only employees can read this note.</p>
         <div className="mb-2">
           <TextArea
             control={control}

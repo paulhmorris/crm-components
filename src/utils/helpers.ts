@@ -28,8 +28,8 @@ export const formatCurrency = (value: number, decimals?: 0 | 2): string => {
 
 export const formatPhone = (phoneNumber: string) => {
   if (!phoneNumber) return "";
-  if (phoneNumber.length > 10) {
-    phoneNumber = phoneNumber.slice(1);
+  if (phoneNumber.at(0) === "+") {
+    phoneNumber = phoneNumber.slice(2);
   }
   return formatStringByPattern(phoneMask, normalizeNumber(phoneNumber));
 };

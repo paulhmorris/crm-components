@@ -52,10 +52,7 @@ export const Modal = ({
               <Dialog.Panel
                 className={`${sizes[size]} w-full min-w-[400px] transform overflow-visible rounded-lg bg-white px-10 py-6 text-left align-middle shadow-xl transition-all`}
               >
-                <Dialog.Title
-                  className="mb-6 border-b border-gray-200 pb-6"
-                  as="h2"
-                >
+                <Dialog.Title className="mb-6" as="h2">
                   {title}
                 </Dialog.Title>
                 {description && (
