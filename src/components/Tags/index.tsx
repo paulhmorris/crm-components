@@ -5,7 +5,7 @@ type TagPropsWithText = { text: string };
 export const CouponTag = ({
   text,
   isInactive,
-}: TagPropsWithText & { isInactive: boolean }) => {
+}: TagPropsWithText & { isInactive?: boolean }) => {
   return (
     <span
       className={classNames(

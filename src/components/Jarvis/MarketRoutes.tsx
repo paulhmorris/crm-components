@@ -49,7 +49,6 @@ export const MarketRoutes = () => {
     initialState
   );
 
-  console.log(initialState);
   return (
     <>
       <div className="p-6">

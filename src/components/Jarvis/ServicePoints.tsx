@@ -91,7 +91,7 @@ export const ServicePoints = () => {
                 }}
                 className={classNames(
                   sp.associatedRoutes === "No assigned route"
-                    ? "text-secondary"
+                    ? "text-gray-300"
                     : "font-bold text-tide-blue hover:text-tide-orange"
                 )}
               >
