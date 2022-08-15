@@ -8,7 +8,11 @@ export const ToggleAutoRenew = ({ defaultValues }: any) => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Toggle control={control} name="autoRenew" />
+      <Toggle
+        control={control}
+        name="autoRenew"
+        onClick={() => handleSubmit(onSubmit)()}
+      />
     </form>
   );
 };

@@ -3,6 +3,7 @@ import { Coupons } from "./Coupons";
 import { Employees } from "./Employees";
 import { Groups } from "./Groups";
 import { MarketRoutes } from "./MarketRoutes";
+import { Processors } from "./Processors";
 import { ServicePoints } from "./ServicePoints";
 import { Subscriptions } from "./Subscriptions";
 
@@ -33,9 +34,7 @@ export const MarketTabs = () => {
       </Tab.List>
       <Tab.Panels>
         <Tab.Panel>
-          <div className="p-6">
-            <p>Processors 👋🏼</p>
-          </div>
+          <Processors />
         </Tab.Panel>
         <Tab.Panel>
           <MarketRoutes />

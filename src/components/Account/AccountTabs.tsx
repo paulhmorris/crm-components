@@ -1,5 +1,4 @@
 import { Tab } from "@headlessui/react";
-import { personalDetails } from "mockData";
 import { AccountBags } from "./AccountBags";
 import { AccountCoupons } from "./AccountCoupons";
 import { AccountPaymentMethods } from "./AccountPaymentMethods";
@@ -43,15 +42,7 @@ export const AccountTabs = () => {
       </Tab.List>
       <Tab.Panels>
         <Tab.Panel>
-          <PersonalDetails
-            fullName={personalDetails.fullName}
-            email={personalDetails.email}
-            address={personalDetails.address}
-            phone={personalDetails.phone}
-            group={personalDetails.group}
-            autoRenew={personalDetails.autoRenew}
-            onHold={personalDetails.onHold}
-          />
+          <PersonalDetails />
         </Tab.Panel>
         <Tab.Panel>
           <AccountPlans />

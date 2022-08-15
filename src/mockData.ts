@@ -1,3 +1,13 @@
+import {
+  randAddress,
+  randBoolean,
+  randCompanyName,
+  randEmail,
+  randFirstName,
+  randLastName,
+  randPhoneNumber,
+  randUuid,
+} from "@ngneat/falso";
 import { AccountHeaderProps } from "components/Account/AccountHeader";
 import { Weekday } from "types";
 
@@ -13,6 +23,23 @@ export const personalDetails = {
   autoRenew: true,
   onHold: false,
 };
+
+export function generateRandomGuest() {
+  return {
+    id: randUuid(),
+    firstName: randFirstName(),
+    lastName: randLastName(),
+    email: randEmail(),
+    phone: randPhoneNumber({ countryCode: "US" }),
+    address: randAddress({ includeCountry: false, includeCounty: false }),
+    group: {
+      id: randUuid(),
+      name: randCompanyName(),
+    },
+    autoRenew: randBoolean(),
+    onHold: randBoolean(),
+  };
+}
 
 export const mockLinkedAccounts = [
   {

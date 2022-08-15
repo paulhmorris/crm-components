@@ -32,7 +32,7 @@ export const MarketRoutes = () => {
         id: randUuid(),
         name: randText({ charCount: 20 }),
         weekdays: randomWeekday(),
-        vehicle: randText(),
+        vehicle: rand(["Dallas Sprinter", "Dallas Van 2", "Vehicle 5"]),
         numberOfStops: randNumber({ min: 0, max: 100 }),
       });
     }

@@ -1,21 +1,27 @@
 import { Button } from "components/Button";
 import { EditPersonalDetailsModal } from "components/Modals/EditPersonalDetailsModal";
-import { useState } from "react";
-import { PersonalDetailsProps } from "types";
+import { generateRandomGuest } from "mockData";
+import { useMemo, useState } from "react";
 import { formatPhone } from "utils/helpers";
 import { ToggleAutoRenew } from "./ToggleAutoRenew";
 import { ToggleOnHold } from "./ToggleOnHold";
 
-export const PersonalDetails = ({
-  fullName,
-  email,
-  phone,
-  address,
-  group,
-  autoRenew,
-  onHold,
-}: PersonalDetailsProps) => {
+export const PersonalDetails = () => {
   const [openEditDetails, setOpenEditDetails] = useState(false);
+
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    address,
+    autoRenew,
+    onHold,
+    group,
+  } = useMemo<ReturnType<typeof generateRandomGuest>>(
+    () => generateRandomGuest(),
+    []
+  );
 
   return (
     <section className="flex w-full flex-col">
@@ -25,8 +31,8 @@ export const PersonalDetails = ({
         defaultValues={{
           phone,
           email,
-          firstName: "Johnny",
-          lastName: "Rocket",
+          firstName,
+          lastName,
         }}
       />
       <div className="flex items-end justify-between border-b border-gray-200 px-6 py-3">
@@ -41,7 +47,7 @@ export const PersonalDetails = ({
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
         <p className="text-left text-secondary">Name</p>
-        <p className="text-right font-bold">{fullName}</p>
+        <p className="text-right font-bold">{`${firstName} ${lastName}`}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
         <p className="text-left text-secondary">Email</p>
@@ -53,7 +59,7 @@ export const PersonalDetails = ({
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
         <p className="text-left text-secondary">Home Address</p>
-        <p className="text-right font-bold">{address}</p>
+        <p className="text-right font-bold">{`${address.street} ${address.city}, ${address.zipCode}`}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
         <p className="text-left text-secondary">Group</p>

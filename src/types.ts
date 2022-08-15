@@ -36,20 +36,6 @@ export type BusinessUnit =
 
 export type SubmarketType = "Campus" | "Business Park";
 
-/** Guest Profile - personal details tab */
-export interface PersonalDetailsProps {
-  fullName: string;
-  email: string;
-  phone: string;
-  address: string;
-  group: {
-    id: number;
-    name: string;
-  };
-  autoRenew: boolean;
-  onHold: boolean;
-}
-
 // ----------- C O M P O N E N T S ----------- //
 
 export interface TextInputProps<T extends FieldValues>
@@ -92,7 +78,7 @@ export interface ToggleProps<T extends FieldValues>
   extends UseControllerProps<T>,
     Omit<
       ComponentPropsWithoutRef<"button">,
-      "name" | "defaultValue" | "onChange" | "value"
+      "name" | "defaultValue" | "value"
     > {
   label?: string;
 }

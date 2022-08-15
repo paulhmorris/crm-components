@@ -18,8 +18,8 @@ export const Toggle = <T extends FieldValues>({
     <div className={classNames("flex items-center space-x-2")}>
       <Switch.Group>
         <Switch
-          {...field}
           {...props}
+          {...field}
           checked={field.value}
           name={name}
           disabled={isDisabled}

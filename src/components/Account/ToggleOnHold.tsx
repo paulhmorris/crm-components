@@ -8,7 +8,11 @@ export const ToggleOnHold = ({ defaultValues }: any) => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Toggle control={control} name="onHold" />
+      <Toggle
+        control={control}
+        name="onHold"
+        onClick={() => handleSubmit(onSubmit)()}
+      />
     </form>
   );
 };
