@@ -5,16 +5,17 @@ import { classNames } from "../../utils/helpers";
 export const WeekdaySelector = ({
   activeWeekdays,
   dispatch,
-  ...props
+  disabledDays,
 }: WeekdaySelectorProps) => {
   return (
     <>
       <div className="flex items-center gap-4">
         {WEEKDAYS.map(({ dayValue, initial }) => {
           const isSelected = activeWeekdays.includes(dayValue);
+          const isDisabled = disabledDays?.includes(dayValue);
           return (
             <button
-              {...props}
+              disabled={isDisabled}
               key={dayValue}
               onClick={() =>
                 dispatch({

@@ -40,11 +40,10 @@ export const MarketRoutes = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [x]);
 
-  // Starts with just the used days highlighted
+  // ex: [0, 1, 2, 3, 4, 5, 6]
   const initialState = [
     ...new Set(data.map((r) => r.weekdays.map((x) => x.dayValue)).flat()),
   ];
-  // const initialState = [0, 1, 2, 3, 4, 5, 6];
   const [activeWeekdays, dispatch] = useReducer(
     weekdaySelectorReducer,
     initialState
@@ -55,7 +54,11 @@ export const MarketRoutes = () => {
     <>
       <div className="p-6">
         <p className="mb-2 text-secondary">Filter by route day</p>
-        <WeekdaySelector activeWeekdays={activeWeekdays} dispatch={dispatch} />
+        <WeekdaySelector
+          activeWeekdays={activeWeekdays}
+          dispatch={dispatch}
+          disabledDays={[6]}
+        />
       </div>
       <Table headers={headers}>
         {data

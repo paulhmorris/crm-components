@@ -170,8 +170,8 @@ export type WeekdaySelectorActionType =
   | { type: "add"; payload: number }
   | { type: "remove"; payload: number };
 
-export interface WeekdaySelectorProps
-  extends Omit<ComponentPropsWithoutRef<"button">, "className"> {
+export type WeekdaySelectorProps = {
   activeWeekdays: number[];
   dispatch: Dispatch<WeekdaySelectorActionType>;
-}
+  disabledDays?: number[] | null;
+};
