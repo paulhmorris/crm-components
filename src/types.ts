@@ -56,7 +56,10 @@ export interface FormComponent extends UseFormProps {
 
 export interface TextAreaProps<T extends FieldValues>
   extends UseControllerProps<T>,
-    Omit<ComponentPropsWithoutRef<"textarea">, "name" | "defaultValue"> {
+    Omit<
+      ComponentPropsWithoutRef<"textarea">,
+      "name" | "defaultValue" | "value"
+    > {
   /** Field label. This acts as the placeholder until active */
   label: string;
   /** Optional description will show below the input. Will not be shown if the field has an error */

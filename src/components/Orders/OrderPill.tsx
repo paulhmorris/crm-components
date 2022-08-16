@@ -11,7 +11,7 @@ export const OrderPill = ({ text, pillType, status }: OrderPillProps) => {
   return (
     <div
       className={classNames(
-        "inline-flex h-6 min-w-[66px] max-w-min items-center justify-center whitespace-nowrap rounded-sm border px-2 text-xs font-bold leading-3",
+        "inline-flex h-6 min-w-[66px] max-w-min items-center justify-center whitespace-nowrap rounded-sm border px-2 text-xs font-bold leading-3 shadow-sm",
         // DC Request
         pillType === "dryClean" &&
           status === "request" &&
@@ -34,7 +34,7 @@ export const OrderPill = ({ text, pillType, status }: OrderPillProps) => {
           : status === "canceled"
           ? "border-gray-200 bg-gray-200 text-gray-300"
           : status === "finished"
-          ? "border-gray-300 bg-gray-300 text-secondary"
+          ? "border-gray-300 bg-gray-300 text-gray-secondary"
           : pillType === "ticket" && "border-tide-blue bg-tide-blue text-white"
       )}
     >

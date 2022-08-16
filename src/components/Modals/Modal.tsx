@@ -56,7 +56,7 @@ export const Modal = ({
                   {title}
                 </Dialog.Title>
                 {description && (
-                  <Dialog.Description className="px-2 py-3 text-secondary">
+                  <Dialog.Description className="px-2 text-gray-secondary">
                     {description}
                   </Dialog.Description>
                 )}

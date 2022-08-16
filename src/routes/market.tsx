@@ -9,7 +9,7 @@ export const Market = () => {
       <JarvisNav />
       <div className="ml-[200px] mb-12 flex items-center justify-between px-6">
         <div>
-          <p className="text-secondary">Tide Cleaners</p>
+          <p className="text-gray-secondary">Tide Cleaners</p>
           <h1 className="mt-1 text-xl">Tide Cleaners Los Angeles</h1>
         </div>
         <DropdownMenu

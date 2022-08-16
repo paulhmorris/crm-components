@@ -54,7 +54,7 @@ export const Select = <T extends FieldValues>({
                 ? "pointer-events-none text-gray-300"
                 : error
                 ? "text-error"
-                : "text-secondary"
+                : "text-gray-secondary"
             )}
           >
             {label}

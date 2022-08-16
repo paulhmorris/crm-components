@@ -3,6 +3,7 @@ import { MarketCard } from "components/Jarvis/MarketCard";
 import { JarvisNav } from "components/Navigation/JarvisNav";
 import { SearchBox } from "components/SearchBox";
 import { useMemo, useState } from "react";
+import { formatNumber } from "utils/helpers";
 
 type mockMarket = {
   id: string;
@@ -37,12 +38,14 @@ export default function Jarvis() {
     <>
       <JarvisNav />
       <div className="ml-[200px]">
-        <div className="border-b border-gray-200 py-6 px-10">
+        <div className="border-b border-gray-200 py-6 px-6">
           <div className="mb-12">
             <h1>Markets</h1>
-            <p className="mt-1 text-secondary">{data.length} Markets</p>
+            <p className="mt-1 text-gray-secondary">
+              {formatNumber(data.length)} Markets
+            </p>
           </div>
-          <div>
+          <div className="max-w-sm">
             <SearchBox
               name="searchMarkets"
               placeholder="Filter by name"
@@ -53,7 +56,9 @@ export default function Jarvis() {
         <div className="mt-12 px-6">
           {filteredOptions.length === 0 ? (
             <div className="grid place-items-center">
-              <h2 className="text-secondary">You filtered them all away 🥺</h2>
+              <p className="text-xl text-gray-secondary/75" role="alert">
+                You filtered them all away 🥺
+              </p>
             </div>
           ) : (
             <ul className="flex flex-wrap gap-8">

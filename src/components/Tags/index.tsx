@@ -10,9 +10,9 @@ export const CouponTag = ({
     <span
       className={classNames(
         isInactive
-          ? "bg-gray-200 text-secondary"
+          ? "bg-gray-200 text-gray-secondary"
           : "bg-tag-yellow text-tide-orange",
-        "max-w-min flex-grow-0 whitespace-nowrap rounded px-2 py-1 font-bold uppercase "
+        "max-w-min flex-grow-0 whitespace-nowrap rounded px-2 py-1 font-bold uppercase shadow-sm"
       )}
     >
       {text}
@@ -22,7 +22,7 @@ export const CouponTag = ({
 
 export const SpecialServicesTag = ({ text }: TagPropsWithText) => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-tag-purple px-2 py-1 font-bold capitalize text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-tag-purple px-2 py-1 font-bold capitalize text-white shadow">
       {text}
     </span>
   );
@@ -30,7 +30,7 @@ export const SpecialServicesTag = ({ text }: TagPropsWithText) => {
 
 export const GroupNameTag = ({ text }: TagPropsWithText) => {
   return (
-    <span className="inline-flex max-w-min flex-grow-0 items-center whitespace-nowrap rounded-pill bg-blue-200 px-2 pt-[3px] pb-[1px] text-sm font-normal capitalize text-white">
+    <span className="inline-flex max-w-min flex-grow-0 items-center whitespace-nowrap rounded-pill bg-blue-200 px-2 pt-[3px] pb-[1px] text-sm font-normal capitalize text-white shadow">
       {text}
     </span>
   );
@@ -38,7 +38,7 @@ export const GroupNameTag = ({ text }: TagPropsWithText) => {
 
 export const DefaultTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tag-green px-1 py-0.5 text-xs font-bold leading-5 text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tag-green px-1 py-0.5 text-xs font-bold leading-5 text-white shadow">
       DEFAULT
     </span>
   );
@@ -46,7 +46,7 @@ export const DefaultTag = () => {
 
 export const TaxExemptTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-blue-200 px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-blue-200 px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
       TE
     </span>
   );
@@ -54,7 +54,7 @@ export const TaxExemptTag = () => {
 
 export const WashFoldTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tide-orange px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tide-orange px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
       WF
     </span>
   );
@@ -62,7 +62,7 @@ export const WashFoldTag = () => {
 
 export const LostTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-error px-2 pt-[2px] pb-[1px] text-[11px] leading-4 text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded bg-error px-2 pt-[2px] pb-[1px] text-[11px] leading-4 text-white shadow">
       LOST
     </span>
   );
@@ -70,7 +70,7 @@ export const LostTag = () => {
 
 export const DryCleanTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-black px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-black px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
       DC
     </span>
   );
@@ -78,7 +78,7 @@ export const DryCleanTag = () => {
 
 export const NewGuestTag = () => {
   return (
-    <span className="inline-flex h-7 max-w-min flex-grow-0 items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 text-sm font-bold text-tag-green">
+    <span className="inline-flex h-7 max-w-min flex-grow-0 items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 text-sm font-bold text-tag-green shadow-sm">
       I&apos;m New!
     </span>
   );
@@ -86,7 +86,7 @@ export const NewGuestTag = () => {
 
 export const LeadTag = () => {
   return (
-    <span className="inline-flex h-7 max-w-min flex-grow-0 items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 text-sm font-bold text-tag-green">
+    <span className="inline-flex h-7 max-w-min flex-grow-0 items-center whitespace-nowrap rounded border border-tag-green bg-transparent px-2 text-sm font-bold text-tag-green shadow-sm">
       Lead
     </span>
   );
@@ -94,19 +94,19 @@ export const LeadTag = () => {
 
 export const GroupDot = () => {
   return (
-    <span className="inline-block h-2 w-2 rounded-full bg-tide-blue"></span>
+    <span className="inline-block h-2 w-2 rounded-full bg-tide-blue shadow"></span>
   );
 };
 
 export const SpecialServiceDot = () => {
   return (
-    <span className="inline-block h-2 w-2 rounded-full bg-tag-purple"></span>
+    <span className="inline-block h-2 w-2 rounded-full bg-tag-purple shadow"></span>
   );
 };
 
 export const CouponDot = () => {
   return (
-    <span className="inline-block h-2 w-2 rounded-full border-[0.5px] border-error bg-tag-yellow"></span>
+    <span className="inline-block h-2 w-2 rounded-full border-[0.5px] border-error bg-tag-yellow shadow"></span>
   );
 };
 
@@ -114,9 +114,9 @@ export const DriverTaskDot = ({ status }: { status: 0 | 1 | 2 }) => {
   return (
     <span
       className={classNames(
-        "inline-block h-2 w-2 rounded-full border-[0.5px]",
+        "inline-block h-2 w-2 rounded-full border-[0.5px] shadow",
         status === 0
-          ? "border-gray-400 bg-gray-300"
+          ? "border-gray-secondary bg-gray-300"
           : status === 1
           ? "border-success bg-success"
           : "border-error bg-error"
@@ -128,7 +128,7 @@ export const DriverTaskDot = ({ status }: { status: 0 | 1 | 2 }) => {
 export const GenericDot = ({ color }: { color: string }) => {
   return (
     <span
-      className="inline-block h-2 w-2 rounded-full border-[0.5px]"
+      className="inline-block h-2 w-2 rounded-full border-[0.5px] shadow"
       style={{ backgroundColor: color, borderColor: color }}
     />
   );

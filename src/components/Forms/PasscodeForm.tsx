@@ -16,7 +16,7 @@ export const PasscodeForm = () => {
     <div className="mx-auto flex w-full max-w-xs flex-col justify-between">
       <div className="mb-6">
         <h1 className="text-left text-xl text-tide-blue">Enter your code.</h1>
-        <p className="mt-2 text-left text-xs text-secondary">
+        <p className="mt-2 text-left text-xs text-gray-secondary">
           Didn&apos;t get it? <a href="#">Send another code.</a>
         </p>
       </div>

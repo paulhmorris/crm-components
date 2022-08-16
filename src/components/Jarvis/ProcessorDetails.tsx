@@ -1,4 +1,4 @@
-import { randPastDate } from "@ngneat/falso";
+import { randFullName, randPastDate } from "@ngneat/falso";
 import dayjs from "dayjs";
 import { formatCurrency } from "utils/helpers";
 
@@ -25,20 +25,22 @@ export const ProcessorDetails = () => {
     <section className="flex w-full flex-col">
       <div className="border-b border-gray-200 px-6 pt-3 pb-10">
         <h1>{mockProcessor.name}</h1>
-        <p className="mt-1 text-xs text-secondary">
-          Last updated {dayjs(randPastDate()).format("M/D/YY h:mma")}
+        <p className="mt-1 text-xs text-gray-secondary">
+          {`Last updated ${dayjs(randPastDate()).format(
+            "M/D/YY h:mma"
+          )} by ${randFullName({ withAccents: false })}`}
         </p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Processor Type</p>
+        <p className="text-left text-gray-secondary">Processor Type</p>
         <p className="text-right">{mockProcessor.type}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">Address</p>
+        <p className="text-left text-gray-secondary">Address</p>
         <p className="text-right">{mockProcessor.address}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Software</p>
+        <p className="text-left text-gray-secondary">Software</p>
         <ul>
           {mockProcessor.softwares.map((software) => (
             <p key={software} className="text-right">
@@ -48,29 +50,31 @@ export const ProcessorDetails = () => {
         </ul>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">Is a Storefront?</p>
+        <p className="text-left text-gray-secondary">Is a Storefront?</p>
         <p className="text-right">
           {mockProcessor.isStorefront ? "Yes" : "No"}
         </p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Minimum Order Weight</p>
+        <p className="text-left text-gray-secondary">Minimum Order Weight</p>
         <p className="text-right">{mockProcessor.minOrderWeight}lbs</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">Wholesale Cost per lb</p>
+        <p className="text-left text-gray-secondary">Wholesale Cost per lb</p>
         <p className="text-right">
           {formatCurrency(mockProcessor.wholesaleCost, 2)}
         </p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Linen Cost per lb</p>
+        <p className="text-left text-gray-secondary">Linen Cost per lb</p>
         <p className="text-right">
           {formatCurrency(mockProcessor.linenCost, 2)}
         </p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">Bedbug Removal Cost per lb</p>
+        <p className="text-left text-gray-secondary">
+          Bedbug Removal Cost per lb
+        </p>
         <p className="text-right">
           {formatCurrency(mockProcessor.bedbugCost, 2)}
         </p>
@@ -83,9 +87,9 @@ export const ProcessorDetails = () => {
         {mockProcessor.markets.map((market) => (
           <li
             key={market}
-            className="flex items-center justify-between border-b border-gray-200 p-6 odd:bg-gray-100"
+            className="flex items-center justify-between border-b border-gray-200 p-6 even:bg-gray-100"
           >
-            <p className="text-left text-secondary">Market</p>
+            <p className="text-left text-gray-secondary">Market</p>
             <p className="text-right text-tide-blue">{market}</p>
           </li>
         ))}

@@ -15,7 +15,7 @@ export const SignInForm = () => {
     <div className="mx-auto flex w-full max-w-xs flex-col items-center justify-between">
       <div className="mb-6 text-center">
         <h1 className="text-xl text-tide-blue">Go ahead, login.</h1>
-        <p className="mt-1 text-xs text-secondary">
+        <p className="mt-1 text-xs text-gray-secondary">
           Welcome to the new Tony Starch 🚀
         </p>
       </div>

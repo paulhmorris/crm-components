@@ -30,7 +30,7 @@ export const AccountPaymentMethods = () => {
                 <p>Ending in {method.lastFour}</p>
                 <p>Exp {dayjs(method.expiration).format("MM/YYYY")}</p>
                 <p>Zip {method.zipCode}</p>
-                <p className="font-normal italic text-secondary">
+                <p className="font-normal italic text-gray-secondary">
                   {method.paymentProcessors.join(", ")}
                 </p>
                 {method.isAutoPay !== null && (

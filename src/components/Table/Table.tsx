@@ -20,7 +20,7 @@ export const Table = ({ children, headers, ...props }: Props) => {
             <th
               key={header}
               scope="col"
-              className="sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-80 pt-3 pb-2 pl-4 pr-3 text-left text-xs font-bold capitalize text-primary backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+              className="text-gray-primary sticky top-0 z-10 border-b border-gray-300 bg-white bg-opacity-80 pt-3 pb-2 pl-4 pr-3 text-left text-xs font-bold capitalize backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
             >
               {header}
             </th>

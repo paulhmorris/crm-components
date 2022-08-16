@@ -44,7 +44,7 @@ export const AccountHeader = ({
           </div>
         </div>
         <div className="mt-2">
-          <p className="text-xs text-secondary">
+          <p className="text-xs text-gray-secondary">
             Guest since {dayjs(createDate).format("MMMM D, YYYY")}
           </p>
         </div>

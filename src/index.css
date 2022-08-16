@@ -7,7 +7,7 @@
     @apply h-full text-[16px];
   }
   body {
-    @apply h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal text-primary;
+    @apply h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal text-gray-primary;
   }
 
   h1 {
@@ -73,7 +73,7 @@
 
 @layer components {
   .btn-primary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-200 bg-blue-200 py-2 px-6 text-xs font-bold capitalize leading-6 text-white shadow-sm transition duration-75 ease-out hover:bg-blue-300 active:bg-blue-400 disabled:border-blue-100 disabled:bg-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-200 bg-blue-200 py-2 px-6 text-xs font-bold capitalize leading-6 text-white shadow-sm transition duration-150 ease-out hover:bg-blue-300 hover:shadow active:bg-blue-400 disabled:border-blue-100 disabled:bg-blue-100;
   }
 
   .btn-secondary {
@@ -89,7 +89,7 @@
   }
 
   .tab {
-    @apply text-sm capitalize text-secondary shadow-border-b-3 shadow-transparent transition duration-25 hover:shadow-gray-200 focus-visible:outline-none;
+    @apply text-sm capitalize text-gray-secondary shadow-border-b-3 shadow-transparent transition duration-25 hover:shadow-gray-200 focus-visible:outline-none;
   }
 
   .tab-active {

@@ -54,7 +54,7 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
       sleep(1000),
       {
         loading: (
-          <span className="text-secondary">Updating default plan...</span>
+          <span className="text-gray-secondary">Updating default plan...</span>
         ),
         success: <span>Default plan updated</span>,
         error: <span className="text-error">Error updating plan</span>,
@@ -70,9 +70,9 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
 
   return (
     <li className="flex border-b border-gray-200 py-4 px-6 even:bg-gray-100">
-      <div className="font-bold leading-4 text-secondary">
+      <div className="font-bold leading-4 text-gray-secondary">
         <div className="mb-4">
-          <p className="text-sm leading-5 text-primary">
+          <p className="text-sm leading-5 text-gray-primary">
             {plan.market}
             {plan.isDefault && (
               <span className="ml-2">
@@ -83,7 +83,7 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
           <p className="text-xs">{plan.name}</p>
         </div>
         <div className="text-xs">
-          <p className="text-primary">{plan.interactionType}</p>
+          <p className="text-gray-primary">{plan.interactionType}</p>
           <p>{plan.servicePoint}</p>
           {plan.routes.length > 0 &&
             plan.routes.map((route) => (
@@ -98,7 +98,7 @@ const PayPerUsePlanCard = ({ plan }: { plan: typeof mockPlansData[0] }) => {
           </div>
         )}
       </div>
-      <p className="ml-auto mr-4 pt-2 text-right text-xs text-secondary">
+      <p className="ml-auto mr-4 pt-2 text-right text-xs text-gray-secondary">
         Created {dayjs(plan.created).format("MMMM D, YYYY")}
       </p>
       {plan.isActive && (

@@ -41,7 +41,7 @@ export const AccountBags = () => {
           <div className="flex flex-col items-end justify-center space-y-0.5">
             <p className="font-bold">{bag.barCode}</p>
             {bag.lastScanned && (
-              <p className="text-secondary">
+              <p className="text-gray-secondary">
                 Last scanned on {dayjs(bag.lastScanned).format("MM/DD/YYYY")}
               </p>
             )}

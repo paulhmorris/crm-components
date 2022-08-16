@@ -94,7 +94,7 @@ export const Coupons = () => {
               </TableCell>
               <TableCell>
                 <p className="font-bold">{coupon.name}</p>
-                <p className="text-secondary">{coupon.description}</p>
+                <p className="text-gray-secondary">{coupon.description}</p>
               </TableCell>
               <TableCell
                 className={coupon.timeFrame.alwaysActive ? "text-gray-300" : ""}

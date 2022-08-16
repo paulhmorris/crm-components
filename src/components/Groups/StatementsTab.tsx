@@ -21,7 +21,8 @@ export const StatementsTab = () => {
                   className={classNames(
                     "flex w-full cursor-pointer items-center justify-between border-b border-gray-200 px-6 py-3 transition",
                     key % 2 !== 0 && "bg-gray-100",
-                    open && "bg-blue-ice shadow-border-t-2 shadow-gray-400"
+                    open &&
+                      "bg-blue-ice shadow-border-t-2 shadow-gray-secondary"
                   )}
                 >
                   <div className="flex flex-row items-center space-x-2">
@@ -70,7 +71,7 @@ export const StatementsTab = () => {
                             <p className="font-bold text-blue-200">
                               {transaction.name}
                             </p>
-                            <p className="text-secondary">
+                            <p className="text-gray-secondary">
                               {dayjs(transaction.date).format("MM/DD/YYYY")} •
                               No payment activity
                             </p>

@@ -49,7 +49,7 @@ export const Typeahead = <T extends FieldValues>({
             <SelectorIcon
               className={classNames(
                 "h-5 w-5",
-                isDisabled ? "text-gray-300" : "text-secondary"
+                isDisabled ? "text-gray-300" : "text-gray-secondary"
               )}
               aria-hidden="true"
             />
@@ -60,7 +60,9 @@ export const Typeahead = <T extends FieldValues>({
                 ? "pointer-events-auto top-0 text-xs"
                 : "top-5 text-sm",
               "font-medium pointer-events-none absolute left-0.5 select-none transition-all ease-out",
-              isDisabled ? "pointer-events-none text-gray-300" : "text-gray-400"
+              isDisabled
+                ? "pointer-events-none text-gray-300"
+                : "text-text-gray-secondary"
             )}
           >
             {label}

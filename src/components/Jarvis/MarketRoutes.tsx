@@ -52,7 +52,7 @@ export const MarketRoutes = () => {
   return (
     <>
       <div className="p-6">
-        <p className="mb-2 text-secondary">Filter by route day</p>
+        <p className="mb-2 text-gray-secondary">Filter by route day</p>
         <WeekdaySelector
           activeWeekdays={activeWeekdays}
           dispatch={dispatch}

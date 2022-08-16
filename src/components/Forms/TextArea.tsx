@@ -29,7 +29,7 @@ export const TextArea = <T extends FieldValues>({
             ? "pointer-events-none text-gray-300"
             : error
             ? "text-error"
-            : "text-secondary"
+            : "text-gray-secondary"
         )}
         htmlFor={name}
       >
@@ -51,7 +51,7 @@ export const TextArea = <T extends FieldValues>({
             : undefined
         }
         className={classNames(
-          "inline-block h-full w-full rounded border-0 bg-white text-sm ring-1 ring-gray-400 transition placeholder:text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent",
+          "inline-block h-full w-full rounded border-0 bg-white text-sm shadow-inner ring-1 ring-gray-secondary transition placeholder:text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 disabled:text-gray-300 disabled:ring-gray-300 disabled:placeholder:text-transparent",
           error && "focus:border-error focus:ring-error"
         )}
       ></textarea>

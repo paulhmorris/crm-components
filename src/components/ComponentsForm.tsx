@@ -121,7 +121,6 @@ export const ComponentsForm = () => {
           name="myTextArea"
           label="A long message"
           description="Check it out!"
-          defaultValue={""}
         />
         <fieldset>
           <legend>Notification Options</legend>

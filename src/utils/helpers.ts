@@ -26,6 +26,10 @@ export const formatCurrency = (value: number, decimals?: 0 | 2): string => {
   return formattedValue;
 };
 
+export const formatNumber = (value: number): string => {
+  return value.toLocaleString("en-US");
+};
+
 export const formatPhone = (phoneNumber: string) => {
   if (!phoneNumber) return "";
   if (phoneNumber.at(0) === "+") {

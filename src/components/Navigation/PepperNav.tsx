@@ -8,7 +8,7 @@ export const PepperNav = () => {
       <div>
         <TideLogo className="h-14 w-14" aria-hidden="true" />
       </div>
-      <ul className="mb-auto mt-8 flex flex-col text-base text-secondary">
+      <ul className="mb-auto mt-8 flex flex-col text-base text-gray-secondary">
         <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-200">
           <HomeIcon className="h-4 w-4" />
           <span>Support</span>
@@ -29,7 +29,7 @@ export const PepperNav = () => {
           Jarvis
         </li>
       </ul>
-      <section className="mt-auto text-xs text-secondary">
+      <section className="mt-auto text-xs text-gray-secondary">
         <p className="text-sm font-bold" title="It's you! 🥳">
           {mockUser.name}
         </p>

@@ -76,7 +76,7 @@ export default function ComponentDisplay() {
         <DropdownMenuItem>Route Stop</DropdownMenuItem>
         <DropdownMenuItem>Submarket</DropdownMenuItem>
       </DropdownMenu>
-      <div className="max-w-sm border-y border-gray-400 pb-12 pt-6">
+      <div className="max-w-sm border-y border-gray-secondary pb-12 pt-6">
         <h2>React hook Form testing</h2>
         <ComponentsForm />
       </div>

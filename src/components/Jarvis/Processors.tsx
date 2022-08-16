@@ -22,8 +22,8 @@ export const Processors = () => {
             <p className="mb-2 text-sm font-bold text-tide-blue">
               TDC Los Angeles
             </p>
-            <p className="text-secondary">Bundled and Dry Cleaning</p>
-            <p className="text-secondary">Tide Cleaners Los Angeles</p>
+            <p className="text-gray-secondary">Bundled and Dry Cleaning</p>
+            <p className="text-gray-secondary">Tide Cleaners Los Angeles</p>
           </li>
         </ul>
       </section>

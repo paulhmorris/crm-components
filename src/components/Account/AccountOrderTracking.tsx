@@ -55,7 +55,7 @@ export const AccountOrderTracking = () => {
             {({ open }) => (
               <div
                 className={classNames(
-                  open && "z-10 shadow-border-t shadow-gray-400",
+                  open && "z-10 shadow-border-t shadow-gray-secondary",
                   "transition-shadow duration-100"
                 )}
               >
@@ -89,13 +89,13 @@ export const AccountOrderTracking = () => {
                         }
                       />
                     </div>
-                    <p className="text-secondary">
+                    <p className="text-gray-secondary">
                       {dayjs(order.promiseDateUtc).format("ddd M/D/YY")}
                     </p>
                   </div>
                   <div className="flex-[0_1_50%]">
                     <p className="font-bold">{order.statusText}</p>
-                    <p className="text-secondary">{`${dayjs(
+                    <p className="text-gray-secondary">{`${dayjs(
                       order.timeStampUtc
                     ).format("ddd M/D/YY")} at ${dayjs(
                       order.timeStampUtc
@@ -115,7 +115,7 @@ export const AccountOrderTracking = () => {
                     </div>
                     <div className="flex-[0_0_60%] leading-[18px]">
                       <p className="font-bold">{order.statusText}</p>
-                      <p className="text-secondary">
+                      <p className="text-gray-secondary">
                         Sun 6/7/20 at 7:36am
                         <br /> by Brendan Ring, System Administrator
                       </p>

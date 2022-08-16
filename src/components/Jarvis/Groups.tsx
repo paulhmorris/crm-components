@@ -67,7 +67,7 @@ export const Groups = () => {
                   {group.name}
                 </a>
               </TableCell>
-              <TableCell className="text-secondary">
+              <TableCell className="text-gray-secondary">
                 {group.description}
               </TableCell>
               <TableCell
@@ -84,7 +84,7 @@ export const Groups = () => {
               </TableCell>
               <TableCell>
                 {group.taxExempt && (
-                  <CheckIcon className="h-4 w-4 text-secondary" />
+                  <CheckIcon className="h-4 w-4 text-gray-secondary" />
                 )}
               </TableCell>
             </TableRow>

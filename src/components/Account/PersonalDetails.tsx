@@ -46,23 +46,23 @@ export const PersonalDetails = () => {
         </Button>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Name</p>
+        <p className="text-left text-gray-secondary">Name</p>
         <p className="text-right font-bold">{`${firstName} ${lastName}`}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">Email</p>
+        <p className="text-left text-gray-secondary">Email</p>
         <p className="text-right font-bold lowercase">{email}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Phone</p>
+        <p className="text-left text-gray-secondary">Phone</p>
         <p className="text-right font-bold">{formatPhone(phone)}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">Home Address</p>
+        <p className="text-left text-gray-secondary">Home Address</p>
         <p className="text-right font-bold">{`${address.street} ${address.city}, ${address.zipCode}`}</p>
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Group</p>
+        <p className="text-left text-gray-secondary">Group</p>
         {group ? (
           <a href="#" className="text-right">
             {group.name}
@@ -72,13 +72,13 @@ export const PersonalDetails = () => {
         )}
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-100 p-6">
-        <p className="text-left text-secondary">
+        <p className="text-left text-gray-secondary">
           Auto-Renew Academic Subscriptions
         </p>
         <ToggleAutoRenew defaultValues={{ autoRenew }} />
       </div>
       <div className="flex items-center justify-between border-b border-gray-200 p-6">
-        <p className="text-left text-secondary">Account on Hold</p>
+        <p className="text-left text-gray-secondary">Account on Hold</p>
         <ToggleOnHold defaultValues={{ onHold }} />
       </div>
     </section>

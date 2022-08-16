@@ -7,17 +7,23 @@ export const AccountOverview = () => {
     <section className="grid grid-cols-3 grid-rows-3 gap-x-20 gap-y-4 p-6">
       <div>
         <p className="font-bold">Phone</p>
-        <p className="text-secondary">{formatPhone(mockAccountData.phone)}</p>
+        <p className="text-gray-secondary">
+          {formatPhone(mockAccountData.phone)}
+        </p>
       </div>
       <div>
         <p className="font-bold">Detergent</p>
-        <p className="capitalize text-secondary">{mockAccountData.detergent}</p>
+        <p className="capitalize text-gray-secondary">
+          {mockAccountData.detergent}
+        </p>
       </div>
       <div>
         <p className="font-bold">Balance</p>
         <p
           className={`
-            ${mockAccountData.balance < 0 ? "text-error" : "text-secondary"}`}
+            ${
+              mockAccountData.balance < 0 ? "text-error" : "text-gray-secondary"
+            }`}
         >
           {formatCurrency(mockAccountData.balance, 2)}
         </p>
@@ -30,7 +36,9 @@ export const AccountOverview = () => {
       </div>
       <div>
         <p className="font-bold">Starch</p>
-        <p className="capitalize text-secondary">{mockAccountData.starch}</p>
+        <p className="capitalize text-gray-secondary">
+          {mockAccountData.starch}
+        </p>
       </div>
       <div>
         <p className="font-bold">Cleaning Credits</p>
@@ -38,7 +46,7 @@ export const AccountOverview = () => {
       </div>
       <div>
         <p className="font-bold">Plan</p>
-        <p className="text-secondary">{mockAccountData.planTitle}</p>
+        <p className="text-gray-secondary">{mockAccountData.planTitle}</p>
       </div>
       <div>
         <p className="font-bold">Service Location</p>
@@ -48,7 +56,7 @@ export const AccountOverview = () => {
         <p className="flex items-center font-bold">
           <AutopayIcon className="-mb-0.5 h-4 w-4" /> Autopay
         </p>
-        <p className="text-secondary">
+        <p className="text-gray-secondary">
           {getAutopayStatus(mockAccountData.autoPayIsOn)}
         </p>
       </div>

@@ -25,7 +25,7 @@ export const Banner = ({ variant, message, ...props }: BannerProps) => {
     >
       <p
         className={classNames(
-          variant === "warning" && "text-primary",
+          variant === "warning" && "text-gray-primary",
           "text-base font-bold"
         )}
       >

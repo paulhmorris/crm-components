@@ -1,4 +1,4 @@
-import { FieldValues, useController, ValidationRule } from "react-hook-form";
+import { FieldValues, useController } from "react-hook-form";
 import { TextInputProps } from "types";
 import { classNames } from "utils/helpers";
 import { ErrorMessage } from "./ErrorMessage";
@@ -15,11 +15,9 @@ export const TextInput = <T extends FieldValues>({
     fieldState: { error },
     formState: { isSubmitting },
   } = useController<T>(props);
-  const { name, required, disabled, rules } = props;
+  const { name, disabled } = props;
 
   const isDisabled: boolean | undefined = isSubmitting || disabled;
-  const isRequired: ValidationRule<boolean> | boolean | undefined =
-    required || !!rules?.required;
 
   return (
     <div className="relative flex flex-col space-y-1 pt-5">
@@ -49,12 +47,11 @@ export const TextInput = <T extends FieldValues>({
             ? "pointer-events-none text-gray-300"
             : error
             ? "text-error"
-            : "text-secondary"
+            : "gray-secondary"
         )}
         htmlFor={name}
       >
         {label}
-        {isRequired ? " *" : ""}
       </label>
       <div className="mt-1 ml-[1px] min-h-[1.25rem] text-xs">
         {description && (isDisabled || !error) && (

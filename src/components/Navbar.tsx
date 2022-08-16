@@ -69,7 +69,7 @@ const Navbar = () => {
                     </span>
                   </div>
                   <span
-                    className="absolute top-0 right-0 text-transparent transition-colors duration-75 hover:text-secondary peer-hover:text-gray-300"
+                    className="absolute top-0 right-0 text-transparent transition-colors duration-75 hover:text-gray-secondary peer-hover:text-gray-300"
                     onClick={() => closeTab(title)}
                   >
                     <XIcon className="-ml-2 h-4 w-4" />

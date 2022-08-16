@@ -77,7 +77,9 @@ export const Employees = () => {
                   {employee.name}
                 </a>
               </TableCell>
-              <TableCell className="text-secondary">{employee.role}</TableCell>
+              <TableCell className="text-gray-secondary">
+                {employee.role}
+              </TableCell>
               <TableCell>{employee.email}</TableCell>
               <TableCell>{formatPhone(employee.phone)}</TableCell>
             </TableRow>
