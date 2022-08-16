@@ -20,16 +20,16 @@ export const SelectOption = ({ value, label }: SelectOptionProps) => {
             className={classNames(
               "block truncate",
               active && selected
-                ? "font-medium text-blue-200"
+                ? "font-medium text-blue-primary"
                 : selected
-                ? "font-medium text-blue-200"
+                ? "font-medium text-blue-primary"
                 : "font-normal"
             )}
           >
             {label}
           </span>
           {selected && (
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-200">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-primary">
               <CheckIcon className="h-4 w-4" aria-hidden="true" />
             </span>
           )}

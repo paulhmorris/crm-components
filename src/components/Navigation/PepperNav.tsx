@@ -9,23 +9,23 @@ export const PepperNav = () => {
         <TideLogo className="h-14 w-14" aria-hidden="true" />
       </div>
       <ul className="mb-auto mt-8 flex flex-col text-base text-gray-secondary">
-        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-200">
+        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-primary">
           <HomeIcon className="h-4 w-4" />
           <span>Support</span>
         </li>
-        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-200">
+        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-primary">
           <SearchIcon className="h-4 w-4" />
           <span>Search</span>
         </li>
-        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-200">
+        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-primary">
           <AddCircleIcon className="h-4 w-4" />
           <span>Driver Task</span>
         </li>
-        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-200">
+        <li className="flex w-full cursor-pointer items-stretch space-x-2 py-1 transition-colors hover:text-blue-primary">
           <AddCircleIcon className="h-4 w-4" />
           <span>Guest Account</span>
         </li>
-        <li className="mt-10 w-full cursor-pointer py-2 transition-colors hover:text-blue-200">
+        <li className="mt-10 w-full cursor-pointer py-2 transition-colors hover:text-blue-primary">
           Jarvis
         </li>
       </ul>

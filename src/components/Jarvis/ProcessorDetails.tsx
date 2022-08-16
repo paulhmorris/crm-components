@@ -22,11 +22,11 @@ export const mockProcessor = {
 
 export const ProcessorDetails = () => {
   return (
-    <section className="flex w-full flex-col">
+    <section className="flex w-full flex-col text-xs">
       <div className="border-b border-gray-200 px-6 pt-3 pb-10">
         <h1>{mockProcessor.name}</h1>
-        <p className="mt-1 text-xs text-gray-secondary">
-          {`Last updated ${dayjs(randPastDate()).format(
+        <p className="mt-1 text-xs text-gray-500">
+          {`Last updated: ${dayjs(randPastDate()).format(
             "M/D/YY h:mma"
           )} by ${randFullName({ withAccents: false })}`}
         </p>
@@ -90,7 +90,7 @@ export const ProcessorDetails = () => {
             className="flex items-center justify-between border-b border-gray-200 p-6 even:bg-gray-100"
           >
             <p className="text-left text-gray-secondary">Market</p>
-            <p className="text-right text-tide-blue">{market}</p>
+            <p className="text-blue-primary text-right">{market}</p>
           </li>
         ))}
       </ul>

@@ -71,7 +71,7 @@ export const Groups = () => {
                 {group.description}
               </TableCell>
               <TableCell
-                className="group font-bold text-tide-blue hover:text-tide-orange"
+                className="text-blue-primary hover:text-orange group font-bold"
                 onClick={(e) => {
                   e.stopPropagation();
                   console.log(`Navigating to pepper/${group.groupContact}`);

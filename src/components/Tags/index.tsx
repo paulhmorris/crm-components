@@ -11,7 +11,7 @@ export const CouponTag = ({
       className={classNames(
         isInactive
           ? "bg-gray-200 text-gray-secondary"
-          : "bg-tag-yellow text-tide-orange",
+          : "bg-yellow text-orange",
         "max-w-min flex-grow-0 whitespace-nowrap rounded px-2 py-1 font-bold uppercase shadow-sm"
       )}
     >
@@ -30,7 +30,7 @@ export const SpecialServicesTag = ({ text }: TagPropsWithText) => {
 
 export const GroupNameTag = ({ text }: TagPropsWithText) => {
   return (
-    <span className="inline-flex max-w-min flex-grow-0 items-center whitespace-nowrap rounded-pill bg-blue-200 px-2 pt-[3px] pb-[1px] text-sm font-normal capitalize text-white shadow">
+    <span className="inline-flex max-w-min flex-grow-0 items-center whitespace-nowrap rounded-pill bg-blue-primary px-2 pt-[3px] pb-[1px] text-sm font-normal capitalize text-white shadow">
       {text}
     </span>
   );
@@ -46,7 +46,7 @@ export const DefaultTag = () => {
 
 export const TaxExemptTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-blue-200 px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-blue-primary px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
       TE
     </span>
   );
@@ -54,7 +54,7 @@ export const TaxExemptTag = () => {
 
 export const WashFoldTag = () => {
   return (
-    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-tide-orange px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
+    <span className="max-w-min flex-grow-0 whitespace-nowrap rounded-tiny bg-orange px-[3px] py-[1px] text-tiny font-bold leading-[11px] text-white shadow">
       WF
     </span>
   );
@@ -94,7 +94,7 @@ export const LeadTag = () => {
 
 export const GroupDot = () => {
   return (
-    <span className="inline-block h-2 w-2 rounded-full bg-tide-blue shadow"></span>
+    <span className="inline-block h-2 w-2 rounded-full bg-blue-primary shadow"></span>
   );
 };
 

@@ -3,7 +3,7 @@ import { mockUser } from "mockData";
 
 export const JarvisNav = () => {
   return (
-    <nav className="fixed inset-y-0 left-0 mt-[180px] flex w-[200px] flex-col items-start justify-start border-r border-gray-200 bg-tide-blue p-10 pr-0">
+    <nav className="bg-blue-primary fixed inset-y-0 left-0 mt-[180px] flex w-[200px] flex-col items-start justify-start border-r border-gray-200 p-10 pr-0">
       <div>
         <TideLogo className="h-14 w-14" aria-hidden="true" />
       </div>

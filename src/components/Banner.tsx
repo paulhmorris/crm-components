@@ -13,24 +13,17 @@ export const Banner = ({ variant, message, ...props }: BannerProps) => {
       role="alert"
       className={classNames(
         variant === "success"
-          ? "bg-success"
+          ? "bg-success/20 text-success"
           : variant === "warning"
-          ? "bg-warning"
+          ? "bg-warning/50 text-gray-primary"
           : variant === "error"
-          ? "bg-error"
-          : "bg-blue-200",
-        "grid min-h-[68px] w-full place-items-center text-white",
+          ? "bg-error/20 text-error"
+          : "bg-blue-primary/10 text-blue-primary",
+        "grid min-h-[50px] w-full place-items-center font-bold",
         props.className
       )}
     >
-      <p
-        className={classNames(
-          variant === "warning" && "text-gray-primary",
-          "text-base font-bold"
-        )}
-      >
-        {message}
-      </p>
+      <p>{message}</p>
     </div>
   );
 };

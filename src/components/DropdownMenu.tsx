@@ -41,7 +41,7 @@ export const DropdownMenu = ({
       >
         {variant === "kebab" && (
           <DotsVerticalIcon
-            className="h-5 w-5 text-blue-200 hover:text-blue-400"
+            className="h-5 w-5 text-blue-primary hover:text-blue-400"
             aria-hidden="true"
           />
         )}

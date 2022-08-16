@@ -36,7 +36,7 @@ export const TextInput = <T extends FieldValues>({
             : undefined
         }
         className={classNames(
-          "peer inline-block w-full border-0 py-0 pl-0.5 text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0 disabled:pointer-events-none disabled:text-gray-300",
+          "peer inline-block w-full border-0 py-0 pl-0.5 text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-primary focus:shadow-border-b-2 focus:shadow-blue-primary focus:outline-none focus:ring-0 disabled:pointer-events-none disabled:text-gray-300",
           error && "shadow-error hover:shadow-error focus:shadow-error"
         )}
       />

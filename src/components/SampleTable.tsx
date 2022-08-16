@@ -82,7 +82,7 @@ export const SampleTable = () => {
               {`${row.poundsPerCycle}lbs per ${row.cycleLength}`}
             </TableCell>
             <TableCell
-              className="font-bold text-tide-blue hover:text-tide-orange"
+              className="text-blue-primary hover:text-orange font-bold"
               onClick={(e) => {
                 e.stopPropagation();
                 console.log(`Navigating to submarket/${row.submarket.id}`);

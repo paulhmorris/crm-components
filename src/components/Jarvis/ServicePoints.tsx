@@ -92,13 +92,13 @@ export const ServicePoints = () => {
                 className={classNames(
                   sp.associatedRoutes === "No assigned route"
                     ? "text-gray-300"
-                    : "font-bold text-tide-blue hover:text-tide-orange"
+                    : "text-blue-primary hover:text-orange font-bold"
                 )}
               >
                 {sp.associatedRoutes}
               </TableCell>
               <TableCell
-                className="font-bold text-tide-blue hover:text-tide-orange"
+                className="text-blue-primary hover:text-orange font-bold"
                 onClick={(e) => {
                   e.stopPropagation();
                   console.log(`Navigating to submarket/${sp.submarket.id}`);

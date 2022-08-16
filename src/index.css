@@ -27,7 +27,7 @@
   }
 
   a {
-    @apply rounded font-bold text-blue-200 transition-colors duration-100 hover:text-blue-300 active:text-blue-400;
+    @apply rounded font-bold text-blue-primary transition-colors duration-100 hover:text-blue-300 active:text-blue-400;
   }
 
   input {
@@ -73,15 +73,15 @@
 
 @layer components {
   .btn-primary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-200 bg-blue-200 py-2 px-6 text-xs font-bold capitalize leading-6 text-white shadow-sm transition duration-150 ease-out hover:bg-blue-300 hover:shadow active:bg-blue-400 disabled:border-blue-100 disabled:bg-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-primary bg-blue-primary py-2 px-6 text-xs font-bold capitalize leading-6 text-white shadow-sm transition duration-150 ease-out hover:bg-blue-300 hover:shadow active:bg-blue-400 disabled:border-blue-100 disabled:bg-blue-100;
   }
 
   .btn-secondary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-200 bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-200 shadow-sm transition duration-75 ease-out hover:border-blue-300 hover:bg-gray-100 hover:text-blue-300 active:border-blue-400 active:bg-gray-200/50 active:text-blue-400 disabled:border-blue-100 disabled:bg-white disabled:text-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-primary bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-primary shadow-sm transition duration-75 ease-out hover:border-blue-300 hover:bg-gray-100 hover:text-blue-300 active:border-blue-400 active:bg-gray-200/50 active:text-blue-400 disabled:border-blue-100 disabled:bg-white disabled:text-blue-100;
   }
 
   .btn-tertiary {
-    @apply relative inline-flex select-none items-center justify-center whitespace-nowrap rounded p-2 text-sm font-bold capitalize leading-6 text-blue-200 underline decoration-current decoration-2 underline-offset-4 transition duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
+    @apply relative inline-flex select-none items-center justify-center whitespace-nowrap rounded p-2 text-sm font-bold capitalize leading-6 text-blue-primary underline decoration-current decoration-2 underline-offset-4 transition duration-75 ease-out hover:text-blue-300 active:text-blue-400 disabled:text-blue-100;
   }
 
   .tab-list {
@@ -93,7 +93,7 @@
   }
 
   .tab-active {
-    @apply text-blue-200 shadow-blue-200 hover:shadow-blue-200 focus:ring-0;
+    @apply text-blue-primary shadow-blue-primary hover:shadow-blue-primary focus:ring-0;
   }
 }
 

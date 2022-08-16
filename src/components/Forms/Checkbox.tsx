@@ -21,7 +21,7 @@ export const Checkbox = <T extends FieldValues>({
         id={name}
         disabled={isDisabled}
         type="checkbox"
-        className="h-4 w-4 cursor-pointer rounded-[3px] border border-blue-200 text-blue-200 shadow-sm transition duration-75 focus:shadow-none focus:outline-none focus:ring-0 focus:ring-transparent disabled:pointer-events-none disabled:cursor-auto disabled:border-blue-100 disabled:text-blue-100"
+        className="h-4 w-4 cursor-pointer rounded-[3px] border border-blue-primary text-blue-primary shadow-sm transition duration-75 focus:shadow-none focus:outline-none focus:ring-0 focus:ring-transparent disabled:pointer-events-none disabled:cursor-auto disabled:border-blue-100 disabled:text-blue-100"
       />
       <label
         htmlFor={name}

@@ -25,8 +25,8 @@ export const WeekdaySelector = ({
               }
               className={classNames(
                 isSelected
-                  ? "bg-tide-blue text-white"
-                  : "bg-blue-50/50 text-tide-blue hover:bg-blue-50",
+                  ? "bg-blue-primary text-white"
+                  : "text-blue-primary bg-blue-50/50 hover:bg-blue-50",
                 "disabled: grid h-10 w-10 place-items-center rounded-full text-base font-bold transition-colors duration-50 disabled:bg-gray-300 disabled:text-gray-secondary"
               )}
             >

@@ -25,7 +25,7 @@ export const Radio = <T extends FieldValues>({
         value={value}
         name={name}
         disabled={isDisabled}
-        className="cursor-pointer border-tide-blue text-tide-blue shadow-sm transition duration-75 focus:ring-transparent disabled:border-blue-100 disabled:text-blue-100"
+        className="border-blue-primary text-blue-primary cursor-pointer shadow-sm transition duration-75 focus:ring-transparent disabled:border-blue-100 disabled:text-blue-100"
       />
       <label
         htmlFor={value.toString()}

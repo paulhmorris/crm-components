@@ -29,13 +29,13 @@ export const Toggle = <T extends FieldValues>({
               ? "border-blue-100 bg-blue-100"
               : // on
               field.value
-              ? "border-blue-200 bg-blue-200"
+              ? "border-blue-primary bg-blue-primary"
               : // off and disabled
               !field.value && isDisabled
               ? "border-gray-200 bg-gray-100"
               : // off
                 "border-gray-200 bg-gray-200",
-            "relative inline-flex h-5 w-8 shrink-0 cursor-pointer rounded-full border outline-transparent transition duration-200 ease-in-out focus:outline-none focus-visible:outline-2 focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 disabled:cursor-auto"
+            "relative inline-flex h-5 w-8 shrink-0 cursor-pointer rounded-full border outline-transparent transition duration-200 ease-in-out focus:outline-none focus-visible:outline-2 focus-visible:ring-2 focus-visible:ring-blue-primary focus-visible:ring-opacity-75 focus-visible:ring-offset-2 disabled:cursor-auto"
           )}
         >
           <span className="sr-only">Toggle {label}</span>

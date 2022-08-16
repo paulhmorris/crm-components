@@ -72,7 +72,7 @@ export const AccountOrderTracking = () => {
                       <RightArrow
                         className={classNames(
                           open && "rotate-90",
-                          "h-3 w-3 transform text-blue-200"
+                          "h-3 w-3 transform text-blue-primary"
                         )}
                       />
                     </span>

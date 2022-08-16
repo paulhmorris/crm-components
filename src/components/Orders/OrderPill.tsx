@@ -23,11 +23,11 @@ export const OrderPill = ({ text, pillType, status }: OrderPillProps) => {
         // W&F Request
         pillType === "washFold" &&
           status === "request" &&
-          "border-tide-orange bg-transparent text-tide-orange",
+          "border-orange text-orange bg-transparent",
         // W&F Active
         pillType === "washFold" &&
           status === "active" &&
-          "border-tide-orange bg-tide-orange text-white",
+          "border-orange bg-orange text-white",
         // Canceled, finished, tickets
         status === "request"
           ? "bg-white"
@@ -35,7 +35,8 @@ export const OrderPill = ({ text, pillType, status }: OrderPillProps) => {
           ? "border-gray-200 bg-gray-200 text-gray-300"
           : status === "finished"
           ? "border-gray-300 bg-gray-300 text-gray-secondary"
-          : pillType === "ticket" && "border-tide-blue bg-tide-blue text-white"
+          : pillType === "ticket" &&
+            "border-blue-primary bg-blue-primary text-white"
       )}
     >
       <span>

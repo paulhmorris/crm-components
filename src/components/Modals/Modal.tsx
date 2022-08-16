@@ -63,7 +63,7 @@ export const Modal = ({
                 <div className="absolute top-0 right-0 z-50 hidden pt-5 pr-5 sm:block">
                   <button
                     type="button"
-                    className="rounded bg-transparent text-gray-300 transition-colors hover:text-blue-200 focus:outline-none"
+                    className="rounded bg-transparent text-gray-300 transition-colors hover:text-blue-primary focus:outline-none"
                     onClick={closeModal}
                   >
                     <span className="sr-only">Close</span>

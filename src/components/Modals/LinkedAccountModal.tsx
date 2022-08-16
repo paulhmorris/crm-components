@@ -70,7 +70,7 @@ export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
             control={control}
             name="guestProfileUrl"
             label="Guest Profile Url"
-            className="text-blue-200"
+            className="text-blue-primary"
             required
             onPaste={async () => {
               await handleUrlSearch();

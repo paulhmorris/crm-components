@@ -12,11 +12,11 @@ export const SearchBox = (props: ComponentPropsWithoutRef<"input">) => {
       <div className="absolute inset-y-0 left-0 grid place-items-center pl-3">
         <SearchIcon
           // className={classNames(
-          //   hasFocus || field.value ? "text-blue-200" : "text-gray-300",
+          //   hasFocus || field.value ? "text-blue-primary" : "text-gray-300",
           //   "h-5 w-5 transition-colors"
           // )}
           className={classNames(
-            hasFocus ? "text-blue-200" : "text-gray-300",
+            hasFocus ? "text-blue-primary" : "text-gray-300",
             "h-5 w-5 transition-colors"
           )}
         />

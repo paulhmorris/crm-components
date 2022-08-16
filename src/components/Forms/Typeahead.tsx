@@ -40,8 +40,8 @@ export const Typeahead = <T extends FieldValues>({
               options.find((o) => o.value === value)?.label ?? ""
             }
             className={classNames(
-              "relative inline-block w-full border-0 bg-white bg-none py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-200 focus:shadow-border-b-2 focus:shadow-blue-200 focus:outline-none focus:ring-0",
-              open && "shadow-border-b-2 shadow-blue-200",
+              "relative inline-block w-full border-0 bg-white bg-none py-0 pl-0.5 pr-10 text-left text-base shadow-border-b shadow-gray-300 transition placeholder:text-transparent hover:shadow-border-b-2 hover:shadow-blue-primary focus:shadow-border-b-2 focus:shadow-blue-primary focus:outline-none focus:ring-0",
+              open && "shadow-border-b-2 shadow-blue-primary",
               isDisabled && "pointer-events-none text-gray-300"
             )}
           />

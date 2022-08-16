@@ -29,7 +29,7 @@ export const StatementsTab = () => {
                     <RightArrow
                       className={classNames(
                         open && "rotate-90 transform",
-                        "h-3 w-3 text-blue-200"
+                        "h-3 w-3 text-blue-primary"
                       )}
                     />
                     <Button
@@ -68,7 +68,7 @@ export const StatementsTab = () => {
                           key={key}
                         >
                           <div className="flex flex-col">
-                            <p className="font-bold text-blue-200">
+                            <p className="font-bold text-blue-primary">
                               {transaction.name}
                             </p>
                             <p className="text-gray-secondary">

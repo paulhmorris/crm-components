@@ -19,7 +19,7 @@ export const Processors = () => {
         </h4>
         <ul>
           <li className="cursor-pointer border-b border-gray-300 bg-white px-6 py-3 text-xs hover:bg-blue-50/20">
-            <p className="mb-2 text-sm font-bold text-tide-blue">
+            <p className="text-blue-primary mb-2 text-sm font-bold">
               TDC Los Angeles
             </p>
             <p className="text-gray-secondary">Bundled and Dry Cleaning</p>

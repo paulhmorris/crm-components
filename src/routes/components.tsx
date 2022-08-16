@@ -94,7 +94,8 @@ export default function ComponentDisplay() {
       </Modal>
       <div className="flex flex-col space-y-4">
         <h2>Tags</h2>
-        <CouponTag text="Coupon" />
+        <CouponTag text="25OFFYAY" />
+        <CouponTag text="Inactive" isInactive />
         <SpecialServicesTag text="alteration - hem" />
         <DefaultTag />
         <div className="flex items-center space-x-2">
