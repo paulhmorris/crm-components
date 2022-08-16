@@ -4,6 +4,7 @@ import { PasscodeForm } from "components/Forms/PasscodeForm";
 import { SignInForm } from "components/Forms/SignInForm";
 import { MarketCard } from "components/Jarvis/MarketCard";
 import { OrderPill } from "components/Orders/OrderPill";
+import { ComplexLaundry, SimpleLaundry } from "icons";
 import { useState } from "react";
 import { Banner } from "../components/Banner";
 import { Button } from "../components/Button";
@@ -121,6 +122,8 @@ export default function ComponentDisplay() {
         </div>
         <GroupNameTag text="group name" />
         <NewGuestTag />
+        <SimpleLaundry className="h-12 w-12 hover:animate-spin-pulse" />
+        <ComplexLaundry className="h-12 w-12 hover:animate-spin-pulse" />
         <Banner
           variant="info"
           message="🤨 This person has not accepted our terms yet. Hmm..."

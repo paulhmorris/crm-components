@@ -18,7 +18,7 @@ export const MarketCard = ({
       {...props}
       className={classNames(
         className,
-        "h-min w-64 flex-auto flex-grow-0 space-y-0.5 rounded border border-gray-300 p-6 shadow-sm transition duration-75 hover:bg-gray-100 active:bg-gray-200/50"
+        "h-min w-64 flex-auto flex-grow-0 space-y-0.5 rounded border border-gray-300 p-6 shadow-sm transition duration-75 hover:bg-blue-primary/5 active:bg-blue-primary/10"
       )}
       role="listitem"
     >

@@ -47,7 +47,7 @@ export const TextInput = <T extends FieldValues>({
             ? "pointer-events-none text-gray-300"
             : error
             ? "text-error"
-            : "gray-secondary"
+            : "text-gray-secondary"
         )}
         htmlFor={name}
       >

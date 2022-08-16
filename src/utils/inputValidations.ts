@@ -1,6 +1,8 @@
 import { ValidatorFunction } from "types";
 
-/** Allows setting multiple validators on one field */
+/** Allows setting multiple validators on one field
+ * Currently unsure how to get TS to be happy using this
+ */
 export const validateMultiple =
   (...validators: ValidatorFunction[]) =>
   (value: string) =>

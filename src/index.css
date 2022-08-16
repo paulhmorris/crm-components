@@ -6,6 +6,7 @@
   html {
     @apply h-full text-[16px];
   }
+
   body {
     @apply h-full bg-white font-avenir text-sm font-normal leading-5 tracking-normal text-gray-primary;
   }
@@ -77,7 +78,7 @@
   }
 
   .btn-secondary {
-    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-primary bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-primary shadow-sm transition duration-75 ease-out hover:border-blue-300 hover:bg-gray-100 hover:text-blue-300 active:border-blue-400 active:bg-gray-200/50 active:text-blue-400 disabled:border-blue-100 disabled:bg-white disabled:text-blue-100;
+    @apply relative inline-flex min-h-[40px] min-w-[120px] select-none items-center justify-center space-x-2 whitespace-nowrap rounded-md border border-blue-primary bg-white px-6 py-2 text-xs font-bold capitalize leading-6 text-blue-primary shadow-sm transition duration-75 ease-out hover:border-blue-300 hover:bg-blue-primary/5 hover:text-blue-300 active:border-blue-400 active:bg-blue-primary/10 active:text-blue-400 disabled:border-blue-100 disabled:bg-white disabled:text-blue-100;
   }
 
   .btn-tertiary {

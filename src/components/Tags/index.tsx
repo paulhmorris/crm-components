@@ -4,15 +4,15 @@ type TagPropsWithText = { text: string };
 
 export const CouponTag = ({
   text,
-  isInactive,
+  isInactive = false,
 }: TagPropsWithText & { isInactive?: boolean }) => {
   return (
     <span
       className={classNames(
         isInactive
           ? "bg-gray-200 text-gray-secondary"
-          : "bg-yellow text-orange",
-        "max-w-min flex-grow-0 whitespace-nowrap rounded px-2 py-1 font-bold uppercase shadow-sm"
+          : "bg-tag-yellow text-orange",
+        "max-w-min flex-grow-0 whitespace-nowrap rounded border px-2 py-1 font-bold uppercase shadow-sm"
       )}
     >
       {text}

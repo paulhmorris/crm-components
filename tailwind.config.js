@@ -83,6 +83,9 @@ module.exports = {
         toggle:
           "0px 2.5px 6.5px rgba(0, 0, 0, 0.15), 0px 2.5px 0.8px rgba(0, 0, 0, 0.06);",
       },
+      animation: {
+        "spin-pulse": "spin 1200ms cubic-bezier(.36, 0, .28, 0.98) infinite",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
