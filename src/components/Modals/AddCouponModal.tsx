@@ -4,12 +4,12 @@ import { SubmitButton } from "components/SubmitButton";
 import { mockAccountCoupons } from "mockData";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormModalProps, SelectOptionProps } from "types";
+import { GenericModalProps, SelectOptionProps } from "types";
 import { convertArrayToSelectOptions, sleep } from "utils/helpers";
 import { Modal } from "./Modal";
 import { AddCouponFormValues } from "./types";
 
-export const AddCouponModal = ({ isOpen, setIsOpen }: FormModalProps) => {
+export const AddCouponModal = ({ isOpen, setIsOpen }: GenericModalProps) => {
   const { control, handleSubmit, formState } = useForm<AddCouponFormValues>({
     defaultValues: { coupon: "" },
   });

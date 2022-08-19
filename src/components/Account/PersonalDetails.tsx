@@ -28,12 +28,6 @@ export const PersonalDetails = () => {
       <EditPersonalDetailsModal
         isOpen={openEditDetails}
         setIsOpen={setOpenEditDetails}
-        defaultValues={{
-          phone,
-          email,
-          firstName,
-          lastName,
-        }}
       />
       <div className="flex items-end justify-between border-b border-gray-200 px-6 py-3">
         <h4>Personal Details</h4>

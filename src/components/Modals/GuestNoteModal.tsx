@@ -2,13 +2,13 @@ import { Button } from "components/Button";
 import { TextArea } from "components/Forms/TextArea";
 import { SubmitButton } from "components/SubmitButton";
 import { useForm } from "react-hook-form";
-import { FormModalProps } from "types";
+import { GenericModalProps } from "types";
 import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
 import { GuestNoteFormValues } from "./types";
 
-export const GuestNoteModal = ({ isOpen, setIsOpen }: FormModalProps) => {
+export const GuestNoteModal = ({ isOpen, setIsOpen }: GenericModalProps) => {
   const { control, handleSubmit, formState } = useForm<GuestNoteFormValues>({
     ...modalFormConfig,
   });

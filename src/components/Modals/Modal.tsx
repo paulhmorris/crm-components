@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { Fragment } from "react";
-import { ModalProps } from "types";
+import { GenericModalProps } from "types";
 
 export const Modal = ({
   isOpen,
@@ -10,7 +10,7 @@ export const Modal = ({
   description,
   size = "sm",
   children,
-}: ModalProps) => {
+}: GenericModalProps) => {
   function closeModal() {
     setIsOpen(false);
   }

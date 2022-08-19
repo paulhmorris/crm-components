@@ -4,13 +4,16 @@ import { TextInput } from "components/Forms/TextInput";
 import { SubmitButton } from "components/SubmitButton";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormModalProps } from "types";
+import { GenericModalProps } from "types";
 import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
 import { LinkedAccountFormValues } from "./types";
 
-export const LinkedAccountModal = ({ isOpen, setIsOpen }: FormModalProps) => {
+export const LinkedAccountModal = ({
+  isOpen,
+  setIsOpen,
+}: GenericModalProps) => {
   const { control, handleSubmit, formState, setValue } =
     useForm<LinkedAccountFormValues>({
       ...modalFormConfig,

@@ -9,7 +9,7 @@ const Navbar = () => {
     return <p>Loading...</p>;
 
   return (
-    <nav className="mb-10 w-full">
+    <nav className="mb-10 ml-[212px] w-full">
       <Tab.Group
         selectedIndex={selectedTabIndex}
         onChange={(index) => changeTab(tabs[index])}
@@ -23,7 +23,6 @@ const Navbar = () => {
                     <span className={selected ? "tab tab-active" : "tab"}>
                       {tab.title}
                     </span>
-<<<<<<< HEAD
                   </div>
                   {tabs.length > 1 && (
                     <span

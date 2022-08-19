@@ -2,7 +2,7 @@ import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
 import { SubmitButton } from "components/SubmitButton";
 import { useForm } from "react-hook-form";
-import { FormModalProps } from "types";
+import { GenericModalProps } from "types";
 import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
@@ -11,10 +11,9 @@ import { ActivateBagFormValues } from "./types";
 export const BagActivationModal = ({
   isOpen,
   setIsOpen,
-  defaultValues,
-}: FormModalProps) => {
+}: GenericModalProps) => {
   const { control, handleSubmit, formState } = useForm<ActivateBagFormValues>({
-    defaultValues,
+    defaultValues: { barcode: "" },
     ...modalFormConfig,
   });
   const { isSubmitting } = formState;

@@ -2,7 +2,7 @@ import { Button } from "components/Button";
 import { TextInput } from "components/Forms/TextInput";
 import { SubmitButton } from "components/SubmitButton";
 import { useForm } from "react-hook-form";
-import { FormModalProps } from "types";
+import { GenericModalProps } from "types";
 import { modalFormConfig } from "utils/config";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
@@ -11,11 +11,10 @@ import { PersonalDetailsFormValues } from "./types";
 export const EditPersonalDetailsModal = ({
   isOpen,
   setIsOpen,
-  defaultValues,
-}: FormModalProps) => {
+}: GenericModalProps) => {
   const { control, handleSubmit, formState } =
     useForm<PersonalDetailsFormValues>({
-      defaultValues,
+      defaultValues: { email: "", firstName: "", lastName: "", phone: "" },
       ...modalFormConfig,
     });
   const { isSubmitting } = formState;

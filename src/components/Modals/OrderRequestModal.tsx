@@ -2,12 +2,12 @@ import { Button } from "components/Button";
 import { Select } from "components/Forms/Select";
 import { SubmitButton } from "components/SubmitButton";
 import { useForm } from "react-hook-form";
-import { FormModalProps } from "types";
+import { GenericModalProps } from "types";
 import { sleep } from "utils/helpers";
 import { Modal } from "./Modal";
 import { OrderRequestFormValues } from "./types";
 
-export const OrderRequestModal = ({ isOpen, setIsOpen }: FormModalProps) => {
+export const OrderRequestModal = ({ isOpen, setIsOpen }: GenericModalProps) => {
   const { control, handleSubmit, formState } = useForm<OrderRequestFormValues>({
     defaultValues: {
       orderType: "dryClean",

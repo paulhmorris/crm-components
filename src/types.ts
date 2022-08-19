@@ -115,34 +115,22 @@ export interface OrderPillProps extends ComponentPropsWithoutRef<"div"> {
   status?: OrderPillStatus;
 }
 
-export interface FormModalProps {
-  /** Controls rendering of the modal */
-  isOpen: boolean;
-  /** Header */
-  title: string;
-  /** Optional description. Displays below the header. */
-  description?: string;
-  /** Width of the modal. */
-  size?: "xs" | "sm" | "md" | "lg" | "full";
-  /** Callback for the Modal to close itself */
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  children: React.ReactNode;
-}
-
 export interface GenericModalProps {
   /** Controls rendering of the modal */
   isOpen: boolean;
   /** Callback for the Modal to close itself */
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  /** Header */
+  title?: string;
+  /** Optional description. Displays below the header. */
+  description?: string;
+  /** Width of the modal. */
+  size?: "xs" | "sm" | "md" | "lg" | "full";
+  children?: React.ReactNode;
 }
 
-export interface FormModalProps {
-  /** Controls rendering of the modal */
-  isOpen: boolean;
-  /** Callback for the Modal to close itself */
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  defaultValues?: Record<string, any>;
+export interface FormModalProps extends GenericModalProps {
+  defaultValues: Pick<UseFormProps, "defaultValues">;
 }
 
 export type Weekday = {
