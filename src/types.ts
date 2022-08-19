@@ -24,10 +24,6 @@ export type StarchType =
   | "heavy starch"
   | "cowboy";
 
-export interface TabDetails {
-  title: string;
-  route: string;
-}
 export type BusinessUnit =
   | "Procter & Gamble"
   | "Tide Dry Cleaners"
@@ -119,7 +115,7 @@ export interface OrderPillProps extends ComponentPropsWithoutRef<"div"> {
   status?: OrderPillStatus;
 }
 
-export interface ModalProps {
+export interface FormModalProps {
   /** Controls rendering of the modal */
   isOpen: boolean;
   /** Header */

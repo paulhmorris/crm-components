@@ -43,7 +43,6 @@
     @apply select-none;
   }
 
-  /* Accessible focus styles. Excludes <Tab /> and <Select /> since they have their own */
   button:not([role="tab"]):not([aria-haspopup="true"]),
   a,
   input[type="radio"],
@@ -52,7 +51,7 @@
   }
 
   [role="tab"] {
-    @apply focus-visible:outline-none;
+    @apply focus:outline-none focus-visible:outline-none;
   }
 
   code {
