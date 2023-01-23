@@ -10,13 +10,13 @@ const TabSelection = () => {
     { title: "Guest Profile", route: "/guest-profile", isActive: false },
     { title: "Pepper Nav", route: "/nav", isActive: false },
     { title: "Jarvis", route: "/jarvis", isActive: false },
-    { title: "Group Profile", route: "/group-profile", isActive: false },
-    { title: "Create Submarket", route: "/create-submarket", isActive: false },
-    {
-      title: "Create Subscription",
-      route: "/create-subscription",
-      isActive: false,
-    },
+    // { title: "Group Profile", route: "/group-profile", isActive: false },
+    // { title: "Create Submarket", route: "/create-submarket", isActive: false },
+    // {
+    //   title: "Create Subscription",
+    //   route: "/create-subscription",
+    //   isActive: false,
+    // },
   ];
 
   return (
